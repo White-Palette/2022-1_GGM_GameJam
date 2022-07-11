@@ -19,7 +19,7 @@ public class TowerManager : MonoSingleton<TowerManager>
     {
         foreach (var tower in _towerList)
         {
-            if (Vector2.Distance(Camera.main.transform.position, tower.transform.position) > 4f)
+            if (Mathf.Abs((Camera.main.transform.position.y - tower.transform.position.y)) > 5f)
             {
                 DestroyTower(tower);
             }
