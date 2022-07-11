@@ -7,13 +7,15 @@ public class Test : MonoBehaviour
     private void Awake()
     {
         SoundEffect.Play(Sound.Test);
+        GetComponent<BpmChecker>().StartBpm();
     }
 
     private void Update()
     {
-        float x = Input.GetAxis("Horizontal") * Time.deltaTime * 10f;
-        float y = Input.GetAxis("Vertical") * Time.deltaTime * 10f;
-
-        transform.Translate(x, y, 0);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log($"BpmChecker.Instance.CheckBeat() = {BpmChecker.Instance.CheckBeat()}");
+            SoundEffect.Play(Sound.Test);
+        }
     }
 }
