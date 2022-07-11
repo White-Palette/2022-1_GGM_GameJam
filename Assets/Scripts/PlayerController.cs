@@ -21,6 +21,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     public void MoveToPillar(Pillar pillar)
     {
+        TowerManager.Instance.UpdateTower();
         currentPillar = pillar;
         transform.position = pillar.transform.position + Vector3.up * 2.55f;
     }

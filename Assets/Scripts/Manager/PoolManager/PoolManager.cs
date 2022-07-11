@@ -36,18 +36,19 @@ public static class PoolManager<T> where T : MonoBehaviour, IPoolable
         _objectQueue.Clear();
     }
 
-    public static T Get(Transform parant)
+    public static T Get(Transform parent)
     {
         T pool = null;
         if (_objectQueue.Count > 0)
         {
             pool = _objectQueue.Dequeue().GetComponent<T>();
-            pool.transform.SetParent(parant);
+            pool.transform.SetParent(parent);
             pool.transform.localPosition = Vector3.zero;
         }
         else
         {
-            GameObject gameObject = GameObject.Instantiate(_prefab, parant);
+            Debug.Log("Init " + typeof(T).Name);
+            GameObject gameObject = GameObject.Instantiate(_prefab, parent);
             gameObject.name = $"{typeof(T).Name} {TotalCount + 1}";
             pool = gameObject.GetComponent<T>();
         }

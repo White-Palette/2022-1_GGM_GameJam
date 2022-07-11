@@ -3,10 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pillar : MonoBehaviour
+public class Pillar : MonoBehaviour, IPoolable
 {
     [SerializeField] Pillar leftPillar;
     [SerializeField] Pillar rightPillar;
+
+    public void Initialize()
+    {
+
+    }
 
     public void MoveLeft()
     {
