@@ -2,90 +2,94 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+using Random = UnityEngine.Random;
+
+[Serializable]
+public class Range
+{
+    public float min;
+    public float max;
+
+    public Range(float min, float max)
+    {
+        this.min = min;
+        this.max = max;
+    }
+}
 
 public class Pillar : MonoBehaviour, IPoolable
 {
-    [SerializeField] Pillar leftPillar;
-    [SerializeField] Pillar rightPillar;
+    public Pillar LeftPillar;
+    public Pillar RightPillar;
+    public Range HorizontalRange = new Range(3, 5);
+    public Range VerticalRange = new Range(3, 5);
+    public Color Color 
+    {
+        get
+        {
+            return SpriteRenderer.color;
+        }
+        set
+        {
+            SpriteRenderer.color = value;
+        }
+    }
 
-    float offset = 3f;
+    [HideInInspector]
+    public SpriteRenderer SpriteRenderer;
 
-    bool isInitUpTower = false;
+    private void Awake()
+    {
+        SpriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    public void Generate()
+    {
+        if (LeftPillar != null || RightPillar != null)
+            return;
+
+        if (Random.Range(0, 2) == 0)
+        {
+            if (Random.Range(0, 2) == 0)
+            {
+                Vector2 rightPillarPosition = transform.position + Vector3.right * Random.Range(HorizontalRange.min, HorizontalRange.max);
+                rightPillarPosition = rightPillarPosition + Vector2.up * Random.Range(VerticalRange.min, VerticalRange.max);
+                RightPillar = PoolManager<Pillar>.Get(transform.parent, rightPillarPosition);
+            }
+            else
+            {
+                Vector2 leftPillarPosition = transform.position + Vector3.left * Random.Range(HorizontalRange.min, HorizontalRange.max);
+                leftPillarPosition = leftPillarPosition + Vector2.up * Random.Range(VerticalRange.min, VerticalRange.max);
+                LeftPillar = PoolManager<Pillar>.Get(transform.parent, leftPillarPosition);
+            }
+        }
+        else
+        {
+            Vector2 rightPillarPosition = transform.position + Vector3.right * Random.Range(HorizontalRange.min, HorizontalRange.max);
+            rightPillarPosition = rightPillarPosition + Vector2.up * Random.Range(VerticalRange.min, VerticalRange.max);
+            RightPillar = PoolManager<Pillar>.Get(transform.parent, rightPillarPosition);
+
+            Vector2 leftPillarPosition = transform.position + Vector3.left * Random.Range(HorizontalRange.min, HorizontalRange.max);
+            leftPillarPosition = leftPillarPosition + Vector2.up * Random.Range(VerticalRange.min, VerticalRange.max);
+            LeftPillar = PoolManager<Pillar>.Get(transform.parent, leftPillarPosition);
+        }
+    }
+
+    private void Update()
+    {
+        if (transform.position.y - Camera.main.transform.position.y < -10f)
+        {
+            PoolManager<Pillar>.Release(this, true);
+        }
+    }
 
     public void Initialize()
     {
-        TowerManager.Instance.RegisterTower(gameObject);
-        StartCoroutine(InitUpTowerCoroutine());
-    }
-
-    public void InitUpTower()
-    {
-        StartCoroutine(InitUpTowerCoroutine());
-    }
-
-    private IEnumerator InitUpTowerCoroutine()
-    {
-        yield return new WaitForSeconds(0.1f);
-        if (Vector2.Distance(Camera.main.transform.position, transform.position) > 8f)
-        {
-            yield break;
-        }
-
-        if (isInitUpTower)
-        {
-            yield break;
-        }
-
-        isInitUpTower = true;
-
-        int random = UnityEngine.Random.Range(0, 3);
-
-        Pillar leftTemp = null;
-        Pillar rightTemp = null;
-
-        switch (random)
-        {
-            case 0:
-                leftTemp = PoolManager<Pillar>.Get(TowerManager.Instance.transform);
-                break;
-            case 1:
-                rightTemp = PoolManager<Pillar>.Get(TowerManager.Instance.transform);
-                break;
-            case 2:
-                leftTemp = PoolManager<Pillar>.Get(TowerManager.Instance.transform);
-                rightTemp = PoolManager<Pillar>.Get(TowerManager.Instance.transform);
-                break;
-            default:
-                break;
-        }
-
-        if (leftTemp != null)
-        {
-            leftTemp.transform.position = transform.position + new Vector3(-offset, offset, 0);
-        }
-
-        if (rightTemp != null)
-        {
-            rightTemp.transform.position = transform.position + new Vector3(offset, offset, 0);
-        }
-
-        leftPillar = leftTemp;
-        rightPillar = rightTemp;
-    }
-
-    public void MoveLeft()
-    {
-        if (leftPillar != null)
-        {
-            PlayerController.Instance.MoveToPillar(leftPillar);
-        }
-    }
-
-    public void MoveRight()
-    {
-        if (rightPillar != null)
-        {
-            PlayerController.Instance.MoveToPillar(rightPillar);
-        }
+        LeftPillar = null;
+        RightPillar = null;
+        Color = Color.white;
+        transform.DOMoveY(transform.position.y, 0.2f).From(transform.position.y - 1f);
+        SpriteRenderer.DOFade(1f, 0.2f).From(0f);
     }
 }

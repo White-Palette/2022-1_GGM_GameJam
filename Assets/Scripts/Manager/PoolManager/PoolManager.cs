@@ -36,7 +36,7 @@ public static class PoolManager<T> where T : MonoBehaviour, IPoolable
         _objectQueue.Clear();
     }
 
-    public static T Get(Transform parent)
+    public static T Get(Transform parent, Vector3 position = new Vector3())
     {
         T pool = null;
         if (_objectQueue.Count > 0)
@@ -55,20 +55,22 @@ public static class PoolManager<T> where T : MonoBehaviour, IPoolable
         _pooledDict[pool.gameObject] = false;
         Debug.Log($"PoolManager[{typeof(T).Name}]: Get {pool.gameObject.name}");
         pool.gameObject.SetActive(true);
+        pool.transform.position = position;
         pool.Initialize();
         return pool;
     }
 
-    public static void Release(T pool)
+    public static void Release(T pool, bool force = false)
     {
         bool isPooled = false;
-        if (_pooledDict.TryGetValue(pool.gameObject, out isPooled))
+        if (_pooledDict.TryGetValue(pool.gameObject, out isPooled) || force)
         {
             if (isPooled)
             {
                 Debug.LogError($"{pool.gameObject.name} is not valid object");
                 return;
             }
+            _pooledDict[pool.gameObject] = true;
             pool.gameObject.SetActive(false);
             _objectQueue.Enqueue(pool.gameObject);
         }

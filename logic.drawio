@@ -1,11 +1,17 @@
 <mxfile host="65bd71144e">
     <diagram id="XBpiD3OWSS_onYz8i8Su" name="페이지-1">
-        <mxGraphModel dx="1182" dy="782" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="585" dy="652" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="2" value="임태훈바보" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="380" y="250" width="120" height="60" as="geometry"/>
+                <mxCell id="8" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="5" target="7">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="첫 기둥" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="420" y="270" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="패턴 중 하나를 골라 생성" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="400" y="400" width="160" height="60" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

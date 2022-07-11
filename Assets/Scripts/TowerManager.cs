@@ -34,7 +34,7 @@ public class TowerManager : MonoSingleton<TowerManager>
         {
             if (Mathf.Abs((Camera.main.transform.position.y - tower.transform.position.y)) < 4f)
             {
-                tower.GetComponent<Pillar>().InitUpTower();
+                // tower.GetComponent<Pillar>().InitUpTower();
             }
         }
     }
