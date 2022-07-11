@@ -18,3 +18,14 @@ MonoBehaviour:
   - Sound: 1
     AudioClip: {fileID: 8300000, guid: 3e27df753b626764d9c947b9c7213caf, type: 3}
   MusicSources: []
+  EffectSources:
+  - Effect: 4
+    AudioClip: {fileID: 8300000, guid: 2f31ed1ef326e3740b79f1de49437694, type: 3}
+  - Effect: 6
+    AudioClip: {fileID: 8300000, guid: 3b5cd3322269ce54991f9ff7d062441e, type: 3}
+  - Effect: 2
+    AudioClip: {fileID: 8300000, guid: 35106368a4eef4848965ecc6bf37202e, type: 3}
+  - Effect: 3
+    AudioClip: {fileID: 8300000, guid: c0c212ae65129ad4c8ce4fa1154f286a, type: 3}
+  - Effect: 5
+    AudioClip: {fileID: 8300000, guid: 4ea07e1654dc48e41ad4cb508c8e9183, type: 3}
