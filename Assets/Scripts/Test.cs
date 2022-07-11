@@ -11,9 +11,9 @@ public class Test : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Jump"))
-        {
-            SoundEffect.Play(Sound.Test);
-        }
+        float x = Input.GetAxis("Horizontal") * Time.deltaTime * 10f;
+        float y = Input.GetAxis("Vertical") * Time.deltaTime * 10f;
+
+        transform.Translate(x, y, 0);
     }
 }
