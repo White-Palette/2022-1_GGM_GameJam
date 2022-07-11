@@ -17,11 +17,24 @@ public class TowerManager : MonoSingleton<TowerManager>
 
     public void UpdateTower()
     {
+        if (_towerList.Count <= 0)
+        {
+            return;
+        }
+
+        // foreach (var tower in _towerList)
+        // {
+        //     if (Mathf.Abs((Camera.main.transform.position.y - tower.transform.position.y)) > 6f)
+        //     {
+        //         DestroyTower(tower);
+        //     }
+        // }
+
         foreach (var tower in _towerList)
         {
-            if (Mathf.Abs((Camera.main.transform.position.y - tower.transform.position.y)) > 5f)
+            if (Mathf.Abs((Camera.main.transform.position.y - tower.transform.position.y)) < 4f)
             {
-                DestroyTower(tower);
+                tower.GetComponent<Pillar>().InitUpTower();
             }
         }
     }

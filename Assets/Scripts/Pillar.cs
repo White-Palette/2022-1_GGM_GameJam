@@ -10,19 +10,33 @@ public class Pillar : MonoBehaviour, IPoolable
 
     float offset = 3f;
 
+    bool isInitUpTower = false;
+
     public void Initialize()
     {
         TowerManager.Instance.RegisterTower(gameObject);
-        StartCoroutine(InitUpTower());
+        StartCoroutine(InitUpTowerCoroutine());
     }
 
-    private IEnumerator InitUpTower()
+    public void InitUpTower()
     {
-        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(InitUpTowerCoroutine());
+    }
+
+    private IEnumerator InitUpTowerCoroutine()
+    {
+        yield return new WaitForSeconds(0.1f);
         if (Vector2.Distance(Camera.main.transform.position, transform.position) > 8f)
         {
             yield break;
         }
+
+        if (isInitUpTower)
+        {
+            yield break;
+        }
+
+        isInitUpTower = true;
 
         int random = UnityEngine.Random.Range(0, 3);
 
@@ -48,14 +62,15 @@ public class Pillar : MonoBehaviour, IPoolable
         if (leftTemp != null)
         {
             leftTemp.transform.position = transform.position + new Vector3(-offset, offset, 0);
-            leftPillar = leftTemp;
         }
 
         if (rightTemp != null)
         {
             rightTemp.transform.position = transform.position + new Vector3(offset, offset, 0);
-            rightPillar = rightTemp;
         }
+
+        leftPillar = leftTemp;
+        rightPillar = rightTemp;
     }
 
     public void MoveLeft()
