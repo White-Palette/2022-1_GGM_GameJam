@@ -8,6 +8,8 @@ public class PlayerController : MonoSingleton<PlayerController>
 {
     [SerializeField] Pillar currentPillar;
 
+    public int currentPillarIndex = 0;
+
     private bool isMoving = false;
 
     private void Update()

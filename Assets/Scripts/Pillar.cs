@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class Pillar : MonoBehaviour, IPoolable
 {
-    [SerializeField] Pillar leftPillar;
-    [SerializeField] Pillar rightPillar;
+    public Pillar leftPillar;
+    public Pillar rightPillar;
+
+    public int index = 0;
 
     public void Initialize()
     {
