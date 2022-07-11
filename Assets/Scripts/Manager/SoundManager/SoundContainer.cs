@@ -14,9 +14,17 @@ public class MusicSource
     public AudioClip AudioClip;
 }
 
+[System.Serializable]
+public class EffectSource
+{
+    public Effect Effect;
+    public AudioClip AudioClip;
+}
+
 [CreateAssetMenu(fileName = "SoundContainer", menuName = "")]
 public class SoundContainer : ScriptableObject
 {
     public SoundSource[] SoundSources;
     public MusicSource[] MusicSources;
+    public EffectSource[] EffectSources;
 }

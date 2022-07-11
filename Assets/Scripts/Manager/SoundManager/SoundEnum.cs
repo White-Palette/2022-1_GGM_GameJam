@@ -10,3 +10,15 @@ public enum Music
     Test1,
     Test2
 }
+
+public enum Effect
+{
+    None,
+    Click,
+    Jump,
+    Spring,
+    Attack,
+    trap,
+    Die,
+    GetItem,
+}
