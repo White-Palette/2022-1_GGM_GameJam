@@ -10,10 +10,9 @@ public class TitleManager : MonoBehaviour
     [SerializeField] Image startImage;
     [SerializeField] TextMeshProUGUI startTMP;
     [SerializeField] GameObject settingPanel;
+    [SerializeField] GameObject helpPanel;
 
     private float fadeTime = 2f;
-
-    private bool isEnable = false;
 
     private void Start()
     {
@@ -59,7 +58,8 @@ public class TitleManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            ToggleSettingPanel();
+            TogglePanel(settingPanel);
+            //ToggleSettingPanel();
         }
         else if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -77,23 +77,35 @@ public class TitleManager : MonoBehaviour
 
     public void DisableAllPanel()
     {
-        ToggleSettingPanel();
+        //ToggleSettingPanel();
+        settingPanel.SetActive(false);
+        helpPanel.SetActive(false);
     }
 
-    public void ToggleSettingPanel()
+    //public void ToggleSettingPanel()
+    //{
+    //    settingPanel.SetActive(!settingPanel.activeSelf);
+
+    //    if (settingPanel.activeSelf)
+    //    {
+    //        isEnable = true;
+    //    }
+    //    if (!settingPanel.activeSelf)
+    //    {
+    //        isEnable = false;
+    //    }
+
+    //    Debug.Log("isEnable : " + isEnable);
+    //}
+
+    public void TogglePanel(GameObject Panel)
     {
-        settingPanel.SetActive(!settingPanel.activeSelf);
+        Panel.SetActive(!Panel.activeSelf);
+    }
 
-        if (settingPanel.activeSelf)
-        {
-            isEnable = true;
-        }
-        if (!settingPanel.activeSelf)
-        {
-            isEnable = false;
-        }
-
-        Debug.Log("isEnable : " + isEnable);
+    public void HelpPanel()
+    {
+        TogglePanel(helpPanel);
     }
 
     public void GameStart()
