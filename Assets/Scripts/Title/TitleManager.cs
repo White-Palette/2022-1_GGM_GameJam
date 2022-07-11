@@ -108,6 +108,11 @@ public class TitleManager : MonoBehaviour
         TogglePanel(helpPanel);
     }
 
+    public void SettingPanel()
+    {
+        TogglePanel(settingPanel);
+    }
+
     public void GameStart()
     {
         Debug.Log("Game Start");
