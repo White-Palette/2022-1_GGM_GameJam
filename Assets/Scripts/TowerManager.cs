@@ -6,12 +6,12 @@ public class TowerManager : MonoSingleton<TowerManager>
 {
     private GameObject _towerPrefabs = null;
 
-    private List<GameObject> _towerList = new List<GameObject>();
+    public List<GameObject> _towerList = new List<GameObject>();
 
     private void Awake()
     {
         _towerPrefabs = Resources.Load<GameObject>("Prefabs/TowerPrefab");
-        CreateTowerTree(new Vector2(0, -2.175f));
+        PoolManager<Pillar>.Get(transform);
         PlayerController.Instance.MoveToPillar(_towerList[0].GetComponent<Pillar>());
     }
 
@@ -20,16 +20,9 @@ public class TowerManager : MonoSingleton<TowerManager>
 
     }
 
-    public void CreateTowerTree(Vector2 position)
+    public void RegisterTower(GameObject tower)
     {
-        if (position.y > 5.5f)
-        {
-            return;
-        }
-
-
-
-        CreateTowerTree(position + new Vector2(0, 1.7f));
+        _towerList.Add(tower);
     }
 
     public void DestroyTower(GameObject tower)
