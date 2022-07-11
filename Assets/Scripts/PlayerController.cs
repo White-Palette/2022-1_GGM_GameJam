@@ -29,7 +29,6 @@ public class PlayerController : MonoSingleton<PlayerController>
     {
         isMoving = true;
         currentPillar = pillar;
-        TowerManager.Instance.UpdateTower();
         transform.DOJump(pillar.transform.position + Vector3.up * 1.7f, 2f, 1, 0.5f).SetEase(Ease.InOutQuad).OnComplete(() =>
         {
             isMoving = false;
