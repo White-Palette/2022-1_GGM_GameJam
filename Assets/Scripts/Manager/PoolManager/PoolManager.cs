@@ -16,14 +16,18 @@ public static class PoolManager<T> where T : MonoBehaviour, IPoolable
     static PoolManager()
     {
         Debug.Log($"PoolManager[{typeof(T).Name}]: Initialize");
-        SceneManager.activeSceneChanged += ActiveSceneChanged;
+        SceneManager.sceneUnloaded += SceneUnloaded;
         _prefab = Resources.Load<GameObject>("Prefabs/" + typeof(T).Name);
     }
 
-    private static void ActiveSceneChanged(Scene prev, Scene scene)
+    private static void SceneUnloaded(Scene scene)
     {
-        _poolStore = GameObject.Find("PoolStore").transform;
-        if (_poolStore == null)
+        var poolStore = GameObject.Find("PoolStore");
+        if (poolStore != null)
+        {
+            _poolStore = poolStore.transform;
+        }
+        else
         {
             GameObject gameObject = new GameObject("PoolStore");
             _poolStore = gameObject.transform;
@@ -44,10 +48,11 @@ public static class PoolManager<T> where T : MonoBehaviour, IPoolable
         else
         {
             GameObject gameObject = GameObject.Instantiate(_prefab, parant);
-            gameObject.name = typeof(T).Name + (TotalCount + 1);
+            gameObject.name = $"{typeof(T).Name} {TotalCount + 1}";
             pool = gameObject.GetComponent<T>();
         }
         _pooledDict[pool.gameObject] = false;
+        Debug.Log($"PoolManager[{typeof(T).Name}]: Get {pool.gameObject.name}");
         pool.gameObject.SetActive(true);
         pool.Initialize();
         return pool;
