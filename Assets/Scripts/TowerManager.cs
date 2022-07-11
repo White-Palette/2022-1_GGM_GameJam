@@ -17,7 +17,13 @@ public class TowerManager : MonoSingleton<TowerManager>
 
     public void UpdateTower()
     {
-
+        foreach (var tower in _towerList)
+        {
+            if (Mathf.Abs((Camera.main.transform.position.y - tower.transform.position.y)) > 5f)
+            {
+                DestroyTower(tower);
+            }
+        }
     }
 
     public void RegisterTower(GameObject tower)
@@ -29,6 +35,6 @@ public class TowerManager : MonoSingleton<TowerManager>
     {
         _towerList.Remove(tower);
         Destroy(tower);
-        // PoolManager<Pillar>.Release(tower.GetComponent<Pillar>());
+        PoolManager<Pillar>.Release(tower.GetComponent<Pillar>());
     }
 }

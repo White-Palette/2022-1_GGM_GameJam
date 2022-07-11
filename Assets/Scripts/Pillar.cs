@@ -8,20 +8,20 @@ public class Pillar : MonoBehaviour, IPoolable
     [SerializeField] Pillar leftPillar;
     [SerializeField] Pillar rightPillar;
 
-    [SerializeField] float offset = 1f;
+    float offset = 3f;
 
     public void Initialize()
     {
         TowerManager.Instance.RegisterTower(gameObject);
-        //InitUpTower();
+        StartCoroutine(InitUpTower());
     }
 
-    private void InitUpTower()
+    private IEnumerator InitUpTower()
     {
-        Debug.Log(Vector2.Distance(Camera.main.transform.position, transform.position));
+        yield return new WaitForSeconds(0.5f);
         if (Vector2.Distance(Camera.main.transform.position, transform.position) > 8f)
         {
-            return;
+            yield break;
         }
 
         int random = UnityEngine.Random.Range(0, 3);
@@ -48,15 +48,14 @@ public class Pillar : MonoBehaviour, IPoolable
         if (leftTemp != null)
         {
             leftTemp.transform.position = transform.position + new Vector3(-offset, offset, 0);
+            leftPillar = leftTemp;
         }
 
         if (rightTemp != null)
         {
             rightTemp.transform.position = transform.position + new Vector3(offset, offset, 0);
+            rightPillar = rightTemp;
         }
-
-        leftPillar = leftTemp;
-        rightPillar = rightTemp;
     }
 
     public void MoveLeft()
