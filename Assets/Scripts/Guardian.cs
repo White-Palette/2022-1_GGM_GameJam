@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Guardian : MonoBehaviour
 {
@@ -9,7 +10,6 @@ public class Guardian : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
-
     }
 
     public void Attack1()
@@ -23,5 +23,10 @@ public class Guardian : MonoBehaviour
     public void Hit()
     {
         animator.SetTrigger("Hit");
+    }
+
+    public void ReMove()
+    {
+        gameObject.SetActive(false);
     }
 }
