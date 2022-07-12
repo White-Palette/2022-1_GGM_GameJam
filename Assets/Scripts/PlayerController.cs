@@ -56,12 +56,13 @@ public class PlayerController : MonoSingleton<PlayerController>
         currentPillar.SpriteRenderer.DOColor(previousPillarColor, 0.2f);
         currentPillar = pillar;
 
+        currentPillar.TowerEvent();
         currentPillar.Generate();
-        
+
         transform.DOJump(pillar.transform.position + Vector3.up * 1.7f, 2f, 1, 1f).SetEase(jumpCurve).OnComplete(() =>
         {
             isMoving = false;
-            
+
             if (currentPillar.LeftPillar != null)
             {
                 currentPillar.LeftPillar.SpriteRenderer.DOColor(nextPillarColor, 0.2f);
@@ -70,7 +71,7 @@ public class PlayerController : MonoSingleton<PlayerController>
             {
                 currentPillar.RightPillar.SpriteRenderer.DOColor(nextPillarColor, 0.2f);
             }
-            
+
             currentPillar.SpriteRenderer.DOColor(currentPillarColor, 0.2f);
         });
     }
