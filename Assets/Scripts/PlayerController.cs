@@ -95,17 +95,26 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     private float JumpDuration()
     {
-        if (ComboManager.Instance.Combo > 50)
+        // 이거 공식 사용해서 할까하는데 밸런스 이상해질까바 안정적으로 이렇게 함 일단은 점프 속도 조절해주는거
+        if (ComboManager.Instance.Combo > 25)
         {
             return 0.5f;
         }
-        else if (ComboManager.Instance.Combo > 10)
+        else if (ComboManager.Instance.Combo > 20)
         {
             return 0.6f;
         }
-        else if (ComboManager.Instance.Combo > 5)
+        else if (ComboManager.Instance.Combo > 15)
         {
             return 0.7f;
+        }
+        else if (ComboManager.Instance.Combo > 10)
+        {
+            return 0.8f;
+        }
+        else if (ComboManager.Instance.Combo > 5)
+        {
+            return 0.9f;
         }
         else
         {

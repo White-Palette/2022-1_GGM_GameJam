@@ -22,7 +22,8 @@ public class Chaser : MonoBehaviour
 
     void Update()
     {
-        if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) > 200f)
+        // 여기서 속도 빨라지게 해줌
+        if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) > 100f)
         {
             AddSpeed(0.1f);
         }
