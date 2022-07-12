@@ -140,5 +140,6 @@ public class PlayerController : MonoSingleton<PlayerController>
         UserData.Cache.Height = Height;
         UserData.Cache.MaxCombo = ComboManager.Instance.MaxCombo;
         // TODO: Goto GameOver Scene
+        Fade.Instance.FadeOutToGameOverScene();
     }
 }
