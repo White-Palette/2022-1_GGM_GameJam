@@ -12,11 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f3463d91fef498488ec48a039a0e97f, type: 3}
   m_Name: SoundContainer
   m_EditorClassIdentifier: 
-  SoundSources:
-  - Sound: 0
-    AudioClip: {fileID: 0}
-  - Sound: 1
-    AudioClip: {fileID: 8300000, guid: 3e27df753b626764d9c947b9c7213caf, type: 3}
   MusicSources: []
   EffectSources:
   - Effect: 4
