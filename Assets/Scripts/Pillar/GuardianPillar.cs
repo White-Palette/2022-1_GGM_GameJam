@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class GuardianPillar : Pillar
@@ -45,7 +46,7 @@ public class GuardianPillar : Pillar
         var test = FindObjectOfType<Cinemachine.CinemachineVirtualCamera>();
 
         Time.timeScale = 0.1f;
-        test.m_Lens.OrthographicSize = 10;
+        DOTween.To(() => test.m_Lens.OrthographicSize, x => test.m_Lens.OrthographicSize = x, 3, 0.5f);
 
         UIManager.Instance.TimingSlider.StartMove();
 
@@ -80,6 +81,6 @@ public class GuardianPillar : Pillar
         }
 
         Time.timeScale = 1f;
-        test.m_Lens.OrthographicSize = 5;
+        DOTween.To(() => test.m_Lens.OrthographicSize, x => test.m_Lens.OrthographicSize = x, 5, 0.5f);
     }
 }
