@@ -11,6 +11,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     [SerializeField] AnimationCurve speedCurve = AnimationCurve.EaseInOut(1, 1, 0, 0);
     [SerializeField] ParticleSystem landing;
 
+    private ParticleSystem particle;
     private Animator animator;
     private bool isMoving = false;
     private float waitTime = 0;
@@ -19,6 +20,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     private void Start()
     {
         animator = GetComponent<Animator>();
+        particle = transform.Find("Hit").GetComponent<ParticleSystem>();
         MoveToPillar(currentPillar);
     }
 
@@ -122,6 +124,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     public void Dead()
     {
+        particle.Play();
         UserData.Cache.Height = Height;
         UserData.Cache.MaxCombo = ComboManager.Instance.MaxCombo;
         SoundManager.Instance.PlaySound(Effect.Die);
