@@ -46,7 +46,7 @@ public class GuardianPillar : Pillar
         var test = FindObjectOfType<Cinemachine.CinemachineVirtualCamera>();
 
         Time.timeScale = 0.1f;
-        DOTween.To(() => test.m_Lens.OrthographicSize, x => test.m_Lens.OrthographicSize = x, 3, 0.5f);
+        DOTween.To(() => test.m_Lens.OrthographicSize, x => test.m_Lens.OrthographicSize = x, 1, 0.5f);
 
         UIManager.Instance.TimingSlider.StartMove();
 
@@ -66,14 +66,11 @@ public class GuardianPillar : Pillar
             Debug.Log("Fail2");
             _guardian.Attack2();
         }
-        else
-
-        if (_inputValue < 35f || _inputValue > 65f)
+        else if (_inputValue < 35f || _inputValue > 65f)
         {
             Debug.Log("Fail1");
             _guardian.Attack1();
         }
-
         else
         {
             Debug.Log("Success");
