@@ -5,6 +5,8 @@ using UnityEngine;
 public class Chaser : MonoBehaviour
 {
     private Animator _animator = null;
+    [SerializeField]
+    private float _speed = 1f;
 
     private void Start()
     {
@@ -22,5 +24,13 @@ public class Chaser : MonoBehaviour
         {
             Eat();
         }
+        Move();
+    }
+
+    public void Move()
+    {
+        Vector3 playerDir = PlayerController.Instance.transform.position - transform.position;
+        playerDir.Normalize();
+        transform.position += playerDir * _speed * Time.deltaTime;
     }
 }
