@@ -15,6 +15,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     private Animator animator;
     private bool isMoving = false;
     private float waitTime = 0;
+    private float _height = 0f;
 
     private void Start()
     {
@@ -89,5 +90,18 @@ public class PlayerController : MonoSingleton<PlayerController>
             currentPillar.SpriteRenderer.DOColor(currentPillarColor, 0.2f);
             waitTime = 0;
         });
+    }
+
+    public float Height
+    {
+        get
+        {
+            _height = transform.position.y;
+            if (_height < 0f)
+            {
+                _height = 0f;
+            }
+            return _height;
+        }
     }
 }
