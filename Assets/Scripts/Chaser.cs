@@ -8,6 +8,8 @@ public class Chaser : MonoBehaviour
     [SerializeField]
     private float _speed = 1f;
 
+    private bool _isAddingSpeed = false;
+
     private void Start()
     {
         _animator = GetComponent<Animator>();
@@ -20,9 +22,9 @@ public class Chaser : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) > 200f)
         {
-            Eat();
+            AddSpeed(0.1f);
         }
         Move();
     }
@@ -32,5 +34,21 @@ public class Chaser : MonoBehaviour
         Vector3 playerDir = PlayerController.Instance.transform.position - transform.position;
         playerDir.Normalize();
         transform.position += playerDir * _speed * Time.deltaTime;
+    }
+
+    public void AddSpeed(float speed)
+    {
+        if (!_isAddingSpeed)
+        {
+            _speed += speed;
+            StartCoroutine(AddSpeedCoroutine());
+        }
+    }
+
+    private IEnumerator AddSpeedCoroutine()
+    {
+        _isAddingSpeed = true;
+        yield return new WaitForSeconds(10f);
+        _isAddingSpeed = false;
     }
 }
