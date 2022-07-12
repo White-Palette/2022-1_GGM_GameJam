@@ -14,6 +14,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     private Animator animator;
     private bool isMoving = false;
+    private float _height = 0f;
 
     private void Start()
     {
@@ -80,5 +81,18 @@ public class PlayerController : MonoSingleton<PlayerController>
             animator.SetBool("IsJump", false);
             currentPillar.SpriteRenderer.DOColor(currentPillarColor, 0.2f);
         });
+    }
+
+    public float Height
+    {
+        get
+        {
+            _height = transform.position.y;
+            if (_height < 0f)
+            {
+                _height = 0f;
+            }
+            return _height;
+        }
     }
 }
