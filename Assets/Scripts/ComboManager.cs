@@ -3,6 +3,7 @@ using UnityEngine;
 public class ComboManager : MonoSingleton<ComboManager>
 {
     public int Combo { get; private set; }
+    public int MaxCombo { get; private set; }
 
     public void AddCombo()
     {
@@ -12,6 +13,10 @@ public class ComboManager : MonoSingleton<ComboManager>
 
     public void ResetCombo()
     {
+        if (Combo > MaxCombo)
+        {
+            MaxCombo = Combo;
+        }
         Combo = 0;
     }
 

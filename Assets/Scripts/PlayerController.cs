@@ -125,4 +125,11 @@ public class PlayerController : MonoSingleton<PlayerController>
             return _height;
         }
     }
+
+    public void Dead()
+    {
+        UserData.Cache.Height = Height;
+        UserData.Cache.MaxCombo = ComboManager.Instance.MaxCombo;
+        // TODO: Goto GameOver Scene
+    }
 }

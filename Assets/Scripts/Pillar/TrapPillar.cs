@@ -6,7 +6,7 @@ public class TrapPillar : Pillar
 {
     public override void TowerEvent()
     {
-        Debug.Log("You Die");
+        PlayerController.Instance.Dead();
     }
 
     public override void Generate()
