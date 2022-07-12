@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class GuardianPillar : Pillar
 {
+    private Guardian _guardian = null;
+
     float _inputValue = 0f;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        _guardian = GetComponentInChildren<Guardian>();
+    }
 
     public override void TowerEvent()
     {
@@ -33,9 +41,6 @@ public class GuardianPillar : Pillar
         }
 
         _inputValue = UIManager.Instance.TimingSlider.StopMove();
-        // TODO : 판정 해주는 코드 추가 -1이면 실패
-
-        //ㄹ35 65
 
         if (_inputValue == -1f)
         {
@@ -47,6 +52,7 @@ public class GuardianPillar : Pillar
         {
             Debug.Log("Fail2");
         }
+
         else
         {
             Debug.Log("Success");

@@ -39,7 +39,7 @@ public class Pillar : MonoBehaviour, IPoolable
     [HideInInspector]
     public SpriteRenderer SpriteRenderer;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         SpriteRenderer = GetComponent<SpriteRenderer>();
     }
