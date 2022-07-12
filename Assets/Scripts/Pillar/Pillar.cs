@@ -24,7 +24,7 @@ public class Pillar : MonoBehaviour, IPoolable
     public Pillar RightPillar;
     public Range HorizontalRange = new Range(3, 5);
     public Range VerticalRange = new Range(3, 5);
-    public Color Color 
+    public Color Color
     {
         get
         {
@@ -44,7 +44,7 @@ public class Pillar : MonoBehaviour, IPoolable
         SpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    public void Generate()
+    public virtual void Generate()
     {
         if (LeftPillar != null || RightPillar != null)
             return;
@@ -55,28 +55,28 @@ public class Pillar : MonoBehaviour, IPoolable
             {
                 Vector2 rightPillarPosition = transform.position + Vector3.right * Random.Range(HorizontalRange.min, HorizontalRange.max);
                 rightPillarPosition = rightPillarPosition + Vector2.up * Random.Range(VerticalRange.min, VerticalRange.max);
-                RightPillar = PoolManager<Pillar>.Get(transform.parent, rightPillarPosition);
+                RightPillar = TowerGenerator.Instance.GenerateTower(transform.parent, rightPillarPosition);
             }
             else
             {
                 Vector2 leftPillarPosition = transform.position + Vector3.left * Random.Range(HorizontalRange.min, HorizontalRange.max);
                 leftPillarPosition = leftPillarPosition + Vector2.up * Random.Range(VerticalRange.min, VerticalRange.max);
-                LeftPillar = PoolManager<Pillar>.Get(transform.parent, leftPillarPosition);
+                LeftPillar = TowerGenerator.Instance.GenerateTower(transform.parent, leftPillarPosition);
             }
         }
         else
         {
             Vector2 rightPillarPosition = transform.position + Vector3.right * Random.Range(HorizontalRange.min, HorizontalRange.max);
             rightPillarPosition = rightPillarPosition + Vector2.up * Random.Range(VerticalRange.min, VerticalRange.max);
-            RightPillar = PoolManager<Pillar>.Get(transform.parent, rightPillarPosition);
+            RightPillar = TowerGenerator.Instance.GenerateTower(transform.parent, rightPillarPosition);
 
             Vector2 leftPillarPosition = transform.position + Vector3.left * Random.Range(HorizontalRange.min, HorizontalRange.max);
             leftPillarPosition = leftPillarPosition + Vector2.up * Random.Range(VerticalRange.min, VerticalRange.max);
-            LeftPillar = PoolManager<Pillar>.Get(transform.parent, leftPillarPosition);
+            LeftPillar = TowerGenerator.Instance.GenerateTower(transform.parent, leftPillarPosition);
         }
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (transform.position.y - Camera.main.transform.position.y < -10f)
         {
@@ -84,7 +84,7 @@ public class Pillar : MonoBehaviour, IPoolable
         }
     }
 
-    public void Initialize()
+    public virtual void Initialize()
     {
         LeftPillar = null;
         RightPillar = null;
