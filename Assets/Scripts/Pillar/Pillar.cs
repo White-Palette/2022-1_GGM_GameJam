@@ -18,7 +18,7 @@ public class Range
     }
 }
 
-public class Pillar : MonoBehaviour, IPoolable
+public abstract class Pillar : MonoBehaviour, IPoolable
 {
     public Pillar LeftPillar;
     public Pillar RightPillar;

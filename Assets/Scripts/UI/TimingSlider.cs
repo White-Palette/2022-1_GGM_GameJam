@@ -41,6 +41,18 @@ public class TimingSlider : MonoBehaviour
         return _slider.value;
     }
 
+    public void MoveTo(Vector2 target)
+    {
+        // RectTransformUtility.ScreenPointToWorldPointInRectangle(
+        //     (transform as RectTransform),
+        //     target.position,
+        //     Camera.main,
+        //     out Vector3 localPoint);
+
+        // (transform as RectTransform).anchoredPosition = localPoint + new Vector3(-2f, 0, 0);
+        transform.position = target;
+    }
+
     private IEnumerator MoveValueCoroutine()
     {
         for (float i = _slider.minValue; i < _slider.maxValue; i += _valueSpeed)

@@ -44,6 +44,7 @@ public class GuardianPillar : Pillar
         Time.timeScale = 0.1f;
 
         UIManager.Instance.TimingSlider.StartMove();
+        UIManager.Instance.TimingSlider.MoveTo(_guardian.transform.position + new Vector3(0, -0.5f, 0));
 
         while (!UIManager.Instance.TimingSlider.IsFail)
         {
