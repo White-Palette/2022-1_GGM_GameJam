@@ -11,6 +11,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     [SerializeField] Color currentPillarColor = Color.white;
     [SerializeField] Color previousPillarColor = Color.white;
     [SerializeField] AnimationCurve jumpCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
+    [SerializeField] AnimationCurve speedCurve = AnimationCurve.EaseInOut(1, 1, 0, 0);
 
     private Animator animator;
     private bool isMoving = false;
@@ -95,31 +96,8 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     private float JumpDuration()
     {
-        // 이거 공식 사용해서 할까하는데 밸런스 이상해질까바 안정적으로 이렇게 함 일단은 점프 속도 조절해주는거
-        if (ComboManager.Instance.Combo > 25)
-        {
-            return 0.5f;
-        }
-        else if (ComboManager.Instance.Combo > 20)
-        {
-            return 0.6f;
-        }
-        else if (ComboManager.Instance.Combo > 15)
-        {
-            return 0.7f;
-        }
-        else if (ComboManager.Instance.Combo > 10)
-        {
-            return 0.8f;
-        }
-        else if (ComboManager.Instance.Combo > 5)
-        {
-            return 0.9f;
-        }
-        else
-        {
-            return 1f;
-        }
+        Debug.Log($"{speedCurve.Evaluate(ComboManager.Instance.Combo / 50f)}");
+        return speedCurve.Evaluate(ComboManager.Instance.Combo / 50f);
     }
 
     public float Height
