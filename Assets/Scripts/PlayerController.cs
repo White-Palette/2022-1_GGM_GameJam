@@ -105,6 +105,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     private float JumpDuration()
     {
+        animator.speed = 1 + ComboManager.Instance.Combo / 50f;
         Debug.Log($"{speedCurve.Evaluate(ComboManager.Instance.Combo / 50f)}");
         return speedCurve.Evaluate(ComboManager.Instance.Combo / 50f);
     }
