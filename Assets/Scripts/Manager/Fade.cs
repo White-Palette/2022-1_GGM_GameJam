@@ -11,6 +11,7 @@ public class Fade : MonoSingleton<Fade>
     [SerializeField] Image fadeImg;
 
     int sceneLoad = 0;
+    float fadeTime = 0.75f;
 
     private void Start()
     {
@@ -26,7 +27,7 @@ public class Fade : MonoSingleton<Fade>
     public IEnumerator FadeInCoroutine()
     {
         fadeImg.fillOrigin = 0;
-        fadeImg.DOFillAmount(0f, 1f).SetEase(Ease.InQuad).From(1f);
+        fadeImg.DOFillAmount(0f, fadeTime).SetEase(Ease.InQuad).From(1f);
         yield return new WaitForSeconds(1f);
         fadeImg.raycastTarget = false;
 
@@ -54,7 +55,7 @@ public class Fade : MonoSingleton<Fade>
     {
         fadeImg.raycastTarget = true;
         fadeImg.fillOrigin = 1;
-        fadeImg.DOFillAmount(1f, 1f).SetEase(Ease.InQuad).From(0f);
+        fadeImg.DOFillAmount(1f, fadeTime).SetEase(Ease.InQuad).From(0f);
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(sceneLoad);
         yield break;
