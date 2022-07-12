@@ -44,6 +44,11 @@ public class Pillar : MonoBehaviour, IPoolable
         SpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    public virtual void TowerEvent()
+    {
+        Debug.Log("Default");
+    }
+
     public virtual void Generate()
     {
         if (LeftPillar != null || RightPillar != null)
