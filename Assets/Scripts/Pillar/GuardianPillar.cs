@@ -64,19 +64,16 @@ public class GuardianPillar : Pillar
 
         if (_inputValue == -1f)
         {
-            Debug.Log("Fail2");
             _guardian.Attack2();
             PlayerController.Instance.Dead();
         }
         else if (_inputValue < 35f || _inputValue > 65f)
         {
-            Debug.Log("Fail1");
             _guardian.Attack1();
             PlayerController.Instance.Dead();
         }
         else
         {
-            Debug.Log("Success");
             SoundManager.Instance.PlaySound(Effect.Attack);
             ComboManager.Instance.AddCombo(1);
             _guardian.Hit();
