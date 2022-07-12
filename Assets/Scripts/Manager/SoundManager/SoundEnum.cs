@@ -1,9 +1,3 @@
-public enum Sound
-{
-    None,
-    Test
-}
-
 public enum Music
 {
     None,

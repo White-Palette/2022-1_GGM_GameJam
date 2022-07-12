@@ -11,6 +11,11 @@ public class BpmChecker : MonoSingleton<BpmChecker>
     private bool isPlaying = false;
     private int beat = 0;
 
+    public float GetDelay()
+    {
+        return 60 / bpm;
+    }
+
     private void Update()
     {
         if (isPlaying)
@@ -20,7 +25,7 @@ public class BpmChecker : MonoSingleton<BpmChecker>
             {
                 time = 0;
                 beat++;
-                SoundEffect.Play(Sound.Test);
+                SoundEffect.Play(Effect.trap);
             }
         }
     }

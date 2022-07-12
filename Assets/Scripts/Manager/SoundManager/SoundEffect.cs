@@ -1,8 +1,8 @@
 public class SoundEffect
 {
-    public static void Play(Sound sound)
+    public static void Play(Effect sound)
     {
-        if (sound == Sound.None)
+        if (sound == Effect.None)
             return;
         SoundManager.Instance.PlaySound(sound);
     }
