@@ -13,12 +13,12 @@ public class SoundManager : MonoSingleton<SoundManager>
         soundContainer = Resources.Load<SoundContainer>("SoundContainer");
     }
 
-    public void PlaySound(Sound sound, float volume = 1f)
+    public void PlaySound(Effect sound, float volume = 1f)
     {
-        if (sound == Sound.None)
+        if (sound == Effect.None)
             return;
         
-        SoundSource soundSource = soundContainer.SoundSources.FirstOrDefault(x => x.Sound == sound);
+        EffectSource soundSource = soundContainer.EffectSources.FirstOrDefault(x => x.Effect == sound);
         if (soundSource == null)
             return;
 
