@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GuardianPillar : Pillar
 {
+    float _inputValue = 0f;
+
     public override void TowerEvent()
     {
         Debug.Log("Duel");
@@ -19,10 +21,9 @@ public class GuardianPillar : Pillar
 
         Time.timeScale = 0.1f;
 
-        UIManager.Instance.TimingSlider.gameObject.SetActive(true);
         UIManager.Instance.TimingSlider.StartMove();
 
-        while (true)
+        while (!UIManager.Instance.TimingSlider.IsFail)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -31,8 +32,8 @@ public class GuardianPillar : Pillar
             yield return null;
         }
 
-        UIManager.Instance.TimingSlider.StopMove();
-        UIManager.Instance.TimingSlider.gameObject.SetActive(false);
+        _inputValue = UIManager.Instance.TimingSlider.StopMove();
+        // TODO : 판정 해주는 코드 추가 -1이면 실패
         Time.timeScale = 1f;
     }
 }
