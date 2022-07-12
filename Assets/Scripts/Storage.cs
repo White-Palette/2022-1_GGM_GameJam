@@ -1,6 +1,13 @@
 using UnityEngine;
 
-public static class Storage
+public static class UserData
 {
-    // public UserData UserData { get; private set; }
+    public static class Record
+    {
+        public static float Height { get; set; }
+        public static int MaxCombo { get; set; }
+    }
+    public static string UserId { get; set; }
+    public static string UserName { get; set; }
+    public static string UserToken { get; set; }
 }
