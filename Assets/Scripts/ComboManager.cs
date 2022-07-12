@@ -7,6 +7,7 @@ public class ComboManager : MonoSingleton<ComboManager>
     public void AddCombo()
     {
         Combo++;
+        StartCoroutine(UIManager.Instance.ComboEffect());
     }
 
     public void ResetCombo()
