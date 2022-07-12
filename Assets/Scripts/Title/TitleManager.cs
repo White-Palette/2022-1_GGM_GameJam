@@ -22,6 +22,7 @@ public class TitleManager : MonoBehaviour
         DisableAllPanel();
         settingPanel.transform.localScale = new Vector3(0, 0, 0);
         StartCoroutine(FadeInOut());
+        Fade.Instance.FadeIn();
     }
 
     private void Update()
@@ -34,13 +35,13 @@ public class TitleManager : MonoBehaviour
     {
         while (true)
         {
-            yield return StartCoroutine(Fade(1, 0.3f));
+            yield return StartCoroutine(FadeTMP(1, 0.3f));
 
-            yield return StartCoroutine(Fade(0.3f, 1));
+            yield return StartCoroutine(FadeTMP(0.3f, 1));
         }
     }
 
-    private IEnumerator Fade(float start, float end)
+    private IEnumerator FadeTMP(float start, float end)
     {
         float current = 0;
         float percent = 0;
@@ -76,7 +77,7 @@ public class TitleManager : MonoBehaviour
         }
         else if (Input.anyKeyDown)
         {
-            GameStart();
+            Fade.Instance.FadeOutToGameScene();
         }
     }
 
