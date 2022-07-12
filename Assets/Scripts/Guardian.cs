@@ -6,10 +6,12 @@ using DG.Tweening;
 public class Guardian : MonoBehaviour
 {
     private Animator animator;
+    private ParticleSystem particle;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+        particle = transform.Find("Hit").GetComponent<ParticleSystem>();
     }
 
     public void Attack1()
@@ -23,6 +25,7 @@ public class Guardian : MonoBehaviour
     public void Hit()
     {
         animator.SetTrigger("Hit");
+        particle.Play();    
     }
 
     public void ReMove()
