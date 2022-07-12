@@ -1057,9 +1057,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 408026712}
-        m_TargetAssemblyTypeName: GameOverUIManager, Assembly-CSharp
-        m_MethodName: FadeOutRestart
+      - m_Target: {fileID: 280548565}
+        m_TargetAssemblyTypeName: Fade, Assembly-CSharp
+        m_MethodName: FadeOutToGameScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1732,9 +1732,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 408026712}
-        m_TargetAssemblyTypeName: GameOverUIManager, Assembly-CSharp
-        m_MethodName: FadeOutMainMenu
+      - m_Target: {fileID: 280548565}
+        m_TargetAssemblyTypeName: Fade, Assembly-CSharp
+        m_MethodName: FadeOutToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
