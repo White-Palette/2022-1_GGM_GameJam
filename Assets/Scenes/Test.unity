@@ -792,6 +792,7 @@ GameObject:
   m_Component:
   - component: {fileID: 654386742}
   - component: {fileID: 654386741}
+  - component: {fileID: 654386743}
   m_Layer: 0
   m_Name: Generators
   m_TagString: Untagged
@@ -826,6 +827,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &654386743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654386740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8fd27d2c5529d4686423c656c18ac0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _chaserPrefab: {fileID: 7466908670984521147, guid: c3cb4da83a1e1b54b98c872834363b6c, type: 3}
+  _chaserSpawnPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &659452089
 GameObject:
   m_ObjectHideFlags: 0
