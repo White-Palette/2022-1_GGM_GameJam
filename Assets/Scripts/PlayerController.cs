@@ -79,12 +79,32 @@ public class PlayerController : MonoSingleton<PlayerController>
             ComboManager.Instance.AddCombo();
         }
 
-        transform.DOJump(pillar.transform.position + Vector3.up * 1.7f, 2f, 1, 1f).SetEase(jumpCurve).OnComplete(() =>
+        transform.DOJump(pillar.transform.position + Vector3.up * 1.7f, 2f, 1, JumpDuration()).SetEase(jumpCurve).OnComplete(() =>
         {
             isMoving = false;
             animator.SetBool("IsJump", false);
             waitTime = 0;
         });
+    }
+
+    private float JumpDuration()
+    {
+        if (ComboManager.Instance.Combo > 50)
+        {
+            return 0.5f;
+        }
+        else if (ComboManager.Instance.Combo > 10)
+        {
+            return 0.6f;
+        }
+        else if (ComboManager.Instance.Combo > 5)
+        {
+            return 0.7f;
+        }
+        else
+        {
+            return 1f;
+        }
     }
 
     public float Height
