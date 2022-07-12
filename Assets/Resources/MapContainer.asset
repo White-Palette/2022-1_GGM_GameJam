@@ -43,3 +43,9 @@ MonoBehaviour:
   - Count: 1
     LeftPillarType: 2
     RightPillarType: 3
+  - Count: 2
+    LeftPillarType: 1
+    RightPillarType: 3
+  - Count: 2
+    LeftPillarType: 3
+    RightPillarType: 1
