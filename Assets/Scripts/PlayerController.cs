@@ -82,17 +82,7 @@ public class PlayerController : MonoSingleton<PlayerController>
         transform.DOJump(pillar.transform.position + Vector3.up * 1.7f, 2f, 1, 1f).SetEase(jumpCurve).OnComplete(() =>
         {
             isMoving = false;
-
-            if (currentPillar.LeftPillar != null)
-            {
-                currentPillar.LeftPillar.SpriteRenderer.DOColor(nextPillarColor, 0.2f);
-            }
-            if (currentPillar.RightPillar != null)
-            {
-                currentPillar.RightPillar.SpriteRenderer.DOColor(nextPillarColor, 0.2f);
-            }
             animator.SetBool("IsJump", false);
-            currentPillar.SpriteRenderer.DOColor(currentPillarColor, 0.2f);
             waitTime = 0;
         });
     }
