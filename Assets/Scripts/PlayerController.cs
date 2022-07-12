@@ -32,7 +32,7 @@ public class PlayerController : MonoSingleton<PlayerController>
                 if (currentPillar.LeftPillar != null)
                 {
                     MoveToPillar(currentPillar.LeftPillar);
-                    transform.localScale = new Vector3(-1, 1, 1);
+                    transform.localScale = new Vector3(-0.8f, 0.8f, 1);
                     animator.SetBool("IsJump", true);
                 }
             }
@@ -41,7 +41,7 @@ public class PlayerController : MonoSingleton<PlayerController>
                 if (currentPillar.RightPillar != null)
                 {
                     MoveToPillar(currentPillar.RightPillar);
-                    transform.localScale = new Vector3(1, 1, 1);
+                    transform.localScale = new Vector3(0.8f, 0.8f, 1);
                     animator.SetBool("IsJump", true);
                 }
             }
