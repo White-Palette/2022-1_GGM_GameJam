@@ -12,10 +12,12 @@ public class PlayerController : MonoSingleton<PlayerController>
     [SerializeField] Color previousPillarColor = Color.white;
     [SerializeField] AnimationCurve jumpCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
 
+    private Animator animator;
     private bool isMoving = false;
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
         MoveToPillar(currentPillar);
     }
 
@@ -28,6 +30,8 @@ public class PlayerController : MonoSingleton<PlayerController>
                 if (currentPillar.LeftPillar != null)
                 {
                     MoveToPillar(currentPillar.LeftPillar);
+                    transform.localScale = new Vector3(-1, 1, 1);
+                    animator.SetBool("IsJump", true);
                 }
             }
             else if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -35,6 +39,8 @@ public class PlayerController : MonoSingleton<PlayerController>
                 if (currentPillar.RightPillar != null)
                 {
                     MoveToPillar(currentPillar.RightPillar);
+                    transform.localScale = new Vector3(1, 1, 1);
+                    animator.SetBool("IsJump", true);
                 }
             }
         }
@@ -71,7 +77,7 @@ public class PlayerController : MonoSingleton<PlayerController>
             {
                 currentPillar.RightPillar.SpriteRenderer.DOColor(nextPillarColor, 0.2f);
             }
-
+            animator.SetBool("IsJump", false);
             currentPillar.SpriteRenderer.DOColor(currentPillarColor, 0.2f);
         });
     }
