@@ -238,8 +238,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 1334028231693965868}
   m_Bounds:
-    m_Center: {x: -0.99792147, y: -6.262474, z: 0}
-    m_Extent: {x: 3.1279197, y: 4.083025, z: 0}
+    m_Center: {x: -0.997921, y: -6.262473, z: 0}
+    m_Extent: {x: 3.1279202, y: 4.083024, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -285,6 +285,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8599570759902977496}
   - component: {fileID: 7948848685656965105}
+  - component: {fileID: 2055895882578547620}
   m_Layer: 0
   m_Name: Chaser
   m_TagString: Untagged
@@ -331,6 +332,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2055895882578547620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7466908670984521147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d3fe8608b7cb84b99d35eefeaba3da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8570259630683619560
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,7 +446,7 @@ MonoBehaviour:
   - {fileID: 2960772409558312264}
   - {fileID: 1334028231693965868}
   m_Bounds:
-    m_Center: {x: -1.0023417, y: -6.2584553, z: 0}
+    m_Center: {x: -1.002342, y: -6.2584553, z: 0}
     m_Extent: {x: 2.8576598, y: 2.0779545, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
