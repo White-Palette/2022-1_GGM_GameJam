@@ -372,7 +372,6 @@ GameObject:
   - component: {fileID: 134198532}
   - component: {fileID: 134198533}
   - component: {fileID: 134198534}
-  - component: {fileID: 134198535}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -423,18 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d8da80b94419a54b93cd54db51b8a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &134198535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 134198531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aef06593b2a6747459c67d27efd363fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _generatingChaserHeight: 100
 --- !u!1 &141302387
 GameObject:
   m_ObjectHideFlags: 0
@@ -884,7 +872,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7780321, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
