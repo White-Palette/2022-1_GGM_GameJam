@@ -76,6 +76,7 @@ public class GuardianPillar : Pillar
         {
             Debug.Log("Success");
             _guardian.Hit();
+            PlayerController.Instance.PlayerWin();
         }
 
         Time.timeScale = 1f;
