@@ -16,6 +16,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     private bool isMoving = false;
     private float waitTime = 0;
     private float _height = 0f;
+    private bool isDead = false;
 
     private void Start()
     {
@@ -26,7 +27,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     private void Update()
     {
-        if (!isMoving)
+        if (!isMoving&&!isDead)
         {
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
@@ -125,6 +126,8 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     public void Dead()
     {
+        isDead = true;
+        animator.SetTrigger("Hit");
         particle.Play();
         UserData.Cache.Height = Height;
         UserData.Cache.MaxCombo = ComboManager.Instance.MaxCombo;
