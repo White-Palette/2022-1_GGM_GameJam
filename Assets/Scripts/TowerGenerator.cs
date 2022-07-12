@@ -4,9 +4,27 @@ using UnityEngine;
 
 public class TowerGenerator : MonoSingleton<TowerGenerator>
 {
-    public Pillar GenerateTower(Transform parent, Vector2 position)
+    public Pillar GenerateTower(Transform parent, Vector2 position, PillarType type)
     {
-        var tower = PoolManager<Pillar>.Get(parent, position);
-        return tower;
+        Pillar pillar = null;
+        switch (type)
+        {
+            case PillarType.None:
+                pillar = null;
+                break;
+            case PillarType.Normal:
+                pillar = PoolManager<Pillar>.Get(parent, position);
+                break;
+            case PillarType.Enemy:
+                pillar = PoolManager<GuardianPillar>.Get(parent, position);
+                break;
+            case PillarType.Trap:
+                pillar = PoolManager<TrapPillar>.Get(parent, position);
+                break;
+            default:
+                pillar = null;
+                break;
+        }
+        return pillar;
     }
 }
