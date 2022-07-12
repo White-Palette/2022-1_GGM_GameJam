@@ -17,6 +17,7 @@ public class GuardianPillar : Pillar
     public override void Initialize()
     {
         base.Initialize();
+        _guardian.gameObject.SetActive(true);
         StartCoroutine(Spin());
     }
 
