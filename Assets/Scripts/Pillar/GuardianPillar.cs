@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class GuardianPillar : Pillar
@@ -17,6 +18,7 @@ public class GuardianPillar : Pillar
     public override void Initialize()
     {
         base.Initialize();
+        _guardian.gameObject.SetActive(true);
         StartCoroutine(Spin());
     }
 
@@ -41,7 +43,10 @@ public class GuardianPillar : Pillar
             yield return null;
         }
 
+        var test = FindObjectOfType<Cinemachine.CinemachineVirtualCamera>();
+
         Time.timeScale = 0.1f;
+        DOTween.To(() => test.m_Lens.OrthographicSize, x => test.m_Lens.OrthographicSize = x, 1, 0.5f);
 
         UIManager.Instance.TimingSlider.StartMove();
         UIManager.Instance.TimingSlider.MoveTo(_guardian.transform.position + new Vector3(0, -0.5f, 0));
@@ -62,14 +67,11 @@ public class GuardianPillar : Pillar
             Debug.Log("Fail2");
             _guardian.Attack2();
         }
-        else
-
-        if (_inputValue < 35f || _inputValue > 65f)
+        else if (_inputValue < 35f || _inputValue > 65f)
         {
             Debug.Log("Fail1");
             _guardian.Attack1();
         }
-
         else
         {
             Debug.Log("Success");
@@ -77,5 +79,6 @@ public class GuardianPillar : Pillar
         }
 
         Time.timeScale = 1f;
+        DOTween.To(() => test.m_Lens.OrthographicSize, x => test.m_Lens.OrthographicSize = x, 5, 0.5f);
     }
 }
