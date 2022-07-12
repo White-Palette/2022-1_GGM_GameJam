@@ -41,7 +41,10 @@ public class GuardianPillar : Pillar
             yield return null;
         }
 
+        var test = FindObjectOfType<Cinemachine.CinemachineVirtualCamera>();
+
         Time.timeScale = 0.1f;
+        test.m_Lens.OrthographicSize = 10;
 
         UIManager.Instance.TimingSlider.StartMove();
 
@@ -76,5 +79,6 @@ public class GuardianPillar : Pillar
         }
 
         Time.timeScale = 1f;
+        test.m_Lens.OrthographicSize = 5;
     }
 }
