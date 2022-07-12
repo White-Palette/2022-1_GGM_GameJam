@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
 {
+    [SerializeField]
+    private float _generatingChaserHeight = 100f;
+
     private bool _isGamePaused = false;
     private bool _isGeneratingChaser = false;
 
@@ -21,7 +24,7 @@ public class GameManager : MonoSingleton<GameManager>
             }
         }
 
-        if (PlayerController.Instance.Height >= 50f && !_isGeneratingChaser)
+        if (PlayerController.Instance.Height >= _generatingChaserHeight && !_isGeneratingChaser)
         {
             _isGeneratingChaser = ChaserGenerator.Instance.GenerateChaser();
         }
