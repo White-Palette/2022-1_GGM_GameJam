@@ -52,6 +52,7 @@ public class Fade : MonoSingleton<Fade>
 
     public IEnumerator FadeOutCoroutine(int sceneLoad)
     {
+        fadeImg.raycastTarget = true;
         fadeImg.fillOrigin = 1;
         fadeImg.DOFillAmount(1f, 1f).SetEase(Ease.InQuad).From(0f);
         yield return new WaitForSeconds(1f);
