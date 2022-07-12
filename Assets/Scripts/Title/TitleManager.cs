@@ -17,6 +17,8 @@ public class TitleManager : MonoBehaviour
 
     private bool isEnable = false;
 
+    private bool isLoading = false;
+
     private void Start()
     {
         DisableAllPanel();
@@ -77,7 +79,11 @@ public class TitleManager : MonoBehaviour
         }
         else if (Input.anyKeyDown)
         {
-            Fade.Instance.FadeOutToGameScene();
+            if (!isLoading)
+            {
+                Fade.Instance.FadeOutToGameScene();
+                isLoading = !isLoading;
+            }
         }
     }
 
