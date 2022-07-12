@@ -134,4 +134,9 @@ public class PlayerController : MonoSingleton<PlayerController>
         SoundManager.Instance.PlaySound(Effect.Die);
         Fade.Instance.FadeOutToGameOverScene();
     }
+
+    private void ReMove()
+    {
+        //애니메이션 공유로 생긴 오류 해결용, 아무일도 안하는 놈임
+    }
 }
