@@ -435,6 +435,30 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  speedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.078180976
+      outSlope: -0.078180976
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.1044776
+    - serializedVersion: 3
+      time: 1
+      value: 0.5009152
+      inSlope: -0.49908477
+      outSlope: -0.49908477
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!96 &8269139850049270654
 TrailRenderer:
   serializedVersion: 2
@@ -658,7 +682,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 9
   m_Sprite: {fileID: -8191153474467933805, guid: 9fe3b73e814fbeb449592e38906a33e2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
