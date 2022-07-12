@@ -17,7 +17,7 @@ public class SoundManager : MonoSingleton<SoundManager>
     {
         if (sound == Effect.None)
             return;
-        
+
         EffectSource soundSource = soundContainer.EffectSources.FirstOrDefault(x => x.Effect == sound);
         if (soundSource == null)
             return;
@@ -29,7 +29,7 @@ public class SoundManager : MonoSingleton<SoundManager>
     {
         if (music == Music.None)
             return;
-        
+
         if (currentMusic == music)
             return;
 

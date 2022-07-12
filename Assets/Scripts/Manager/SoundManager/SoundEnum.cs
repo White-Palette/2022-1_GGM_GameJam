@@ -1,8 +1,8 @@
 public enum Music
 {
     None,
-    Test1,
-    Test2
+    Part1,
+
 }
 
 public enum Effect
