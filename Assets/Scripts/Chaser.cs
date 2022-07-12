@@ -10,6 +10,8 @@ public class Chaser : MonoBehaviour
 
     private bool _isAddingSpeed = false;
 
+    private float _distance = 0f;
+
     private void Start()
     {
         _animator = GetComponent<Animator>();
@@ -23,9 +25,10 @@ public class Chaser : MonoBehaviour
     void Update()
     {
         // 여기서 속도 빨라지게 해줌
-        if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) > 100f)
+        _distance = Vector2.Distance(transform.position, PlayerController.Instance.transform.position);
+        if (_distance > 100f)
         {
-            AddSpeed(0.1f);
+            AddSpeed(5f);
         }
         Move();
     }

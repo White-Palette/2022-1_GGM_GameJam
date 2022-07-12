@@ -48,7 +48,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 
             waitTime += Time.deltaTime;
 
-            if (waitTime > 0.1f)
+            if (waitTime > 0.2f)
             {
                 ComboManager.Instance.ResetCombo();
             }
