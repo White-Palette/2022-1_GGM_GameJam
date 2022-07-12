@@ -24,13 +24,22 @@ MonoBehaviour:
     RightPillarType: 1
   - Count: 1
     LeftPillarType: 2
-    RightPillarType: 1
+    RightPillarType: 0
+  - Count: 1
+    LeftPillarType: 0
+    RightPillarType: 2
   - Count: 1
     LeftPillarType: 1
     RightPillarType: 2
   - Count: 1
-    LeftPillarType: 3
+    LeftPillarType: 2
     RightPillarType: 1
   - Count: 1
-    LeftPillarType: 1
+    LeftPillarType: 2
+    RightPillarType: 2
+  - Count: 1
+    LeftPillarType: 3
+    RightPillarType: 2
+  - Count: 1
+    LeftPillarType: 2
     RightPillarType: 3

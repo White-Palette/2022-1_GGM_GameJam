@@ -8,7 +8,7 @@ public enum PillarType
     None,
     Normal,
     Enemy,
-    Spring,
+    //Spring,
     Trap
 }
 

@@ -39,9 +39,12 @@ public class Pillar : MonoBehaviour, IPoolable
     [HideInInspector]
     public SpriteRenderer SpriteRenderer;
 
+    private MapContainer _mapContainer = null;
+
     protected virtual void Awake()
     {
         SpriteRenderer = GetComponent<SpriteRenderer>();
+        _mapContainer = Resources.Load<MapContainer>("MapContainer");
     }
 
     public virtual void TowerEvent()
@@ -54,31 +57,15 @@ public class Pillar : MonoBehaviour, IPoolable
         if (LeftPillar != null || RightPillar != null)
             return;
 
-        if (Random.Range(0, 2) == 0)
-        {
-            if (Random.Range(0, 2) == 0)
-            {
-                Vector2 rightPillarPosition = transform.position + Vector3.right * Random.Range(HorizontalRange.min, HorizontalRange.max);
-                rightPillarPosition = rightPillarPosition + Vector2.up * Random.Range(VerticalRange.min, VerticalRange.max);
-                RightPillar = TowerGenerator.Instance.GenerateTower(transform.parent, rightPillarPosition);
-            }
-            else
-            {
-                Vector2 leftPillarPosition = transform.position + Vector3.left * Random.Range(HorizontalRange.min, HorizontalRange.max);
-                leftPillarPosition = leftPillarPosition + Vector2.up * Random.Range(VerticalRange.min, VerticalRange.max);
-                LeftPillar = TowerGenerator.Instance.GenerateTower(transform.parent, leftPillarPosition);
-            }
-        }
-        else
-        {
-            Vector2 rightPillarPosition = transform.position + Vector3.right * Random.Range(HorizontalRange.min, HorizontalRange.max);
-            rightPillarPosition = rightPillarPosition + Vector2.up * Random.Range(VerticalRange.min, VerticalRange.max);
-            RightPillar = TowerGenerator.Instance.GenerateTower(transform.parent, rightPillarPosition);
+        var map = _mapContainer.GetPillarMap();
 
-            Vector2 leftPillarPosition = transform.position + Vector3.left * Random.Range(HorizontalRange.min, HorizontalRange.max);
-            leftPillarPosition = leftPillarPosition + Vector2.up * Random.Range(VerticalRange.min, VerticalRange.max);
-            LeftPillar = TowerGenerator.Instance.GenerateTower(transform.parent, leftPillarPosition);
-        }
+        Vector2 rightPillarPosition = transform.position + Vector3.right * Random.Range(HorizontalRange.min, HorizontalRange.max);
+        rightPillarPosition = rightPillarPosition + Vector2.up * Random.Range(VerticalRange.min, VerticalRange.max);
+        RightPillar = TowerGenerator.Instance.GenerateTower(transform.parent, rightPillarPosition, map.RightPillarType);
+
+        Vector2 leftPillarPosition = transform.position + Vector3.left * Random.Range(HorizontalRange.min, HorizontalRange.max);
+        leftPillarPosition = leftPillarPosition + Vector2.up * Random.Range(VerticalRange.min, VerticalRange.max);
+        LeftPillar = TowerGenerator.Instance.GenerateTower(transform.parent, leftPillarPosition, map.LeftPillarType);
     }
 
     protected virtual void Update()
