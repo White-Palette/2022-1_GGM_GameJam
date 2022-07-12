@@ -19,5 +19,4 @@ public class CameraManager : MonoSingleton<CameraManager>
         noise.m_AmplitudeGain = amplitudeGain;
         noise.m_FrequencyGain = frequencyGain;
     }
-
 }

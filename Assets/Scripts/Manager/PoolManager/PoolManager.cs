@@ -15,11 +15,11 @@ public static class PoolManager<T> where T : MonoBehaviour, IPoolable
 
     static PoolManager()
     {
-        SceneManager.sceneUnloaded += SceneUnloaded;
+        SceneManager.sceneLoaded += SceneLoaded;
         _prefab = Resources.Load<GameObject>("Prefabs/" + typeof(T).Name);
     }
 
-    private static void SceneUnloaded(Scene scene)
+    private static void SceneLoaded(Scene scene, LoadSceneMode mode)
     {
         var poolStore = GameObject.Find("PoolStore");
         if (poolStore != null)
