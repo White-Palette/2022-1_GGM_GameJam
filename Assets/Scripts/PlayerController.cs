@@ -77,6 +77,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 
         currentPillar.SpriteRenderer.DOColor(previousPillarColor, 0.2f);
         currentPillar = pillar;
+        SoundManager.Instance.PlaySound(Effect.Jump);
 
         currentPillar.TowerEvent();
         currentPillar.Generate();
@@ -118,6 +119,7 @@ public class PlayerController : MonoSingleton<PlayerController>
         UserData.Cache.Height = Height;
         UserData.Cache.MaxCombo = ComboManager.Instance.MaxCombo;
         // TODO: Goto GameOver Scene
+        SoundManager.Instance.PlaySound(Effect.Die);
         Fade.Instance.FadeOutToGameOverScene();
     }
 }

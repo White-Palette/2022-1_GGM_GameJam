@@ -75,6 +75,7 @@ public class GuardianPillar : Pillar
         else
         {
             Debug.Log("Success");
+            SoundManager.Instance.PlaySound(Effect.Attack);
             _guardian.Hit();
             PlayerController.Instance.PlayerWin();
         }
