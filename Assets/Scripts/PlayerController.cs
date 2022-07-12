@@ -73,6 +73,10 @@ public class PlayerController : MonoSingleton<PlayerController>
         {
             ComboManager.Instance.AddCombo();
         }
+        else
+        {
+            ComboManager.Instance.ResetCombo();
+        }
 
         transform.DOJump(pillar.transform.position + Vector3.up * 1.7f, 2f, 1, 1f).SetEase(jumpCurve).OnComplete(() =>
         {
