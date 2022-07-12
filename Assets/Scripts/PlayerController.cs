@@ -16,6 +16,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     private bool isMoving = false;
     private float waitTime = 0;
     private float _height = 0f;
+    private bool isDead = false;
 
     private void Awake()
     {
@@ -42,7 +43,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     private void Update()
     {
-        if (!isMoving)
+        if (!isMoving&&!isDead)
         {
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
@@ -121,6 +122,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     private float JumpDuration()
     {
+        animator.speed = 1 + ComboManager.Instance.Combo / 50f;
         Debug.Log($"{speedCurve.Evaluate(ComboManager.Instance.Combo / 50f)}");
         return speedCurve.Evaluate(ComboManager.Instance.Combo / 50f);
     }
@@ -140,10 +142,18 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     public void Dead()
     {
+        isDead = true;
+        animator.SetTrigger("Hit");
         particle.Play();
+        ComboManager.Instance.UpdateMaxCombo();
         UserData.Cache.Height = Height;
         UserData.Cache.MaxCombo = ComboManager.Instance.MaxCombo;
         SoundManager.Instance.PlaySound(Effect.Die);
         Fade.Instance.FadeOutToGameOverScene();
+    }
+
+    private void ReMove()
+    {
+        //애니메이션 공유로 생긴 오류 해결용, 아무일도 안하는 놈임
     }
 }

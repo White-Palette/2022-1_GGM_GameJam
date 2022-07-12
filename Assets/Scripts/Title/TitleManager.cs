@@ -24,9 +24,9 @@ public class TitleManager : MonoBehaviour
 
     private void Start()
     {
-        settingPanel.transform.localScale = new Vector3(0, 0, 0);
         StartCoroutine(FadeInOut());
         Fade.Instance.FadeIn();
+        isLoading = false;
     }
 
     private void Update()
@@ -88,7 +88,7 @@ public class TitleManager : MonoBehaviour
             if (!isLoading)
             {
                 Fade.Instance.FadeOutToGameScene();
-                isLoading = !isLoading;
+                isLoading = true;
             }
         }
     }
@@ -114,7 +114,7 @@ public class TitleManager : MonoBehaviour
     {
         if (!isEnable)
         {
-            Panel.transform.DOScale(new Vector3(0f, 0f, 0f), 0.2f);
+            Panel.transform.DOScale(new Vector3(0f, 0f, 0f), 0.2f).From(1f);
             yield return new WaitForSeconds(0.2f);
         }
 
@@ -122,7 +122,7 @@ public class TitleManager : MonoBehaviour
 
         if (isEnable)
         {
-            Panel.transform.DOScale(new Vector3(1f, 1f, 0f), 0.6f).SetEase(Ease.OutBounce);
+            Panel.transform.DOScale(new Vector3(1f, 1f, 0f), 0.6f).SetEase(Ease.OutBounce).From(0f);
         }
 
         yield break;
