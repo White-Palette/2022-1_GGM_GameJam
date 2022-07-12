@@ -13,11 +13,16 @@ public class ComboManager : MonoSingleton<ComboManager>
 
     public void ResetCombo()
     {
+        UpdateMaxCombo();
+        Combo = 0;
+    }
+
+    public void UpdateMaxCombo()
+    {
         if (Combo > MaxCombo)
         {
             MaxCombo = Combo;
         }
-        Combo = 0;
     }
 
     public void AddCombo(int combo)

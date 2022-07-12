@@ -33,7 +33,7 @@ public class GameOverUIManager : MonoBehaviour
             randomHeight = Random.Range(0f, 999f);
             _heightTMP.text = $"{randomHeight:0.0}m";
 
-            randomCombo = Random.Range(0, 99);
+            randomCombo = Random.Range(0, 200);
             _maxCombo.text = $"{randomCombo}";
 
             yield return new WaitForSeconds(0.05f);

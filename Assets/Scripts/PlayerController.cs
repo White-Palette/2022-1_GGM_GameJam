@@ -129,6 +129,7 @@ public class PlayerController : MonoSingleton<PlayerController>
         isDead = true;
         animator.SetTrigger("Hit");
         particle.Play();
+        ComboManager.Instance.UpdateMaxCombo();
         UserData.Cache.Height = Height;
         UserData.Cache.MaxCombo = ComboManager.Instance.MaxCombo;
         SoundManager.Instance.PlaySound(Effect.Die);
