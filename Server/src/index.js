@@ -4,6 +4,7 @@ import { v4 } from 'uuid';
 const server = new ws.WebSocketServer({ port: 3002 });
 
 const clients = [];
+let count = 0;
 
 function broadcast(data) {
     server.clients.forEach(client => {
@@ -11,11 +12,10 @@ function broadcast(data) {
     });
 }
 
-function getRealtimeLeaderboardPacket() {
+function buildRealtimeLeaderboardPacket() {
     const leaderboard = clients.map(client => {
         return {
             i: client.id,
-            n: client.name,
             h: client.height
         };
     });
@@ -25,8 +25,30 @@ function getRealtimeLeaderboardPacket() {
     });
 
     return JSON.stringify({
+        t: 'li',
+        p: JSON.stringify({
+            l: leaderboard
+        })
+    });
+}
+
+function buildJoinPacket(client) {
+    return JSON.stringify({
+        t: 'j',
+        p: JSON.stringify({
+            i: client.id,
+            n: client.name,
+            c: client.color
+        })
+    });
+}
+
+function buildLeavePacket(client) {
+    return JSON.stringify({
         t: 'l',
-        p: leaderboard
+        p: JSON.stringify({
+            i: client.id
+        })
     });
 }
 
@@ -35,7 +57,11 @@ server.on('listening', () => {
 });
 
 server.on('connection', socket => {
-    socket.id = v4();
+    socket.id = count++;
+
+    setInterval(() => {
+        socket.ping();
+    }, 5000);
 
     socket.send(JSON.stringify({
         t: 'i',
@@ -45,19 +71,28 @@ server.on('connection', socket => {
     socket.on('message', message => {
         const data = JSON.parse(message);
 
-        switch (data.type) {
-            case 'name': {
-                if (clients.find(client => client.name === data.name)) {
+        switch (data.t) {
+            case 'n': {
+                if (clients.find(client => client.id === socket.id)) {
                     return;
                 }
 
-                socket.name = data.payload;
+                socket.name = data.p;
+                socket.height = 0;
+                socket.color = '#' + Math.floor(Math.random() * 16777215).toString(16);
+
+                clients.forEach(client => {
+                    socket.send(buildJoinPacket(client));
+                });
+
                 clients.push(socket);
+                broadcast(buildJoinPacket(socket));
+
                 break;
             }
-            case 'height': {
-                socket.height = data.payload;
-                broadcast(getRealtimeLeaderboardPacket());
+            case 'h': {
+                socket.height = data.p;
+                broadcast(buildRealtimeLeaderboardPacket());
                 break;
             }
         }
@@ -65,6 +100,6 @@ server.on('connection', socket => {
 
     socket.on('close', () => {
         clients.splice(clients.indexOf(socket), 1);
-        broadcast(getRealtimeLeaderboardPacket());
+        broadcast(buildLeavePacket(socket));
     });
 });

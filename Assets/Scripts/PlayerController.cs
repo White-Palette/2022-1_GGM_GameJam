@@ -17,6 +17,22 @@ public class PlayerController : MonoSingleton<PlayerController>
     private float waitTime = 0;
     private float _height = 0f;
 
+    private void Awake()
+    {
+        ServerManager.Instance.OnConnected += () => {
+            StartCoroutine(Connected());
+        };
+    }
+
+    private IEnumerator Connected()
+    {
+        while (true)
+        {
+            ServerManager.Instance.SendHeight(_height);
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
     private void Start()
     {
         animator = GetComponent<Animator>();

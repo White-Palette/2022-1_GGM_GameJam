@@ -52,7 +52,10 @@ public static class PoolManager<T> where T : MonoBehaviour, IPoolable
         }
         _pooledDict[pool.gameObject] = false;
         pool.gameObject.SetActive(true);
-        pool.transform.position = position;
+        if (position != Vector3.zero)
+        {
+            pool.transform.position = position;
+        }
         pool.Initialize();
         return pool;
     }
