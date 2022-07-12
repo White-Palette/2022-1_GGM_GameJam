@@ -7,9 +7,6 @@ using UnityEngine;
 public class PlayerController : MonoSingleton<PlayerController>
 {
     [SerializeField] Pillar currentPillar = null;
-    [SerializeField] Color nextPillarColor = Color.white;
-    [SerializeField] Color currentPillarColor = Color.white;
-    [SerializeField] Color previousPillarColor = Color.white;
     [SerializeField] AnimationCurve jumpCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
     [SerializeField] AnimationCurve speedCurve = AnimationCurve.EaseInOut(1, 1, 0, 0);
 
@@ -68,14 +65,20 @@ public class PlayerController : MonoSingleton<PlayerController>
 
         if (currentPillar.LeftPillar != null)
         {
-            currentPillar.LeftPillar.SpriteRenderer.DOColor(pillar == currentPillar.LeftPillar ? Color.white : previousPillarColor, 0.2f);
+            if (currentPillar.LeftPillar != pillar)
+            {
+                currentPillar.LeftPillar.Disable();
+            }
         }
         if (currentPillar.RightPillar != null)
         {
-            currentPillar.RightPillar.SpriteRenderer.DOColor(pillar == currentPillar.RightPillar ? Color.white : previousPillarColor, 0.2f);
+            if (currentPillar.RightPillar != pillar)
+            {
+                currentPillar.RightPillar.Disable();
+            }
         }
 
-        currentPillar.SpriteRenderer.DOColor(previousPillarColor, 0.2f);
+        currentPillar.Disable();
         currentPillar = pillar;
 
         currentPillar.TowerEvent();
@@ -117,7 +120,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     {
         UserData.Cache.Height = Height;
         UserData.Cache.MaxCombo = ComboManager.Instance.MaxCombo;
-        // TODO: Goto GameOver Scene
+        
         Fade.Instance.FadeOutToGameOverScene();
     }
 }

@@ -24,27 +24,17 @@ public abstract class Pillar : MonoBehaviour, IPoolable
     public Pillar RightPillar;
     public Range HorizontalRange = new Range(3, 5);
     public Range VerticalRange = new Range(3, 5);
-    public Color Color
-    {
-        get
-        {
-            return SpriteRenderer.color;
-        }
-        set
-        {
-            SpriteRenderer.color = value;
-        }
-    }
 
-    [HideInInspector]
-    public SpriteRenderer SpriteRenderer;
+    [SerializeField] SpriteRenderer topSprite = null;
+    [SerializeField] SpriteRenderer bodySprite = null;
 
-    private MapContainer _mapContainer = null;
+    private SpriteRenderer overlaySprite = null;
+    private MapContainer mapContainer = null;
 
     protected virtual void Awake()
     {
-        SpriteRenderer = GetComponent<SpriteRenderer>();
-        _mapContainer = Resources.Load<MapContainer>("MapContainer");
+        overlaySprite = GetComponent<SpriteRenderer>();
+        mapContainer = Resources.Load<MapContainer>("MapContainer");
     }
 
     public virtual void TowerEvent()
@@ -57,7 +47,7 @@ public abstract class Pillar : MonoBehaviour, IPoolable
         if (LeftPillar != null || RightPillar != null)
             return;
 
-        var map = _mapContainer.GetPillarMap();
+        var map = mapContainer.GetPillarMap();
 
         Vector2 rightPillarPosition = transform.position + Vector3.right * Random.Range(HorizontalRange.min, HorizontalRange.max);
         rightPillarPosition = rightPillarPosition + Vector2.up * Random.Range(VerticalRange.min, VerticalRange.max);
@@ -80,8 +70,29 @@ public abstract class Pillar : MonoBehaviour, IPoolable
     {
         LeftPillar = null;
         RightPillar = null;
-        Color = Color.white;
+        overlaySprite.color = new Color(0, 0, 0, 0);
         transform.DOMoveY(transform.position.y, 0.2f).From(transform.position.y - 1f);
-        SpriteRenderer.DOFade(1f, 0.2f).From(0f);
+        topSprite.DOFade(1f, 0.2f).From(0f);
+        bodySprite.DOFade(1f, 0.2f).From(0f);
+    }
+
+    public void SetTopColor(Color color)
+    {
+        topSprite.DOColor(color, 0.3f);
+    }
+
+    public void SetBodyColor(Color color)
+    {
+        bodySprite.DOColor(color, 0.3f);
+    }
+
+    public void Disable()
+    {
+        overlaySprite.DOColor(new Color(0f, 0f, 0f, 0.5f), 0.2f);
+    }
+
+    public void Enable()
+    {
+        overlaySprite.DOColor(new Color(0f, 0f, 0f, 0f), 0.2f);
     }
 }
