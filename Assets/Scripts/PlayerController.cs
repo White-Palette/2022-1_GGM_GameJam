@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerController : MonoSingleton<PlayerController>
 {
-    [SerializeField] Pillar currentPillar;
+    [SerializeField] Pillar currentPillar = null;
     [SerializeField] Color nextPillarColor = Color.white;
     [SerializeField] Color currentPillarColor = Color.white;
     [SerializeField] Color previousPillarColor = Color.white;
@@ -47,6 +47,11 @@ public class PlayerController : MonoSingleton<PlayerController>
             }
 
             waitTime += Time.deltaTime;
+
+            if (waitTime > 0.1f)
+            {
+                ComboManager.Instance.ResetCombo();
+            }
         }
     }
 
@@ -72,10 +77,6 @@ public class PlayerController : MonoSingleton<PlayerController>
         if (waitTime < 0.1f)
         {
             ComboManager.Instance.AddCombo();
-        }
-        else
-        {
-            ComboManager.Instance.ResetCombo();
         }
 
         transform.DOJump(pillar.transform.position + Vector3.up * 1.7f, 2f, 1, 1f).SetEase(jumpCurve).OnComplete(() =>

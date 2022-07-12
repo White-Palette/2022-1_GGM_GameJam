@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: currentPillar
       value: 
       objectReference: {fileID: 1865776544}
+    - target: {fileID: 989609237, guid: b5c4a7f8089af1c41a9684d08c9354ce, type: 3}
+      propertyPath: cameraTransform
+      value: 
+      objectReference: {fileID: 1558119766}
     - target: {fileID: 6999066906043366513, guid: b5c4a7f8089af1c41a9684d08c9354ce, type: 3}
       propertyPath: m_Name
       value: Player
@@ -263,7 +267,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 92054708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 1.6, y: 2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1190,7 +1194,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 989609239}
+  m_Follow: {fileID: 1558119766}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 5
@@ -1200,7 +1204,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7780321, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1217,7 +1221,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 659452089}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 1.6, y: 2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1643,34 +1647,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 659452091}
     m_Modifications:
-    - target: {fileID: 5732357980253701012, guid: 6cf9f669f9862924f893dcb4981974e6, type: 3}
-      propertyPath: NoiseModule.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5732357980253701012, guid: 6cf9f669f9862924f893dcb4981974e6, type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5732357980253701012, guid: 6cf9f669f9862924f893dcb4981974e6, type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5732357980253701012, guid: 6cf9f669f9862924f893dcb4981974e6, type: 3}
-      propertyPath: InitialModule.startSize.minScalar
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5732357980253701012, guid: 6cf9f669f9862924f893dcb4981974e6, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.24056602
-      objectReference: {fileID: 0}
-    - target: {fileID: 5732357980253701012, guid: 6cf9f669f9862924f893dcb4981974e6, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.74155384
-      objectReference: {fileID: 0}
-    - target: {fileID: 5732357980253701012, guid: 6cf9f669f9862924f893dcb4981974e6, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5732357980253701013, guid: 6cf9f669f9862924f893dcb4981974e6, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1719,14 +1695,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SnowParticle
       objectReference: {fileID: 0}
-    - target: {fileID: 5732357980253701015, guid: 6cf9f669f9862924f893dcb4981974e6, type: 3}
-      propertyPath: m_RenderMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5732357980253701015, guid: 6cf9f669f9862924f893dcb4981974e6, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5b8ea20f47846c24392207e33a98815b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cf9f669f9862924f893dcb4981974e6, type: 3}
 --- !u!4 &965679034 stripped
@@ -2692,6 +2660,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1334024261}
   m_CullTransparentMesh: 1
+--- !u!1 &1558119765
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1558119766}
+  m_Layer: 0
+  m_Name: CameraPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1558119766
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558119765}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2, y: 2.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 989609239}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1626052571
 GameObject:
   m_ObjectHideFlags: 0
