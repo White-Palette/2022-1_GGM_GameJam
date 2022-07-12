@@ -23,4 +23,10 @@ public class UIManager : MonoSingleton<UIManager>
             return _timingSlider;
         }
     }
+
+    private IEnumerator Start()
+    {
+        yield return null;
+        _timingSlider.gameObject.SetActive(false);
+    }
 }
