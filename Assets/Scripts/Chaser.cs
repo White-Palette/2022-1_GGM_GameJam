@@ -32,6 +32,11 @@ public class Chaser : MonoBehaviour
             AddSpeed(5f);
         }
 
+        if (_distance < 30f)
+        {
+            CameraManager.Instance.Noise(0.5f, 15);
+        }
+
         if (_distance < 5f)
         {
             Eat();

@@ -12,16 +12,18 @@ public class TitleManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI startTMP;
     [SerializeField] GameObject settingPanel;
     [SerializeField] GameObject helpPanel;
+    [SerializeField] GameObject gameQuitPanel;
 
     private float fadeTime = 2f;
 
-    private bool isEnable = false;
+    private bool isSettingEnable = false;
+    private bool isHelpEnable = false;
+    private bool isGameQuitEnable = false;
 
     private bool isLoading = false;
 
     private void Start()
     {
-        DisableAllPanel();
         settingPanel.transform.localScale = new Vector3(0, 0, 0);
         StartCoroutine(FadeInOut());
         Fade.Instance.FadeIn();
@@ -66,12 +68,16 @@ public class TitleManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            StartCoroutine(TogglePanel(settingPanel));
+            SettingPanel();
             //ToggleSettingPanel();
         }
         else if (Input.GetKeyDown(KeyCode.Q))
         {
-            Quit();
+            GameQuitPanel();
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            DisableAllPanel();
         }
         else if (Input.GetMouseButtonDown(0))
         {
@@ -89,32 +95,23 @@ public class TitleManager : MonoBehaviour
 
     public void DisableAllPanel()
     {
-        //ToggleSettingPanel();
         SoundManager.Instance.PlaySound(Effect.Click);
-        settingPanel.SetActive(false);
-        helpPanel.SetActive(false);
+        if (isSettingEnable)
+        {
+            SettingPanel();
+        }
+        if (isHelpEnable)
+        {
+            HelpPanel();
+        }
+        if (isGameQuitEnable)
+        {
+            GameQuitPanel();
+        }
     }
 
-    //public void ToggleSettingPanel()
-    //{
-    //    settingPanel.SetActive(!settingPanel.activeSelf);
-
-    //    if (settingPanel.activeSelf)
-    //    {
-    //        isEnable = true;
-    //    }
-    //    if (!settingPanel.activeSelf)
-    //    {
-    //        isEnable = false;
-    //    }
-
-    //    Debug.Log("isEnable : " + isEnable);
-    //}
-
-    IEnumerator TogglePanel(GameObject Panel)
+    IEnumerator TogglePanel(GameObject Panel, bool isEnable)
     {
-        isEnable = !isEnable;
-
         if (!isEnable)
         {
             Panel.transform.DOScale(new Vector3(0f, 0f, 0f), 0.2f);
@@ -133,14 +130,23 @@ public class TitleManager : MonoBehaviour
 
     public void HelpPanel()
     {
+        isHelpEnable = !isHelpEnable;
         SoundManager.Instance.PlaySound(Effect.Click);
-        StartCoroutine(TogglePanel(helpPanel));
+        StartCoroutine(TogglePanel(helpPanel, isHelpEnable));
     }
 
     public void SettingPanel()
     {
+        isSettingEnable = !isSettingEnable;
         SoundManager.Instance.PlaySound(Effect.Click);
-        StartCoroutine(TogglePanel(settingPanel));
+        StartCoroutine(TogglePanel(settingPanel, isSettingEnable));
+    }
+
+    public void GameQuitPanel()
+    {
+        isGameQuitEnable = !isGameQuitEnable;
+        SoundManager.Instance.PlaySound(Effect.Click);
+        StartCoroutine(TogglePanel(gameQuitPanel, isGameQuitEnable));
     }
 
     public void GameStart()

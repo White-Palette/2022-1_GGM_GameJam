@@ -9,6 +9,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     [SerializeField] Pillar currentPillar = null;
     [SerializeField] AnimationCurve jumpCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
     [SerializeField] AnimationCurve speedCurve = AnimationCurve.EaseInOut(1, 1, 0, 0);
+    [SerializeField] ParticleSystem landing;
 
     private Animator animator;
     private bool isMoving = false;
@@ -94,6 +95,8 @@ public class PlayerController : MonoSingleton<PlayerController>
         {
             isMoving = false;
             animator.SetBool("IsJump", false);
+            landing.transform.position = gameObject.transform.position;
+            landing.Play();
             waitTime = 0;
         });
     }
