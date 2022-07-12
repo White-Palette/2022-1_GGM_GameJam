@@ -19,6 +19,7 @@ public class Chaser : MonoBehaviour
 
     public void Eat()
     {
+        // 플레이어 사망처리
         _animator.SetTrigger("Bite");
     }
 
@@ -29,6 +30,11 @@ public class Chaser : MonoBehaviour
         if (_distance > 100f)
         {
             AddSpeed(5f);
+        }
+
+        if (_distance < 5f)
+        {
+            Eat();
         }
         Move();
     }

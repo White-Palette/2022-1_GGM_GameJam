@@ -14,6 +14,7 @@ public class Fade : MonoSingleton<Fade>
 
     private void Start()
     {
+        fadeImg.gameObject.SetActive(true);
         FadeIn();
     }
 
@@ -31,15 +32,21 @@ public class Fade : MonoSingleton<Fade>
 
     }
 
+    public void FadeOutToMainMenu()
+    {
+        sceneLoad = 0;
+        StartCoroutine(FadeOutCoroutine(sceneLoad));
+    }
+
     public void FadeOutToGameScene()
     {
         sceneLoad = 1;
         StartCoroutine(FadeOutCoroutine(sceneLoad));
     }
 
-    public void FadeOutToMainMenu()
+    public void FadeOutToGameOverScene()
     {
-        sceneLoad = 0;
+        sceneLoad = 2;
         StartCoroutine(FadeOutCoroutine(sceneLoad));
     }
 

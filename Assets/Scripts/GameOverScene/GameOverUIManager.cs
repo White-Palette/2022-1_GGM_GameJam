@@ -13,9 +13,8 @@ public class GameOverUIManager : MonoBehaviour
 
     private void Start()
     {
-        //_heightTMP.text = $"{PlayerController.Instance.Height:0.0}m";
-
+        _heightTMP.text = $"{UserData.Cache.Height:0.0}m";
+        _maxCombo.text = $"{UserData.Cache.MaxCombo}";
         Fade.Instance.FadeIn();
-        //_maxCombo.text = 
     }
 }
