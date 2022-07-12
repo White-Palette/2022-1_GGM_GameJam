@@ -55,6 +55,12 @@ public class PlayerController : MonoSingleton<PlayerController>
         }
     }
 
+    public void PlayerWin()
+    {
+        animator.SetTrigger("Attack");
+    }
+
+
     public void MoveToPillar(Pillar pillar)
     {
         isMoving = true;
