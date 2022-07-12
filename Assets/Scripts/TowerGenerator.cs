@@ -7,13 +7,14 @@ public class TowerGenerator : MonoSingleton<TowerGenerator>
     public Pillar GenerateTower(Transform parent, Vector2 position, PillarType type)
     {
         Pillar pillar = null;
+
         switch (type)
         {
             case PillarType.None:
                 pillar = null;
                 break;
             case PillarType.Normal:
-                pillar = PoolManager<Pillar>.Get(parent, position);
+                pillar = PoolManager<NormalPillar>.Get(parent, position);
                 break;
             case PillarType.Enemy:
                 pillar = PoolManager<GuardianPillar>.Get(parent, position);
@@ -25,6 +26,7 @@ public class TowerGenerator : MonoSingleton<TowerGenerator>
                 pillar = null;
                 break;
         }
+
         return pillar;
     }
 }
