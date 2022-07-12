@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class Chaser : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Animator _animator = null;
+
+    private void Start()
     {
-        
+        _animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
+    public void Eat()
+    {
+        _animator.SetTrigger("Bite");
+    }
+
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Eat();
+        }
     }
 }
