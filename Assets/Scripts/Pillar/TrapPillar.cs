@@ -8,4 +8,9 @@ public class TrapPillar : Pillar
     {
         Debug.Log("You Die");
     }
+
+    public override void Generate()
+    {
+        
+    }
 }

@@ -14,6 +14,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     private Animator animator;
     private bool isMoving = false;
+    private float waitTime = 0;
 
     private void Start()
     {
@@ -43,6 +44,8 @@ public class PlayerController : MonoSingleton<PlayerController>
                     animator.SetBool("IsJump", true);
                 }
             }
+
+            waitTime += Time.deltaTime;
         }
     }
 
@@ -52,11 +55,11 @@ public class PlayerController : MonoSingleton<PlayerController>
 
         if (currentPillar.LeftPillar != null)
         {
-            currentPillar.LeftPillar.SpriteRenderer.DOColor(Color.white, 0.2f);
+            currentPillar.LeftPillar.SpriteRenderer.DOColor(pillar == currentPillar.LeftPillar ? Color.white : previousPillarColor, 0.2f);
         }
         if (currentPillar.RightPillar != null)
         {
-            currentPillar.RightPillar.SpriteRenderer.DOColor(Color.white, 0.2f);
+            currentPillar.RightPillar.SpriteRenderer.DOColor(pillar == currentPillar.RightPillar ? Color.white : previousPillarColor, 0.2f);
         }
 
         currentPillar.SpriteRenderer.DOColor(previousPillarColor, 0.2f);
@@ -64,6 +67,11 @@ public class PlayerController : MonoSingleton<PlayerController>
 
         currentPillar.TowerEvent();
         currentPillar.Generate();
+
+        if (waitTime < 0.1f)
+        {
+            ComboManager.Instance.AddCombo();
+        }
 
         transform.DOJump(pillar.transform.position + Vector3.up * 1.7f, 2f, 1, 1f).SetEase(jumpCurve).OnComplete(() =>
         {
@@ -79,6 +87,7 @@ public class PlayerController : MonoSingleton<PlayerController>
             }
             animator.SetBool("IsJump", false);
             currentPillar.SpriteRenderer.DOColor(currentPillarColor, 0.2f);
+            waitTime = 0;
         });
     }
 }
