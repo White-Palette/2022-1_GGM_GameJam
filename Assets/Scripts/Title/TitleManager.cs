@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class TitleManager : MonoBehaviour
 {
@@ -14,8 +15,12 @@ public class TitleManager : MonoBehaviour
 
     private float fadeTime = 2f;
 
+    private bool isEnable = false;
+
     private void Start()
     {
+        DisableAllPanel();
+        settingPanel.transform.localScale = new Vector3(0, 0, 0);
         StartCoroutine(FadeInOut());
     }
 
@@ -58,7 +63,7 @@ public class TitleManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            TogglePanel(settingPanel);
+            StartCoroutine(TogglePanel(settingPanel));
             //ToggleSettingPanel();
         }
         else if (Input.GetKeyDown(KeyCode.Q))
@@ -98,19 +103,34 @@ public class TitleManager : MonoBehaviour
     //    Debug.Log("isEnable : " + isEnable);
     //}
 
-    public void TogglePanel(GameObject Panel)
+    IEnumerator TogglePanel(GameObject Panel)
     {
+        isEnable = !isEnable;
+
+        if (!isEnable)
+        {
+            Panel.transform.DOScale(new Vector3(0f, 0f, 0f), 0.2f);
+            yield return new WaitForSeconds(0.2f);
+        }
+
         Panel.SetActive(!Panel.activeSelf);
+
+        if (isEnable)
+        {
+            Panel.transform.DOScale(new Vector3(1f, 1f, 0f), 0.6f).SetEase(Ease.OutBounce);
+        }
+
+        yield break;
     }
 
     public void HelpPanel()
     {
-        TogglePanel(helpPanel);
+        StartCoroutine(TogglePanel(helpPanel));
     }
 
     public void SettingPanel()
     {
-        TogglePanel(settingPanel);
+        StartCoroutine(TogglePanel(settingPanel));
     }
 
     public void GameStart()

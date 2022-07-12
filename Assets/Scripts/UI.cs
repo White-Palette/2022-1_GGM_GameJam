@@ -16,6 +16,7 @@ public class UI : MonoBehaviour
     {
         setting.SetActive(false);
     }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
