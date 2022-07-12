@@ -34,6 +34,24 @@ public class GuardianPillar : Pillar
 
         _inputValue = UIManager.Instance.TimingSlider.StopMove();
         // TODO : 판정 해주는 코드 추가 -1이면 실패
+
+        //ㄹ35 65
+
+        if (_inputValue == -1f)
+        {
+            Debug.Log("Fail");
+        }
+        else
+
+        if (_inputValue < 35f || _inputValue > 65f)
+        {
+            Debug.Log("Fail2");
+        }
+        else
+        {
+            Debug.Log("Success");
+        }
+
         Time.timeScale = 1f;
     }
 }
