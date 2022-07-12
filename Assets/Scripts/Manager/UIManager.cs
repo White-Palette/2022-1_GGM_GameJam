@@ -16,6 +16,9 @@ public class UIManager : MonoSingleton<UIManager>
     [SerializeField]
     private TextMeshProUGUI _comboText = null;
 
+    [SerializeField]
+    private Image _PauseImage = null;
+
     public TimingSlider TimingSlider
     {
         get
@@ -37,6 +40,7 @@ public class UIManager : MonoSingleton<UIManager>
     {
         yield return null;
         _timingSlider.gameObject.SetActive(false);
+        _PauseImage.gameObject.SetActive(false);
         _heightText.gameObject.SetActive(true);
     }
 
@@ -44,6 +48,11 @@ public class UIManager : MonoSingleton<UIManager>
     {
         _heightText.text = $"{PlayerController.Instance.Height:0.0}m";
         _comboText.text = $"{ComboManager.Instance.Combo} Combo";
+    }
+
+    public void SetPauseImage(bool isActive)
+    {
+        _PauseImage.gameObject.SetActive(isActive);
     }
 
     public IEnumerator ComboEffect()
