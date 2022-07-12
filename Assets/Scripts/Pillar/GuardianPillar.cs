@@ -31,7 +31,6 @@ public class GuardianPillar : Pillar
 
     public override void TowerEvent()
     {
-        Debug.Log("Duel");
         StartCoroutine(nameof(DuelCoroutine));
     }
 
@@ -48,7 +47,7 @@ public class GuardianPillar : Pillar
 
         while (!UIManager.Instance.TimingSlider.IsFail)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
             {
                 break;
             }

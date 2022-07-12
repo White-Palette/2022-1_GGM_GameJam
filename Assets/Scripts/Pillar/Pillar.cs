@@ -49,7 +49,7 @@ public class Pillar : MonoBehaviour, IPoolable
 
     public virtual void TowerEvent()
     {
-        Debug.Log("Default");
+
     }
 
     public virtual void Generate()

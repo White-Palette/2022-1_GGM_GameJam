@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1572843115973785964}
   - component: {fileID: 1572843115973785965}
-  - component: {fileID: 1572843115973785939}
+  - component: {fileID: 5769144689862138090}
   m_Layer: 0
-  m_Name: Pillar
+  m_Name: NormalPillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1572843115973785939
+--- !u!114 &5769144689862138090
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,15 +94,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1572843115973785966}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1436fa9507cb0664b9d1ca796e228b21, type: 3}
+  m_Script: {fileID: 11500000, guid: 3425eea86e43d9046ac2a88cef947492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   LeftPillar: {fileID: 0}
   RightPillar: {fileID: 0}
   HorizontalRange:
     min: 3
-    max: 7
+    max: 5
   VerticalRange:
-    min: 1
-    max: 3
+    min: 3
+    max: 5
   SpriteRenderer: {fileID: 0}
