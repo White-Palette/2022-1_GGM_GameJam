@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoSingleton<GameManager>
 {
     private bool _isGamePaused = false;
+    private bool _isGeneratingChaser = false;
 
     void Update()
     {
@@ -18,6 +19,11 @@ public class GameManager : MonoSingleton<GameManager>
             {
                 PauseGame();
             }
+        }
+
+        if (PlayerController.Instance.Height >= 50f && !_isGeneratingChaser)
+        {
+            _isGeneratingChaser = ChaserGenerator.Instance.GenerateChaser();
         }
     }
 
