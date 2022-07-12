@@ -378,7 +378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timingSlider: {fileID: 1005553124}
-  _heightText: {fileID: 1199464958}
+  _heightText: {fileID: 0}
 --- !u!1 &141302387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1196,7 +1196,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7780321, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1639,6 +1639,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 659452091}
     m_Modifications:
+    - target: {fileID: 5732357980253701012, guid: 6cf9f669f9862924f893dcb4981974e6, type: 3}
+      propertyPath: NoiseModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5732357980253701012, guid: 6cf9f669f9862924f893dcb4981974e6, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5732357980253701012, guid: 6cf9f669f9862924f893dcb4981974e6, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5732357980253701012, guid: 6cf9f669f9862924f893dcb4981974e6, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5732357980253701012, guid: 6cf9f669f9862924f893dcb4981974e6, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.24056602
+      objectReference: {fileID: 0}
+    - target: {fileID: 5732357980253701012, guid: 6cf9f669f9862924f893dcb4981974e6, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.74155384
+      objectReference: {fileID: 0}
+    - target: {fileID: 5732357980253701012, guid: 6cf9f669f9862924f893dcb4981974e6, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5732357980253701013, guid: 6cf9f669f9862924f893dcb4981974e6, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1687,6 +1715,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SnowParticle
       objectReference: {fileID: 0}
+    - target: {fileID: 5732357980253701015, guid: 6cf9f669f9862924f893dcb4981974e6, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5732357980253701015, guid: 6cf9f669f9862924f893dcb4981974e6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5b8ea20f47846c24392207e33a98815b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cf9f669f9862924f893dcb4981974e6, type: 3}
 --- !u!4 &965679034 stripped
