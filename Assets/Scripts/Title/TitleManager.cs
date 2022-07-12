@@ -90,6 +90,7 @@ public class TitleManager : MonoBehaviour
     public void DisableAllPanel()
     {
         //ToggleSettingPanel();
+        SoundManager.Instance.PlaySound(Effect.Click);
         settingPanel.SetActive(false);
         helpPanel.SetActive(false);
     }
@@ -132,11 +133,13 @@ public class TitleManager : MonoBehaviour
 
     public void HelpPanel()
     {
+        SoundManager.Instance.PlaySound(Effect.Click);
         StartCoroutine(TogglePanel(helpPanel));
     }
 
     public void SettingPanel()
     {
+        SoundManager.Instance.PlaySound(Effect.Click);
         StartCoroutine(TogglePanel(settingPanel));
     }
 
@@ -148,6 +151,7 @@ public class TitleManager : MonoBehaviour
 
     public void Quit()
     {
+        SoundManager.Instance.PlaySound(Effect.Click);
         Application.Quit();
         Debug.Log("Quit");
     }

@@ -80,6 +80,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 
         currentPillar.Disable();
         currentPillar = pillar;
+        SoundManager.Instance.PlaySound(Effect.Jump);
 
         currentPillar.TowerEvent();
         currentPillar.Generate();
@@ -120,7 +121,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     {
         UserData.Cache.Height = Height;
         UserData.Cache.MaxCombo = ComboManager.Instance.MaxCombo;
-        
+        SoundManager.Instance.PlaySound(Effect.Die);
         Fade.Instance.FadeOutToGameOverScene();
     }
 }
