@@ -12,4 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f7085e10352014db0511be0ac2853e, type: 3}
   m_Name: SeasonContainer
   m_EditorClassIdentifier: 
-  SeasonEffects: []
+  SeasonEffects:
+  - Season: 4
+    _topColor: {r: 1, g: 1, b: 1, a: 0}
+    _bodyColor: {r: 0.30588236, g: 0.42352945, b: 0.6627451, a: 0}
+    Effect: {fileID: 5732357980253701014, guid: 6cf9f669f9862924f893dcb4981974e6, type: 3}
+  - Season: 1
+    _topColor: {r: 0.26956913, g: 0.8679245, b: 0.15966538, a: 0}
+    _bodyColor: {r: 0.754717, g: 0.39855638, b: 0.09611962, a: 0}
+    Effect: {fileID: 0}
+  - Season: 2
+    _topColor: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 0}
+    _bodyColor: {r: 0.5849056, g: 0.10760058, b: 0.2581479, a: 0}
+    Effect: {fileID: 6666883520628724413, guid: a94d5d68a5a1cca43a6a1e3a8efb5d00, type: 3}
+  - Season: 3
+    _topColor: {r: 0.6981132, g: 0.5764868, b: 0.10866857, a: 0}
+    _bodyColor: {r: 0.7075472, g: 0.41060752, b: 0.130162, a: 0}
+    Effect: {fileID: 5732357980253701014, guid: 6cf9f669f9862924f893dcb4981974e6, type: 3}

@@ -5,6 +5,7 @@ using System.Linq;
 
 public enum Season
 {
+    None,
     Spring,
     Summer,
     Autumn,

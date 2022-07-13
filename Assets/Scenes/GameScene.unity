@@ -360,6 +360,7 @@ GameObject:
   - component: {fileID: 134198535}
   - component: {fileID: 134198536}
   - component: {fileID: 134198537}
+  - component: {fileID: 134198538}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -448,6 +449,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   realtimeLeaderboardTransform: {fileID: 355309569}
+--- !u!114 &134198538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134198531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab3a40071a50ce44795fadb74a93e3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _towers: []
 --- !u!1 &141302387
 GameObject:
   m_ObjectHideFlags: 0
