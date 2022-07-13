@@ -10,6 +10,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     [SerializeField] AnimationCurve jumpCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
     [SerializeField] AnimationCurve speedCurve = AnimationCurve.EaseInOut(1, 1, 0, 0);
     [SerializeField] ParticleSystem landing;
+    [SerializeField] TrailRenderer trail;
 
     private ParticleSystem particle;
     private Animator animator;
@@ -84,6 +85,11 @@ public class PlayerController : MonoSingleton<PlayerController>
         }
     }
 
+    public void TrailColor(Color value)
+    {
+        trail.startColor = value;
+        trail.endColor = value;
+    }
     public void PlayerWin()
     {
         animator.SetTrigger("Attack");

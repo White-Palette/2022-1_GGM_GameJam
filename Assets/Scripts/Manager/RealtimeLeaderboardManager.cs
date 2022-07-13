@@ -27,6 +27,7 @@ public class RealtimeLeaderboardManager : MonoSingleton<RealtimeLeaderboardManag
         leaderboardEntry.Height = 0;
         ColorUtility.TryParseHtmlString(packet.Color, out Color color);
         leaderboardEntry.Color = color;
+        PlayerController.Instance.TrailColor(color);
         Debug.Log($"Color: {packet.Color}");
         realtimeLeaderboard.Add(packet.Id, leaderboardEntry);
     }
