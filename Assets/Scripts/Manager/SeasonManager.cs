@@ -97,8 +97,13 @@ public class SeasonManager : MonoSingleton<SeasonManager>
 
     private void ChangeEffect()
     {
-        if (seasonContainer.GetSeasonEffect(_currentSeason).Effect != null && _currentSeasonEffect == null)
+        if (seasonContainer.GetSeasonEffect(_currentSeason).Effect != null)
         {
+            if (_currentSeasonEffect != null)
+            {
+                return;
+            }
+
             _currentSeasonEffect = Instantiate(seasonContainer.GetSeasonEffect(_currentSeason).Effect, Camera.main.transform);
             _currentSeasonEffect.transform.localPosition = new Vector3(-2.95f, 7.9f, 9f);
             _currentSeasonEffect.transform.rotation = Quaternion.Euler(-90, 0, 0);
@@ -120,12 +125,12 @@ public class SeasonManager : MonoSingleton<SeasonManager>
         {
             if (tower.GetTopColor() != seasonContainer.GetSeasonEffect(_currentSeason)._topColor)
             {
-                tower.SetTopColor(seasonContainer.GetSeasonEffect(_currentSeason)._topColor, 2f);
+                tower.SetTopColor(seasonContainer.GetSeasonEffect(_currentSeason)._topColor, 1.5f);
             }
 
             if (tower.GetBodyColor() != seasonContainer.GetSeasonEffect(_currentSeason)._bodyColor)
             {
-                tower.SetBodyColor(seasonContainer.GetSeasonEffect(_currentSeason)._bodyColor, 2f);
+                tower.SetBodyColor(seasonContainer.GetSeasonEffect(_currentSeason)._bodyColor, 1.5f);
             }
         }
     }
