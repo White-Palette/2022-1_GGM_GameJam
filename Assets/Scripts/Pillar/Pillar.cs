@@ -79,7 +79,6 @@ public abstract class Pillar : MonoBehaviour, IPoolable
 
     public void SetTopColor(Color color)
     {
-        Debug.Log("Color : " + color);
         topSprite.DOColor(color, 0.3f);
     }
 

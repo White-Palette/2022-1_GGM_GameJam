@@ -83,7 +83,6 @@ public class SeasonManager : MonoSingleton<SeasonManager>
         {
             _towers.Add(tower);
         }
-
         ChangeSeason(_currentSeason);
     }
 }
