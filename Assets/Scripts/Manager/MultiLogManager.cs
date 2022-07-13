@@ -11,7 +11,7 @@ public class MultiLogManager : MonoSingleton<MultiLogManager>
 
     private void Awake()
     {
-        ServerManager.Instance.OnLeave += id =>
+        ServerManager.Instance.OnLeave += leavePacket =>
         {
             GameManager.Instance.UpdateDeadLog();
         };
