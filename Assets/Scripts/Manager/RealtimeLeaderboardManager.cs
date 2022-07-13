@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -66,6 +67,7 @@ public class RealtimeLeaderboardManager : MonoSingleton<RealtimeLeaderboardManag
             if (realtimeLeaderboard.ContainsKey(entry.Id))
             {
                 realtimeLeaderboard[entry.Id].Height = entry.Height;
+                DOTween.Kill(realtimeLeaderboard[entry.Id].transform);
                 (realtimeLeaderboard[entry.Id].transform as RectTransform).DOAnchorPosY(entry.Height * scale, 0.5f);
             }
         }
@@ -77,5 +79,10 @@ public class RealtimeLeaderboardManager : MonoSingleton<RealtimeLeaderboardManag
         yield return new WaitForSeconds(0.5f);
         PoolManager<RealtimeLeaderboardEntry>.Release(realtimeLeaderboard[id]);
         realtimeLeaderboard.Remove(id);
+    }
+
+    public RealtimeLeaderboardEntry GetFirstEntry()
+    {
+        return realtimeLeaderboard.Select(x => x.Value).OrderBy(x => x.Height).FirstOrDefault();
     }
 }
