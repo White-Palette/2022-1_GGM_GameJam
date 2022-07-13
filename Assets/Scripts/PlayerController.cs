@@ -18,6 +18,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     private float waitTime = 0;
     private float _height = 0f;
     private bool isDead = false;
+    private bool isColorSeted = false;
 
     private void Awake()
     {
@@ -87,8 +88,10 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     public void TrailColor(Color value)
     {
+        if (isColorSeted) return;
         trail.startColor = value;
         trail.endColor = value;
+        isColorSeted = true;
     }
     public void PlayerWin()
     {
