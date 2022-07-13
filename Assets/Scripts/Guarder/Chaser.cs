@@ -25,6 +25,8 @@ public class Chaser : MonoBehaviour
 
     void Update()
     {
+        _distance = Vector2.Distance(transform.position, PlayerController.Instance.transform.position);
+
         if (_distance < 30f)
         {
             CameraManager.Instance.Noise(0.5f, 15);
@@ -46,14 +48,19 @@ public class Chaser : MonoBehaviour
 
     public void AddSpeed()
     {
-        float distance = Vector2.Distance(transform.position, PlayerController.Instance.transform.position);
-        _speed += distance / 100f;
+        if (_isAddingSpeed)
+        {
+            return;
+        }
+
+        _speed += _distance / 100f;
+        StartCoroutine(AddSpeedCoroutine());
     }
 
     private IEnumerator AddSpeedCoroutine()
     {
         _isAddingSpeed = true;
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(5f);
         _isAddingSpeed = false;
     }
 }

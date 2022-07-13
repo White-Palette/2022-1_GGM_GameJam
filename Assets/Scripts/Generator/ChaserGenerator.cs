@@ -10,6 +10,10 @@ public class ChaserGenerator : MonoSingleton<ChaserGenerator>
     [SerializeField]
     private Vector3 _chaserSpawnPosition = Vector3.zero;
 
+
+    [SerializeField]
+    private float _generatingChaserHeight = 100f;
+
     private Chaser _chaser = null;
 
     public Chaser Chaser => _chaser;
@@ -18,7 +22,7 @@ public class ChaserGenerator : MonoSingleton<ChaserGenerator>
 
     public bool GenerateChaser()
     {
-        if (_isGenerating || PlayerController.Instance.Height < 100f)
+        if (_isGenerating || PlayerController.Instance.Height < _generatingChaserHeight)
             return false;
 
         _isGenerating = true;
