@@ -19,6 +19,18 @@ public class GameOverUIManager : MonoBehaviour
         StartCoroutine(HeightRecords());
     }
 
+    private void Update()
+    {
+        KeyDown();
+    }
+    void KeyDown()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Fade.Instance.FadeOutToGameScene();
+        }
+    }
+
     IEnumerator HeightRecords()
     {
         int i = 0;
