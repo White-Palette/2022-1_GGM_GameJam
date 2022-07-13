@@ -12,6 +12,7 @@ public class Fade : MonoSingleton<Fade>
 
     int sceneLoad = 0;
     float fadeTime = 0.75f;
+    public static bool isTutoMap { get; set; }
 
     private void Start()
     {
@@ -37,7 +38,7 @@ public class Fade : MonoSingleton<Fade>
     {
         MouseManager.Show(true);
         MouseManager.Lock(false);
-        sceneLoad = 0;
+        sceneLoad = 1;
         StartCoroutine(FadeOutCoroutine(sceneLoad));
     }
 
@@ -45,7 +46,7 @@ public class Fade : MonoSingleton<Fade>
     {
         MouseManager.Show(false);
         MouseManager.Lock(true);
-        sceneLoad = 1;
+        sceneLoad = 2;
         StartCoroutine(FadeOutCoroutine(sceneLoad));
     }
 
@@ -53,7 +54,7 @@ public class Fade : MonoSingleton<Fade>
     {
         MouseManager.Show(true);
         MouseManager.Lock(false);
-        sceneLoad = 2;
+        sceneLoad = 3;
         StartCoroutine(FadeOutCoroutine(sceneLoad));
     }
 
@@ -61,9 +62,10 @@ public class Fade : MonoSingleton<Fade>
     {
         MouseManager.Show(false);
         MouseManager.Lock(true);
-        sceneLoad = 3;
+        sceneLoad = 4;
         StartCoroutine(FadeOutCoroutine(sceneLoad));
     }
+
 
     public IEnumerator FadeOutCoroutine(int sceneLoad)
     {

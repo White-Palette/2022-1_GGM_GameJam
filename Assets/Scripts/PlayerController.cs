@@ -170,7 +170,8 @@ public class PlayerController : MonoSingleton<PlayerController>
         UserData.Cache.Height = Height;
         UserData.Cache.MaxCombo = ComboManager.Instance.MaxCombo;
         SoundManager.Instance.PlaySound(Effect.Die);
-        Fade.Instance.FadeOutToGameOverScene();
+        if (!Fade.isTutoMap) Fade.Instance.FadeOutToGameOverScene();
+        else Fade.Instance.FadeOutToTutorial();
     }
 
     private void ReMove()
