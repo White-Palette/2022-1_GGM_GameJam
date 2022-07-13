@@ -21,7 +21,7 @@ MonoBehaviour:
   - Season: 1
     _topColor: {r: 0.26956913, g: 0.8679245, b: 0.15966538, a: 1}
     _bodyColor: {r: 0.754717, g: 0.39855638, b: 0.09611962, a: 1}
-    _backgroundColor: {r: 0.6597182, g: 0.8773585, b: 0.11173906, a: 1}
+    _backgroundColor: {r: 0.837, g: 0.8773585, b: 0.147, a: 1}
     Effect: {fileID: 0}
   - Season: 2
     _topColor: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
@@ -32,4 +32,9 @@ MonoBehaviour:
     _topColor: {r: 0.6981132, g: 0.5764868, b: 0.10866857, a: 1}
     _bodyColor: {r: 0.7075472, g: 0.41060752, b: 0.130162, a: 1}
     _backgroundColor: {r: 0.24154504, g: 0.7578991, b: 0.8679245, a: 1}
+    Effect: {fileID: 0}
+  - Season: 0
+    _topColor: {r: 0, g: 0, b: 0, a: 1}
+    _bodyColor: {r: 0, g: 0, b: 0, a: 1}
+    _backgroundColor: {r: 0, g: 0, b: 0, a: 1}
     Effect: {fileID: 0}
