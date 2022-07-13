@@ -21,18 +21,20 @@ public class PanelFade : MonoBehaviour
 
     IEnumerator TogglePanel(GameObject Panel)
     {
+        //if (!DOTween.Sequence(Panel.transform).IsPlaying()) yield break;
         if (isSettingEnable)
         {
             Panel.transform.DOScale(new Vector3(0f, 0f, 0f), 0.3f).From(1f);
+            isSettingEnable = false;
             yield return new WaitForSeconds(0.3f);
-            Panel.SetActive(!Panel.activeSelf);
+            Panel.SetActive(false);
         }
-        if (!isSettingEnable)
+        else
         {
-            Panel.SetActive(!Panel.activeSelf);
+            Panel.SetActive(true);
             Panel.transform.DOScale(new Vector3(0.9f, 0.9f, 0f), 1f).SetEase(Ease.OutBounce).From(0f);
+            isSettingEnable = true;
         }
-        isSettingEnable = !isSettingEnable;
-        yield break;
+        
     }
 }
