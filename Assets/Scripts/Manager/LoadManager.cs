@@ -7,8 +7,11 @@ public class LoadManager : MonoBehaviour
 {
     [SerializeField] TMP_InputField inputField;
 
+    private bool isLoading = false;
+
     private void Start()
     {
+        isLoading = false;
         inputField.Select();
     }
 
@@ -21,8 +24,9 @@ public class LoadManager : MonoBehaviour
         
         if (inputField.text.Length > 16)
             inputField.text = inputField.text.Substring(0, 16);
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return) && !isLoading)
         {
+            isLoading = true;
             UserData.UserName = inputField.text;
             if(inputField.text == "")
             {
