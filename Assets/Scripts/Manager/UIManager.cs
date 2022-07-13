@@ -56,6 +56,14 @@ public class UIManager : MonoSingleton<UIManager>
     {
         _heightText.text = $"{PlayerController.Instance.Height:0.0}m";
         _comboText.text = $"{ComboManager.Instance.Combo} Combo";
+        if (ChaserGenerator.Instance.Chaser != null)
+        {
+            _distanceText.text = $"{ChaserGenerator.Instance.Chaser.Distance:0.0}m";
+        }
+        else
+        {
+            _distanceText.text = "";
+        }
     }
 
 
