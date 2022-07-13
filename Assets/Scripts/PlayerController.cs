@@ -11,6 +11,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     [SerializeField] AnimationCurve speedCurve = AnimationCurve.EaseInOut(1, 1, 0, 0);
     [SerializeField] ParticleSystem landing;
     [SerializeField] TrailRenderer trail;
+    [SerializeField] EffectController effectController;
 
     private ParticleSystem particle;
     private Animator animator;
@@ -96,6 +97,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     public void PlayerWin()
     {
         animator.SetTrigger("Attack");
+        effectController.Play(currentPillar.transform.position);
         DOTween.Complete(transform, true);
     }
 
