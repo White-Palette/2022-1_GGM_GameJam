@@ -106,12 +106,12 @@ public class PlayerController : MonoSingleton<PlayerController>
         trail.endColor = value;
         isColorSeted = true;
     }
+    
     public void PlayerWin()
     {
         effectController.Play(currentPillar.transform.position + Vector3.up * 5f);
         DOTween.Complete(transform, true);
     }
-
 
     public void MoveToPillar(Pillar pillar)
     {

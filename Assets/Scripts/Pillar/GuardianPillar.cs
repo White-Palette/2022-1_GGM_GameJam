@@ -82,8 +82,8 @@ public class GuardianPillar : Pillar
 
         Time.timeScale = 1f;
         DOTween.To(() => test.m_Lens.OrthographicSize, x => test.m_Lens.OrthographicSize = x, 5, 0.5f);
-        CameraManager.Instance.Noise(0.5f, 5f);
-        yield return new WaitForSeconds(0.1f);
+        CameraManager.Instance.Noise(0.5f, 15f);
+        yield return new WaitForSeconds(0.2f);
         CameraManager.Instance.Noise(0, 0);
     }
 }
