@@ -35,19 +35,33 @@ public class Fade : MonoSingleton<Fade>
 
     public void FadeOutToMainMenu()
     {
+        MouseManager.Show(true);
+        MouseManager.Lock(false);
         sceneLoad = 0;
         StartCoroutine(FadeOutCoroutine(sceneLoad));
     }
 
     public void FadeOutToGameScene()
     {
+        MouseManager.Show(false);
+        MouseManager.Lock(true);
         sceneLoad = 1;
         StartCoroutine(FadeOutCoroutine(sceneLoad));
     }
 
     public void FadeOutToGameOverScene()
     {
+        MouseManager.Show(true);
+        MouseManager.Lock(false);
         sceneLoad = 2;
+        StartCoroutine(FadeOutCoroutine(sceneLoad));
+    }
+
+    public void FadeOutToTutorial()
+    {
+        MouseManager.Show(false);
+        MouseManager.Lock(true);
+        sceneLoad = 3;
         StartCoroutine(FadeOutCoroutine(sceneLoad));
     }
 

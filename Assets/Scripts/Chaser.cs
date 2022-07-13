@@ -20,18 +20,11 @@ public class Chaser : MonoBehaviour
     public void Eat()
     {
         _animator.SetTrigger("Bite");
-        PlayerController.Instance.Dead();
+        PlayerController.Instance.Dead("Eat");
     }
 
     void Update()
     {
-        // 여기서 속도 빨라지게 해줌
-        _distance = Vector2.Distance(transform.position, PlayerController.Instance.transform.position);
-        if (_distance > 100f)
-        {
-            AddSpeed(5f);
-        }
-
         if (_distance < 30f)
         {
             CameraManager.Instance.Noise(0.5f, 15);
@@ -51,13 +44,10 @@ public class Chaser : MonoBehaviour
         transform.position += playerDir * _speed * Time.deltaTime;
     }
 
-    public void AddSpeed(float speed)
+    public void AddSpeed()
     {
-        if (!_isAddingSpeed)
-        {
-            _speed += speed;
-            StartCoroutine(AddSpeedCoroutine());
-        }
+        float distance = Vector2.Distance(transform.position, PlayerController.Instance.transform.position);
+        _speed += distance / 100f;
     }
 
     private IEnumerator AddSpeedCoroutine()

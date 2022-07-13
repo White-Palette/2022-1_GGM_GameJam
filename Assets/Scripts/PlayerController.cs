@@ -53,6 +53,11 @@ public class PlayerController : MonoSingleton<PlayerController>
                     transform.localScale = new Vector3(-0.8f, 0.8f, 1);
                     animator.SetBool("IsJump", true);
                 }
+                else if (currentPillar.LeftPillar == null)
+                {
+                    transform.localScale = new Vector3(-0.8f, 0.8f, 1);
+                    Dead("Miss");
+                }
             }
             else if (Input.GetKeyDown(KeyCode.RightArrow))
             {
@@ -61,6 +66,11 @@ public class PlayerController : MonoSingleton<PlayerController>
                     MoveToPillar(currentPillar.RightPillar);
                     transform.localScale = new Vector3(0.8f, 0.8f, 1);
                     animator.SetBool("IsJump", true);
+                }
+                else if (currentPillar.RightPillar == null)
+                {
+                    transform.localScale = new Vector3(0.8f, 0.8f, 1);
+                    Dead("Miss");
                 }
             }
 
@@ -140,10 +150,10 @@ public class PlayerController : MonoSingleton<PlayerController>
         }
     }
 
-    public void Dead()
+    public void Dead(string str)
     {
         isDead = true;
-        animator.SetTrigger("Hit");
+        animator.SetTrigger(str);
         particle.Play();
         ComboManager.Instance.UpdateMaxCombo();
         UserData.Cache.Height = Height;

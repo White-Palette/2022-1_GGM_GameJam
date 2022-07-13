@@ -17,9 +17,9 @@ public class TitleManager : MonoBehaviour
     private float fadeTime = 2f;
 
     private bool isSettingEnable = false;
-    private bool isHelpEnable = false;
     private bool isGameQuitEnable = false;
 
+    private bool isHelp = false;
     private bool isLoading = false;
 
     private void Start()
@@ -27,6 +27,7 @@ public class TitleManager : MonoBehaviour
         StartCoroutine(FadeInOut());
         Fade.Instance.FadeIn();
         isLoading = false;
+        isHelp = false;
     }
 
     private void Update()
@@ -69,7 +70,6 @@ public class TitleManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             SettingPanel();
-            //ToggleSettingPanel();
         }
         else if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -85,7 +85,7 @@ public class TitleManager : MonoBehaviour
         }
         else if (Input.anyKeyDown)
         {
-            if (!isLoading)
+            if (!isLoading && !isHelp)
             {
                 Fade.Instance.FadeOutToGameScene();
                 isLoading = true;
@@ -99,10 +99,6 @@ public class TitleManager : MonoBehaviour
         if (isSettingEnable)
         {
             SettingPanel();
-        }
-        if (isHelpEnable)
-        {
-            HelpPanel();
         }
         if (isGameQuitEnable)
         {
@@ -130,9 +126,9 @@ public class TitleManager : MonoBehaviour
 
     public void HelpPanel()
     {
-        isHelpEnable = !isHelpEnable;
+        isHelp = !isHelp;
         SoundManager.Instance.PlaySound(Effect.Click);
-        StartCoroutine(TogglePanel(helpPanel, isHelpEnable));
+        Fade.Instance.FadeOutToTutorial();
     }
 
     public void SettingPanel()
