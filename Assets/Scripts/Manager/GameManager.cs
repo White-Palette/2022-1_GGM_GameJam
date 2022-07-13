@@ -23,11 +23,6 @@ public class GameManager : MonoSingleton<GameManager>
                 PauseGame();
             }
         }
-
-        if (PlayerController.Instance.Height >= _generatingChaserHeight && !_isGeneratingChaser)
-        {
-            _isGeneratingChaser = ChaserGenerator.Instance.GenerateChaser();
-        }
     }
 
     public void PauseGame()
