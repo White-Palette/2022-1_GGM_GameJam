@@ -77,9 +77,14 @@ public abstract class Pillar : MonoBehaviour, IPoolable
         SeasonManager.Instance.AddTower(this);
     }
 
-    public void SetTopColor(Color color, float duration = 0.3f)
+    public void SetTopColor(Color color, float duration)
     {
         topSprite.DOColor(color, duration);
+    }
+
+    public void SetTopColor(Color color)
+    {
+        topSprite.color = color;
     }
 
     public Color GetTopColor()
@@ -87,9 +92,14 @@ public abstract class Pillar : MonoBehaviour, IPoolable
         return topSprite.color;
     }
 
-    public void SetBodyColor(Color color, float duration = 0.3f)
+    public void SetBodyColor(Color color, float duration)
     {
         bodySprite.DOColor(color, duration);
+    }
+
+    public void SetBodyColor(Color color)
+    {
+        bodySprite.color = color;
     }
 
     public Color GetBodyColor()
@@ -105,5 +115,12 @@ public abstract class Pillar : MonoBehaviour, IPoolable
     public void Enable()
     {
         overlaySprite.DOColor(new Color(0f, 0f, 0f, 0f), 0.2f);
+    }
+
+    private void OnDisable()
+    {
+        DOTween.Kill(overlaySprite);
+        DOTween.Kill(topSprite);
+        DOTween.Kill(bodySprite);
     }
 }

@@ -69,6 +69,8 @@ public class RealtimeLeaderboardManager : MonoSingleton<RealtimeLeaderboardManag
             {
                 realtimeLeaderboard[entry.Id].Height = entry.Height;
                 DOTween.Kill(realtimeLeaderboard[entry.Id].transform);
+                if ((realtimeLeaderboard[entry.Id].transform as RectTransform).anchoredPosition.y == entry.Height * scale)
+                    continue;
                 (realtimeLeaderboard[entry.Id].transform as RectTransform).DOAnchorPosY(entry.Height * scale, 0.5f);
             }
         }
