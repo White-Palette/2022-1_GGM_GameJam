@@ -284,9 +284,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     startSize:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0.1
-      minScalar: 1
+      minMaxState: 3
+      scalar: 0.3
+      minScalar: 0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -337,7 +337,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -390,7 +390,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -443,7 +443,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationX:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -496,7 +496,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -549,8 +549,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotation:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0
+      minMaxState: 3
+      scalar: 6.283185
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4761,7 +4761,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 5b8ea20f47846c24392207e33a98815b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4865,6 +4865,7 @@ MonoBehaviour:
   _flash: 1
   _chromaticAberration: 1
   _bloom: 1
+  _motionBlur: 1
   _flashImage: {fileID: 0}
 --- !u!1 &1883886858
 GameObject:
@@ -5150,9 +5151,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     startSize:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0.1
-      minScalar: 1
+      minMaxState: 3
+      scalar: 0.3
+      minScalar: 0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5203,7 +5204,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -5256,7 +5257,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -5309,7 +5310,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationX:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -5362,7 +5363,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -5415,8 +5416,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotation:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0
+      minMaxState: 3
+      scalar: 6.283185
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -9627,7 +9628,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 5b8ea20f47846c24392207e33a98815b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9910,7 +9911,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 2597430942455491897}
   m_Bounds:
-    m_Center: {x: 0.0033638403, y: -0.04643096, z: 0}
+    m_Center: {x: 0.0033630878, y: -0.04643114, z: 0}
     m_Extent: {x: 0.093926996, y: 0.24832724, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -10016,7 +10017,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 8954940957305212903}
   m_Bounds:
-    m_Center: {x: 0.0035782903, y: -0.046717048, z: 0}
+    m_Center: {x: 0.0035784692, y: -0.04671669, z: 0}
     m_Extent: {x: 0.1844464, y: 0.036966726, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -10122,7 +10123,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 297761739542856130}
   m_Bounds:
-    m_Center: {x: 0.0037068576, y: -0.04671742, z: 0}
+    m_Center: {x: 0.003706932, y: -0.04671763, z: 0}
     m_Extent: {x: 0.095194116, y: 0.24783735, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -10422,7 +10423,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 7717942673931192605}
   m_Bounds:
-    m_Center: {x: 0.0035072118, y: -0.04686147, z: 0}
+    m_Center: {x: 0.0035068244, y: -0.046860874, z: 0}
     m_Extent: {x: 0.16589648, y: 0.1658558, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -10528,7 +10529,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 8598109638753682850}
   m_Bounds:
-    m_Center: {x: 0.003757596, y: -0.046840325, z: 0}
+    m_Center: {x: 0.003757283, y: -0.04683961, z: 0}
     m_Extent: {x: 0.09409891, y: 0.24849086, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -10667,7 +10668,7 @@ MonoBehaviour:
   - {fileID: 3379235735928701020}
   - {fileID: 3114003130299649202}
   m_Bounds:
-    m_Center: {x: 0.0037068836, y: -0.04150477, z: 0}
+    m_Center: {x: 0.0037064776, y: -0.041504055, z: 0}
     m_Extent: {x: 0.036968607, y: 0.36447322, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -10841,7 +10842,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 4472782757851438339}
   m_Bounds:
-    m_Center: {x: 0.0033214241, y: -0.046717167, z: 0}
+    m_Center: {x: 0.0033210516, y: -0.04671669, z: 0}
     m_Extent: {x: 0.20756283, y: 0.03696859, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -10978,7 +10979,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 1683882814735125752}
   m_Bounds:
-    m_Center: {x: 0.00357835, y: -0.046717167, z: 0}
+    m_Center: {x: 0.0035779923, y: -0.046718597, z: 0}
     m_Extent: {x: 0.18444642, y: 0.03696674, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -11148,7 +11149,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 5295402451627551216}
   m_Bounds:
-    m_Center: {x: 0.0037067235, y: -0.046779335, z: 0}
+    m_Center: {x: 0.0037064552, y: -0.046777666, z: 0}
     m_Extent: {x: 0.09519411, y: 0.24845749, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -11254,7 +11255,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 5430416208966352520}
   m_Bounds:
-    m_Center: {x: 0.0033907145, y: -0.046717167, z: 0}
+    m_Center: {x: 0.0033899099, y: -0.04671669, z: 0}
     m_Extent: {x: 0.20763221, y: 0.036968596, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -11395,13 +11396,49 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hit
       objectReference: {fileID: 0}
+    - target: {fileID: 3392577571438649255, guid: d7d45b470d321254eb96ed2989de8edc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5b8ea20f47846c24392207e33a98815b, type: 2}
     - target: {fileID: 3392577571438649256, guid: d7d45b470d321254eb96ed2989de8edc, type: 3}
       propertyPath: InitialModule.startSize.scalar
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392577571438649256, guid: d7d45b470d321254eb96ed2989de8edc, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3392577571438649256, guid: d7d45b470d321254eb96ed2989de8edc, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392577571438649256, guid: d7d45b470d321254eb96ed2989de8edc, type: 3}
+      propertyPath: InitialModule.startRotation.scalar
+      value: 6.283185
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392577571438649256, guid: d7d45b470d321254eb96ed2989de8edc, type: 3}
+      propertyPath: InitialModule.startSize.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392577571438649256, guid: d7d45b470d321254eb96ed2989de8edc, type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392577571438649256, guid: d7d45b470d321254eb96ed2989de8edc, type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392577571438649256, guid: d7d45b470d321254eb96ed2989de8edc, type: 3}
+      propertyPath: InitialModule.startRotation.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392577571438649256, guid: d7d45b470d321254eb96ed2989de8edc, type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392577571438649256, guid: d7d45b470d321254eb96ed2989de8edc, type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3392577571438649257, guid: d7d45b470d321254eb96ed2989de8edc, type: 3}
       propertyPath: m_RootOrder
