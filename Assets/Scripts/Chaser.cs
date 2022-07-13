@@ -44,18 +44,24 @@ public class Chaser : MonoBehaviour
         Vector3 playerDir = PlayerController.Instance.transform.position - transform.position;
         playerDir.Normalize();
         transform.position += playerDir * _speed * Time.deltaTime;
+        Debug.Log("Speed: " + _speed);
     }
 
     public void AddSpeed()
     {
+        if (_isAddingSpeed)
+        {
+            return;
+        }
+
         _speed += _distance / 100f;
-        Debug.Log("Speed: " + _speed);
+        StartCoroutine(AddSpeedCoroutine());
     }
 
     private IEnumerator AddSpeedCoroutine()
     {
         _isAddingSpeed = true;
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(5f);
         _isAddingSpeed = false;
     }
 }

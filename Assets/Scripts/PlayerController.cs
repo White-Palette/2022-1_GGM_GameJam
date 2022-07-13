@@ -20,7 +20,8 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     private void Awake()
     {
-        ServerManager.Instance.OnConnected += () => {
+        ServerManager.Instance.OnConnected += () =>
+        {
             StartCoroutine(Connected());
         };
     }
@@ -43,7 +44,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     private void Update()
     {
-        if (!isMoving&&!isDead)
+        if (!isMoving && !isDead)
         {
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
@@ -133,7 +134,6 @@ public class PlayerController : MonoSingleton<PlayerController>
     private float JumpDuration()
     {
         animator.speed = 1 + ComboManager.Instance.Combo / 50f;
-        Debug.Log($"{speedCurve.Evaluate(ComboManager.Instance.Combo / 50f)}");
         return speedCurve.Evaluate(ComboManager.Instance.Combo / 50f);
     }
 
@@ -164,6 +164,6 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     private void ReMove()
     {
-        //¾Ö´Ï¸ÞÀÌ¼Ç °øÀ¯·Î »ý±ä ¿À·ù ÇØ°á¿ë, ¾Æ¹«ÀÏµµ ¾ÈÇÏ´Â ³ðÀÓ
+        //ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ø°ï¿½ï¿½, ï¿½Æ¹ï¿½ï¿½Ïµï¿½ ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 }
