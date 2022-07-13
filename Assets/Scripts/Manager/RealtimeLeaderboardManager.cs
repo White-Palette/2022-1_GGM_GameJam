@@ -88,4 +88,13 @@ public class RealtimeLeaderboardManager : MonoSingleton<RealtimeLeaderboardManag
     {
         return realtimeLeaderboard.Select(x => x.Value).OrderBy(x => x.Height).FirstOrDefault();
     }
+
+    public string GetNameById(int id)
+    {
+        if (realtimeLeaderboard.ContainsKey(id))
+        {
+            return realtimeLeaderboard[id].Name;
+        }
+        return "";
+    }
 }

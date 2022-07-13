@@ -20,6 +20,7 @@ public class LeaderboardManager : MonoBehaviour
 
     private void Awake()
     {
+        StartCoroutine(SubmitRecordCoroutine(UserData.UserName, UserData.Cache.Height, UserData.Cache.MaxCombo));
         StartCoroutine(LoadLeaderboard());
     }
 
@@ -35,6 +36,11 @@ public class LeaderboardManager : MonoBehaviour
             Debug.Log(request.downloadHandler);
 
             var leaderboard = JsonConvert.DeserializeObject<List<Entry>>(request.downloadHandler.text);
+
+            foreach (var entryObject in _entryContainer.GetComponentsInChildren<LeaderboardEntry>())
+            {
+                PoolManager<LeaderboardEntry>.Release(entryObject);
+            }
 
             foreach (var entry in leaderboard)
             {
@@ -53,21 +59,37 @@ public class LeaderboardManager : MonoBehaviour
 
     private IEnumerator SubmitRecordCoroutine(string name, float height, int combo)
     {
-        var entry = new Entry
+        var userEntry = new Entry
         {
             Name = name,
             Height = height,
             Combo = combo
         };
+        
         var request = new UnityWebRequest("http://141.164.53.243:3002/leaderboard");
         request.method = UnityWebRequest.kHttpVerbPOST;
         request.SetRequestHeader("Content-Type", "application/json");
-        request.uploadHandler = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(entry)));
+        request.uploadHandler = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(userEntry)));
         request.downloadHandler = new DownloadHandlerBuffer();
         yield return request.SendWebRequest();
         if (request.result == UnityWebRequest.Result.Success)
         {
-            Debug.Log("Success");
+            Debug.Log(request.downloadHandler);
+
+            var leaderboard = JsonConvert.DeserializeObject<List<Entry>>(request.downloadHandler.text);
+
+            foreach (var entryObject in _entryContainer.GetComponentsInChildren<LeaderboardEntry>())
+            {
+                PoolManager<LeaderboardEntry>.Release(entryObject);
+            }
+
+            foreach (var entry in leaderboard)
+            {
+                var entryObject = PoolManager<LeaderboardEntry>.Get(_entryContainer);
+                entryObject.Name = entry.Name;
+                entryObject.Height = entry.Height;
+                entryObject.Combo = entry.Combo;
+            }
         }
         else
         {

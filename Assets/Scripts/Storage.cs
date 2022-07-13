@@ -15,7 +15,7 @@ public static class UserData
     }
 
     public static int UserId { get; set; } = -1;
-    public static string UserName { get; set; } = "";
+    public static string UserName { get; set; } = "Developer";
     public static string UserToken { get; set; } = "";
     public static float Brightness { get; set; } = 1;
 
