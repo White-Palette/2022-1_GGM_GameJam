@@ -123,12 +123,12 @@ public class SeasonManager : MonoSingleton<SeasonManager>
     {
         foreach (var tower in _towers)
         {
-            if (tower.GetTopColor() != seasonContainer.GetSeasonEffect(_currentSeason)._topColor)
+            if (tower.GetTopColor() != seasonContainer.GetSeasonEffect(_currentSeason)._topColor && tower.gameObject.activeSelf)
             {
                 tower.SetTopColor(seasonContainer.GetSeasonEffect(_currentSeason)._topColor, 1.5f);
             }
 
-            if (tower.GetBodyColor() != seasonContainer.GetSeasonEffect(_currentSeason)._bodyColor)
+            if (tower.GetBodyColor() != seasonContainer.GetSeasonEffect(_currentSeason)._bodyColor && tower.gameObject.activeSelf)
             {
                 tower.SetBodyColor(seasonContainer.GetSeasonEffect(_currentSeason)._bodyColor, 1.5f);
             }
