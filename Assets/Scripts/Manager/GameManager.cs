@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
 {
-    [SerializeField]
-    private float _generatingChaserHeight = 100f;
-
     private bool _isGamePaused = false;
-    private bool _isGeneratingChaser = false;
 
     void Update()
     {
