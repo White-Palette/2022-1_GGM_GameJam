@@ -86,8 +86,8 @@ public class SeasonManager : MonoSingleton<SeasonManager>
         if (_towers.Find(x => x == tower) == null)
         {
             _towers.Add(tower);
+            ChangeSeason(_currentSeason);
         }
-        ChangeSeason(_currentSeason);
     }
 
     private void ChangeBackgroundColor()
