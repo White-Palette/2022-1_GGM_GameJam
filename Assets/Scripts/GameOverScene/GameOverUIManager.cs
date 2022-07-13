@@ -14,10 +14,13 @@ public class GameOverUIManager : MonoBehaviour
 
     [SerializeField] Light2D light2d;
 
+    private bool isLoading = false;
+
     private void Start()
     {
         //_heightTMP.text = $"{UserData.Cache.Height:0.0}m";
         //_maxCombo.text = $"{UserData.Cache.MaxCombo}";
+        isLoading = false;
         light2d.intensity = UserData.Brightness;
         Fade.Instance.FadeIn();
         StartCoroutine(HeightRecords());
@@ -29,8 +32,9 @@ public class GameOverUIManager : MonoBehaviour
     }
     void KeyDown()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && !isLoading)
         {
+            isLoading = true;
             Fade.Instance.FadeOutToGameScene();
         }
     }

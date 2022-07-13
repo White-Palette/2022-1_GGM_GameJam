@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: MapContainer
   m_EditorClassIdentifier: 
   PillarMaps:
-  - Count: 6
+  - Count: 7
     LeftPillarType: 1
     RightPillarType: 0
-  - Count: 6
+  - Count: 7
     LeftPillarType: 0
     RightPillarType: 1
   - Count: 5
