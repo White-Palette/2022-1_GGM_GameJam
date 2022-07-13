@@ -10,9 +10,16 @@ public class BrightnessManager : MonoBehaviour
 
     [SerializeField] Light2D light2d;
 
+    private void Start()
+    {
+        light2d.intensity = UserData.Brightness;
+        brightness.value = light2d.intensity - 1;
+    }
+
     private void Update()
     {
         light2d.intensity = brightness.value + 1;
+        UserData.Brightness = light2d.intensity;
     }
 
 }

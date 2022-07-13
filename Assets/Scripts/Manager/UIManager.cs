@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.Rendering.Universal;
 
 public class UIManager : MonoSingleton<UIManager>
 {
@@ -18,6 +19,9 @@ public class UIManager : MonoSingleton<UIManager>
 
     [SerializeField]
     private Image _PauseImage = null;
+
+    [SerializeField]
+    private Light2D light2d;
 
     public TimingSlider TimingSlider
     {
@@ -39,6 +43,7 @@ public class UIManager : MonoSingleton<UIManager>
     private IEnumerator Start()
     {
         yield return null;
+        light2d.intensity = UserData.Brightness;
         _timingSlider.gameObject.SetActive(false);
         _PauseImage.gameObject.SetActive(false);
         _heightText.gameObject.SetActive(true);

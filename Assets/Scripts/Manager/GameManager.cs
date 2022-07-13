@@ -25,6 +25,8 @@ public class GameManager : MonoSingleton<GameManager>
     {
         Time.timeScale = 0;
         _isGamePaused = true;
+        MouseManager.Show(true);
+        MouseManager.Lock(false);
         UIManager.Instance.SetPauseImage(_isGamePaused);
     }
 
@@ -32,6 +34,8 @@ public class GameManager : MonoSingleton<GameManager>
     {
         Time.timeScale = 1;
         _isGamePaused = false;
+        MouseManager.Show(false);
+        MouseManager.Lock(true);
         UIManager.Instance.SetPauseImage(_isGamePaused);
     }
 }
