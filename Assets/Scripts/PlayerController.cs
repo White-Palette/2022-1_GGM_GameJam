@@ -96,7 +96,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     }
     public void PlayerWin()
     {
-        effectController.Play(currentPillar.transform.position);
+        effectController.Play(currentPillar.transform.position + Vector3.up * 5f);
         DOTween.Complete(transform, true);
     }
 
@@ -176,6 +176,6 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     private void ReMove()
     {
-        //�ִϸ��̼� ������ ���� ���� �ذ��, �ƹ��ϵ� ���ϴ� ����
+        
     }
 }
