@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Accessories:
   - Accessory: 0
-    Sprite: {fileID: 21300000, guid: 7a0bb484b8dc37a47a067d09ae56f019, type: 3}
+    Sprite: {fileID: 21300000, guid: 2830403e63e2a4f43b151d0d6eac704d, type: 3}
     ComboDuration: 0
     validValue: 0
     Speed: 0
