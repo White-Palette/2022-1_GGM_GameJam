@@ -178,6 +178,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3978360464158884114, guid: a9ceea67401eaad43a45758206b9ee8b, type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime1
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 3978360464158884114, guid: a9ceea67401eaad43a45758206b9ee8b, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3978360464158884114, guid: a9ceea67401eaad43a45758206b9ee8b, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3978360464158884114, guid: a9ceea67401eaad43a45758206b9ee8b, type: 3}
+      propertyPath: m_Parameters.colorGradient.m_NumColorKeys
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500681500037365705, guid: a9ceea67401eaad43a45758206b9ee8b, type: 3}
+      propertyPath: trail
+      value: 
+      objectReference: {fileID: 1846634197}
     - target: {fileID: 8500681500037365705, guid: a9ceea67401eaad43a45758206b9ee8b, type: 3}
       propertyPath: landing
       value: 
@@ -929,7 +949,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7783505, y: 1}
+    m_SensorSize: {x: 1.7769516, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2990,6 +3010,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!96 &1846634197 stripped
+TrailRenderer:
+  m_CorrespondingSourceObject: {fileID: 3978360464158884114, guid: a9ceea67401eaad43a45758206b9ee8b, type: 3}
+  m_PrefabInstance: {fileID: 55141482}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1865776541
 GameObject:
   m_ObjectHideFlags: 0
