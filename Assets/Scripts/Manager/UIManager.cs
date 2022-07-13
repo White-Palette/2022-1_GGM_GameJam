@@ -49,7 +49,7 @@ public class UIManager : MonoSingleton<UIManager>
     private IEnumerator Start()
     {
         yield return null;
-        light2d.intensity = UserData.Brightness;
+        UserData.Load();
         _timingSlider.gameObject.SetActive(false);
         _PauseImage.gameObject.SetActive(false);
         _heightText.gameObject.SetActive(true);

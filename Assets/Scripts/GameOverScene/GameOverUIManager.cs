@@ -21,7 +21,7 @@ public class GameOverUIManager : MonoBehaviour
         //_heightTMP.text = $"{UserData.Cache.Height:0.0}m";
         //_maxCombo.text = $"{UserData.Cache.MaxCombo}";
         isLoading = false;
-        light2d.intensity = UserData.Brightness;
+        UserData.Load();
         Fade.Instance.FadeIn();
         StartCoroutine(HeightRecords());
     }

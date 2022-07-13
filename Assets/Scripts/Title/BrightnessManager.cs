@@ -20,6 +20,7 @@ public class BrightnessManager : MonoBehaviour
     {
         light2d.intensity = brightness.value + 1;
         UserData.Brightness = light2d.intensity;
+        UserData.Save();
     }
 
 }
