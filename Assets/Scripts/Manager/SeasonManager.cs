@@ -8,15 +8,18 @@ public class SeasonManager : MonoSingleton<SeasonManager>
     private List<Pillar> _towers = null;
     private Season _currentSeason = Season.None;
     private int _currentSeasonIndex = 0;
+    private GameObject _currentSeasonEffect = null;
 
     private void Awake()
     {
         seasonContainer = Resources.Load<SeasonContainer>("SeasonContainer");
-        _currentSeason = Season.Winter;
+        _towers = new List<Pillar>();
+        _currentSeason = Season.None;
     }
 
     private IEnumerator Start()
     {
+        ChangeSeason(Season.Winter);
         while (true)
         {
             yield return null;
@@ -30,8 +33,6 @@ public class SeasonManager : MonoSingleton<SeasonManager>
 
     public void ChangeSeason()
     {
-        Debug.Log("Change Season");
-
         if (_currentSeason == Season.Spring)
         {
             _currentSeason = Season.Summer;
@@ -48,30 +49,31 @@ public class SeasonManager : MonoSingleton<SeasonManager>
         {
             _currentSeason = Season.Spring;
         }
+        else if (_currentSeason == Season.None)
+        {
+            _currentSeason = (Season)Random.Range(1, 5);
+        }
         else
         {
-            _currentSeason = Season.Winter;
+            Debug.LogError("Season is invalid");
         }
 
-        Camera.main.backgroundColor = seasonContainer.GetSeasonEffect(_currentSeason)._backgroundColor;
+        ChangeBackgroundColor();
 
-        foreach (var tower in _towers)
-        {
-            tower.SetTopColor(seasonContainer.GetSeasonEffect(_currentSeason)._topColor, 0.5f);
-            tower.SetBodyColor(seasonContainer.GetSeasonEffect(_currentSeason)._bodyColor, 0.5f);
-        }
+        ChangeEffect();
+
+        ChangeTowerColor();
     }
 
     public void ChangeSeason(Season season)
     {
         _currentSeason = season;
-        Camera.main.backgroundColor = seasonContainer.GetSeasonEffect(_currentSeason)._backgroundColor;
 
-        foreach (var tower in _towers)
-        {
-            tower.SetTopColor(seasonContainer.GetSeasonEffect(_currentSeason)._topColor, 0.5f);
-            tower.SetBodyColor(seasonContainer.GetSeasonEffect(_currentSeason)._bodyColor, 0.5f);
-        }
+        ChangeBackgroundColor();
+
+        ChangeEffect();
+
+        ChangeTowerColor();
     }
 
     public void AddTower(Pillar tower)
@@ -86,5 +88,45 @@ public class SeasonManager : MonoSingleton<SeasonManager>
             _towers.Add(tower);
         }
         ChangeSeason(_currentSeason);
+    }
+
+    private void ChangeBackgroundColor()
+    {
+        Camera.main.backgroundColor = seasonContainer.GetSeasonEffect(_currentSeason)._backgroundColor;
+    }
+
+    private void ChangeEffect()
+    {
+        if (seasonContainer.GetSeasonEffect(_currentSeason).Effect != null && _currentSeasonEffect == null)
+        {
+            _currentSeasonEffect = Instantiate(seasonContainer.GetSeasonEffect(_currentSeason).Effect, Camera.main.transform);
+            _currentSeasonEffect.transform.localPosition = new Vector3(-2.95f, 7.9f, 9f);
+            _currentSeasonEffect.transform.rotation = Quaternion.Euler(-90, 0, 0);
+            _currentSeasonEffect.transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+        else
+        {
+            if (_currentSeasonEffect != null)
+            {
+                Destroy(_currentSeasonEffect);
+            }
+            _currentSeasonEffect = null;
+        }
+    }
+
+    private void ChangeTowerColor()
+    {
+        foreach (var tower in _towers)
+        {
+            if (tower.GetTopColor() != seasonContainer.GetSeasonEffect(_currentSeason)._topColor)
+            {
+                tower.SetTopColor(seasonContainer.GetSeasonEffect(_currentSeason)._topColor, 2f);
+            }
+
+            if (tower.GetBodyColor() != seasonContainer.GetSeasonEffect(_currentSeason)._bodyColor)
+            {
+                tower.SetBodyColor(seasonContainer.GetSeasonEffect(_currentSeason)._bodyColor, 2f);
+            }
+        }
     }
 }

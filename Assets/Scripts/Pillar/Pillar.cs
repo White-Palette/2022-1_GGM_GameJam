@@ -82,9 +82,19 @@ public abstract class Pillar : MonoBehaviour, IPoolable
         topSprite.DOColor(color, duration);
     }
 
+    public Color GetTopColor()
+    {
+        return topSprite.color;
+    }
+
     public void SetBodyColor(Color color, float duration = 0.3f)
     {
         bodySprite.DOColor(color, duration);
+    }
+
+    public Color GetBodyColor()
+    {
+        return bodySprite.color;
     }
 
     public void Disable()
