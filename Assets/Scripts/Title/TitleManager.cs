@@ -13,11 +13,13 @@ public class TitleManager : MonoBehaviour
     [SerializeField] GameObject settingPanel;
     [SerializeField] GameObject helpPanel;
     [SerializeField] GameObject gameQuitPanel;
+    [SerializeField] GameObject shopPanel;
 
     private float fadeTime = 2f;
 
     private bool isSettingEnable = false;
     private bool isGameQuitEnable = false;
+    private bool isShopEnable = false;
 
     private bool isHelp = false;
     private bool isLoading = false;
@@ -104,6 +106,10 @@ public class TitleManager : MonoBehaviour
         {
             GameQuitPanel();
         }
+        if (isShopEnable)
+        {
+            ShopPanel();
+        }
     }
 
     IEnumerator TogglePanel(GameObject Panel, bool isEnable)
@@ -144,6 +150,13 @@ public class TitleManager : MonoBehaviour
         isGameQuitEnable = !isGameQuitEnable;
         SoundManager.Instance.PlaySound(Effect.Click);
         StartCoroutine(TogglePanel(gameQuitPanel, isGameQuitEnable));
+    }
+
+    public void ShopPanel()
+    {
+        isShopEnable = !isShopEnable;
+        SoundManager.Instance.PlaySound(Effect.Click);
+        StartCoroutine(TogglePanel(shopPanel, isShopEnable));
     }
 
     public void GameStart()
