@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Chaser : MonoBehaviour
 {
+    public float Distance => _distance;
+
     private Animator _animator = null;
     [SerializeField]
     private float _speed = 1f;

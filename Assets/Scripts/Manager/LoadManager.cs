@@ -7,14 +7,26 @@ public class LoadManager : MonoBehaviour
 {
     [SerializeField] TMP_InputField inputField;
 
+    private void Start()
+    {
+        inputField.Select();
+    }
+
     private void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            inputField.Select();
+        }
+        
+        if (inputField.text.Length > 16)
+            inputField.text = inputField.text.Substring(0, 16);
         if (Input.GetKeyDown(KeyCode.Return))
         {
             UserData.UserName = inputField.text;
-            if(inputField.text == null)
+            if(inputField.text == "")
             {
-                UserData.UserName = "Guest";
+                UserData.UserName = $"Guest{Random.Range(1, 10000):0000}";
             }
             Fade.Instance.FadeOutToMainMenu();
         }
