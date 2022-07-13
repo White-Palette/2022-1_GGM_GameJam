@@ -23,6 +23,9 @@ public class UIManager : MonoSingleton<UIManager>
     [SerializeField]
     private Light2D light2d;
 
+    [SerializeField]
+    private TMP_Text _distanceText = null;
+
     public TimingSlider TimingSlider
     {
         get
@@ -54,6 +57,8 @@ public class UIManager : MonoSingleton<UIManager>
         _heightText.text = $"{PlayerController.Instance.Height:0.0}m";
         _comboText.text = $"{ComboManager.Instance.Combo} Combo";
     }
+
+
 
     public void SetPauseImage(bool isActive)
     {
