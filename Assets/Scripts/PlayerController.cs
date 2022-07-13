@@ -12,6 +12,11 @@ public class PlayerController : MonoSingleton<PlayerController>
     [SerializeField] ParticleSystem landing;
     [SerializeField] TrailRenderer trail;
     [SerializeField] EffectController effectController;
+    [SerializeField] SpriteRenderer hat;
+    [SerializeField] SpriteRenderer leftArm;
+    [SerializeField] SpriteRenderer rightArm;
+    [SerializeField] SpriteRenderer leftLeg;
+    [SerializeField] SpriteRenderer rightLeg;
 
     private ParticleSystem particle;
     private Animator animator;
@@ -23,6 +28,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     private void Awake()
     {
+        
         ServerManager.Instance.OnConnected += () =>
         {
             StartCoroutine(Connected());
@@ -42,6 +48,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     {
         animator = GetComponent<Animator>();
         particle = transform.Find("Hit").GetComponent<ParticleSystem>();
+        animator.SetBool("IsJump", true);
         MoveToPillar(currentPillar);
     }
 
@@ -172,6 +179,11 @@ public class PlayerController : MonoSingleton<PlayerController>
         SoundManager.Instance.PlaySound(Effect.Die);
         if (!Fade.isTutoMap) Fade.Instance.FadeOutToGameOverScene();
         else Fade.Instance.FadeOutToTutorial();
+    }
+
+    public void ItemChange()
+    {
+
     }
 
     private void ReMove()

@@ -21,17 +21,17 @@ MonoBehaviour:
   - Season: 1
     _topColor: {r: 1, g: 0.8627451, b: 0.68235296, a: 1}
     _bodyColor: {r: 0.80784315, g: 0.84705883, b: 0.61960787, a: 1}
-    _backgroundColor: {r: 0.4627451, g: 0.7294118, b: 0.6, a: 1}
+    _backgroundColor: {r: 0.27930436, g: 0.44, b: 0.3596522, a: 1}
     Effect: {fileID: 0}
   - Season: 2
-    _topColor: {r: 0.5803922, g: 0.7058824, b: 0.62352943, a: 1}
-    _bodyColor: {r: 1, g: 0.7647059, b: 0.7647059, a: 1}
-    _backgroundColor: {r: 1, g: 0.3647059, b: 0.3647059, a: 1}
+    _topColor: {r: 0.5019608, g: 0.6039216, b: 0.43529412, a: 1}
+    _bodyColor: {r: 0.8, g: 0.6117647, b: 0.45882353, a: 1}
+    _backgroundColor: {r: 0.44, g: 0.24486957, b: 0.24486957, a: 1}
     Effect: {fileID: 6666883520628724413, guid: a94d5d68a5a1cca43a6a1e3a8efb5d00, type: 3}
   - Season: 3
     _topColor: {r: 0.89411765, g: 0.81960785, b: 0.7254902, a: 1}
     _bodyColor: {r: 0.6627451, g: 0.44313726, b: 0.33333334, a: 1}
-    _backgroundColor: {r: 0.56078434, g: 0.7411765, b: 0.827451, a: 1}
+    _backgroundColor: {r: 0.2984348, g: 0.39408693, b: 0.44, a: 1}
     Effect: {fileID: 0}
   - Season: 0
     _topColor: {r: 0, g: 0, b: 0, a: 1}

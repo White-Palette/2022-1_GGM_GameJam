@@ -81,6 +81,10 @@ public class TitleManager : MonoBehaviour
         {
             DisableAllPanel();
         }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            ShopPanel();
+        }
         else if (Input.GetMouseButtonDown(0))
         {
             return;
