@@ -57,6 +57,17 @@ public class Chaser : MonoBehaviour
         StartCoroutine(AddSpeedCoroutine());
     }
 
+    public void AddSpeed(float speed)
+    {
+        if (_isAddingSpeed)
+        {
+            return;
+        }
+
+        _speed += speed;
+        StartCoroutine(AddSpeedCoroutine());
+    }
+
     private IEnumerator AddSpeedCoroutine()
     {
         _isAddingSpeed = true;
