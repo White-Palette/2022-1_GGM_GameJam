@@ -77,15 +77,14 @@ public abstract class Pillar : MonoBehaviour, IPoolable
         SeasonManager.Instance.AddTower(this);
     }
 
-    public void SetTopColor(Color color)
+    public void SetTopColor(Color color, float duration = 0.3f)
     {
-        Debug.Log("Color : " + color);
-        topSprite.DOColor(color, 0.3f);
+        topSprite.DOColor(color, duration);
     }
 
-    public void SetBodyColor(Color color)
+    public void SetBodyColor(Color color, float duration = 0.3f)
     {
-        bodySprite.DOColor(color, 0.3f);
+        bodySprite.DOColor(color, duration);
     }
 
     public void Disable()
