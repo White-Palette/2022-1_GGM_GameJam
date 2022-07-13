@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SeasonManager : MonoBehaviour
+public enum Season
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    Spring,
+    Summer,
+    Autumn,
+    Winter
+}
 
-    // Update is called once per frame
-    void Update()
+public class SeasonManager : MonoSingleton<SeasonManager>
+{
+    public void ChangeSeason(Season season)
     {
-        
+
     }
 }
