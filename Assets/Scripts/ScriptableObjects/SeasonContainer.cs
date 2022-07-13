@@ -18,6 +18,7 @@ public class SeasonEffect
     public Season Season;
     public Color _topColor;
     public Color _bodyColor;
+    public Color _backgroundColor;
     public GameObject Effect;
 }
 

@@ -20,7 +20,7 @@ public class SeasonManager : MonoSingleton<SeasonManager>
         while (true)
         {
             yield return null;
-            if ((int)(PlayerController.Instance.Height / 50f) > _currentSeasonIndex)
+            if ((int)(PlayerController.Instance.Height / 300f) > _currentSeasonIndex)
             {
                 ++_currentSeasonIndex;
                 ChangeSeason();
@@ -53,22 +53,24 @@ public class SeasonManager : MonoSingleton<SeasonManager>
             _currentSeason = Season.Winter;
         }
 
+        Camera.main.backgroundColor = seasonContainer.GetSeasonEffect(_currentSeason)._backgroundColor;
+
         foreach (var tower in _towers)
         {
-            tower.SetTopColor(seasonContainer.GetSeasonEffect(_currentSeason)._topColor);
-            tower.SetBodyColor(seasonContainer.GetSeasonEffect(_currentSeason)._bodyColor);
+            tower.SetTopColor(seasonContainer.GetSeasonEffect(_currentSeason)._topColor, 0.5f);
+            tower.SetBodyColor(seasonContainer.GetSeasonEffect(_currentSeason)._bodyColor, 0.5f);
         }
     }
 
     public void ChangeSeason(Season season)
     {
-
         _currentSeason = season;
+        Camera.main.backgroundColor = seasonContainer.GetSeasonEffect(_currentSeason)._backgroundColor;
 
         foreach (var tower in _towers)
         {
-            tower.SetTopColor(seasonContainer.GetSeasonEffect(_currentSeason)._topColor);
-            tower.SetBodyColor(seasonContainer.GetSeasonEffect(_currentSeason)._bodyColor);
+            tower.SetTopColor(seasonContainer.GetSeasonEffect(_currentSeason)._topColor, 0.5f);
+            tower.SetBodyColor(seasonContainer.GetSeasonEffect(_currentSeason)._bodyColor, 0.5f);
         }
     }
 
