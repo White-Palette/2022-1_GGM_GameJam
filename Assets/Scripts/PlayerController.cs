@@ -22,6 +22,9 @@ public class PlayerController : MonoSingleton<PlayerController>
     [SerializeField] SpriteRenderer leftLeg;
     [SerializeField] SpriteRenderer rightLeg;
 
+    public float MinVaild { get; set; }
+    public float MaxVaild { get; set; }
+
     private ParticleSystem particle;
     private Animator animator;
     private bool isMoving = false;
@@ -202,6 +205,8 @@ public class PlayerController : MonoSingleton<PlayerController>
         combo = HatSprite.Accessories[UserData.ItemHat].ComboDuration + GlobeSprite.Accessories[UserData.ItemGlobe].ComboDuration + BootsSprite.Accessories[UserData.ItemShose].ComboDuration;
         vaild = HatSprite.Accessories[UserData.ItemHat].validValue + GlobeSprite.Accessories[UserData.ItemGlobe].validValue + BootsSprite.Accessories[UserData.ItemShose].validValue;
         speed = HatSprite.Accessories[UserData.ItemHat].Speed + GlobeSprite.Accessories[UserData.ItemGlobe].Speed + BootsSprite.Accessories[UserData.ItemShose].Speed;
+        MinVaild = 35 - (vaild/2);
+        MaxVaild = 65 + (vaild/2);
     }
 
     private void ReMove()
