@@ -74,6 +74,7 @@ public abstract class Pillar : MonoBehaviour, IPoolable
         transform.DOMoveY(transform.position.y, 0.2f).From(transform.position.y - 1f);
         topSprite.DOFade(1f, 0.2f).From(0f);
         bodySprite.DOFade(1f, 0.2f).From(0f);
+        SeasonManager.Instance.AddTower(this);
     }
 
     public void SetTopColor(Color color)

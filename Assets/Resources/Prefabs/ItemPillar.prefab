@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 2552306796291585790}
   m_Layer: 0
   m_Name: ItemPillar
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -352,3 +352,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4058ebe664712014ca53d5508d82950f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LeftPillar: {fileID: 0}
+  RightPillar: {fileID: 0}
+  HorizontalRange:
+    min: 3
+    max: 5
+  VerticalRange:
+    min: 3
+    max: 5
+  topSprite: {fileID: 0}
+  bodySprite: {fileID: 0}
