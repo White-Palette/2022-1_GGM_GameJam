@@ -149,8 +149,7 @@ public class TitleManager : MonoBehaviour
     public void GameStart()
     {
         Debug.Log("Game Start");
-        Fade.isTutoMap = false;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void Quit()
