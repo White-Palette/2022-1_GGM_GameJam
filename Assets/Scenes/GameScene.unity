@@ -410,7 +410,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d8da80b94419a54b93cd54db51b8a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _generatingChaserHeight: 100
 --- !u!114 &134198535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -882,6 +881,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _chaserPrefab: {fileID: 7466908670984521147, guid: c3cb4da83a1e1b54b98c872834363b6c, type: 3}
   _chaserSpawnPosition: {x: 0, y: 0, z: 0}
+  _generatingChaserHeight: 100
 --- !u!1 &659452089
 GameObject:
   m_ObjectHideFlags: 0
@@ -928,7 +928,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7780321, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
