@@ -5,16 +5,20 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.Rendering.Universal;
 
 public class GameOverUIManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI _maxCombo;
     [SerializeField] TextMeshProUGUI _heightTMP;
 
+    [SerializeField] Light2D light2d;
+
     private void Start()
     {
         //_heightTMP.text = $"{UserData.Cache.Height:0.0}m";
         //_maxCombo.text = $"{UserData.Cache.MaxCombo}";
+        light2d.intensity = UserData.Brightness;
         Fade.Instance.FadeIn();
         StartCoroutine(HeightRecords());
     }
