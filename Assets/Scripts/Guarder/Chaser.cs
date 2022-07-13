@@ -30,11 +30,13 @@ public class Chaser : MonoBehaviour
         if (_distance < 30f)
         {
             CameraManager.Instance.Noise(0.5f, 15);
+            VolumeController.Instance.MotionBlur = 0.5f;
         }
 
         if (_distance < 5f)
         {
             Eat();
+            VolumeController.Instance.MotionBlur = 1f;
         }
         Move();
     }
