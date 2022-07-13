@@ -12,6 +12,10 @@ public class PlayerController : MonoSingleton<PlayerController>
     [SerializeField] ParticleSystem landing;
     [SerializeField] TrailRenderer trail;
     [SerializeField] EffectController effectController;
+    [SerializeField] HatContainer HatSprite;
+    [SerializeField] GlobeContainer GlobeSprite;
+    [SerializeField] BootsContainer BootsSprite;
+
     [SerializeField] SpriteRenderer hat;
     [SerializeField] SpriteRenderer leftArm;
     [SerializeField] SpriteRenderer rightArm;
@@ -46,6 +50,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     private void Start()
     {
+        ItemChange();
         animator = GetComponent<Animator>();
         particle = transform.Find("Hit").GetComponent<ParticleSystem>();
         animator.SetBool("IsJump", true);
@@ -183,7 +188,11 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     public void ItemChange()
     {
-
+        hat.sprite = HatSprite.Accessories[UserData.ItemHat].Sprite;
+        leftArm.sprite = GlobeSprite.Accessories[UserData.ItemGlobe].Sprite;
+        rightArm.sprite = GlobeSprite.Accessories[UserData.ItemGlobe].Sprite;
+        leftLeg.sprite = BootsSprite.Accessories[UserData.ItemShose].Sprite;
+        rightLeg.sprite = BootsSprite.Accessories[UserData.ItemShose].Sprite;
     }
 
     private void ReMove()
