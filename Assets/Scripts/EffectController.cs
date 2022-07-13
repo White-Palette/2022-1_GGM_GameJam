@@ -11,6 +11,7 @@ public class EffectController : MonoBehaviour
     [SerializeField] bool _flash = false;
     [SerializeField] bool _chromaticAberration = false;
     [SerializeField] bool _bloom = false;
+    [SerializeField] bool _motionBlur = false;
     [SerializeField] Image _flashImage = null;
 
     public void Play(Vector2 lookPos)
@@ -44,6 +45,13 @@ public class EffectController : MonoBehaviour
             DOTween.To(() => VolumeController.Instance.Bloom, x => VolumeController.Instance.Bloom = x, 10f, 0.15f).From(2f).OnComplete(() =>
             {
                 DOTween.To(() => VolumeController.Instance.Bloom, x => VolumeController.Instance.Bloom = x, 2f, 0.15f);
+            });
+        }
+        if (_motionBlur)
+        {
+            DOTween.To(() => VolumeController.Instance.MotionBlur, x => VolumeController.Instance.MotionBlur = x, 1f, 0.2f).From(0f).OnComplete(() =>
+            {
+                DOTween.To(() => VolumeController.Instance.MotionBlur, x => VolumeController.Instance.MotionBlur = x, 0f, 0.2f);
             });
         }
     }

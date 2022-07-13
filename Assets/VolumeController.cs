@@ -41,4 +41,18 @@ public class VolumeController : MonoSingleton<VolumeController>
             bloom.intensity.value = value;
         }
     }
+
+    public float MotionBlur
+    {
+        get
+        {
+            Profile.TryGet(out MotionBlur motionBlur);
+            return motionBlur.intensity.value;
+        }
+        set
+        {
+            Profile.TryGet(out MotionBlur motionBlur);
+            motionBlur.intensity.value = value;
+        }
+    }
 }
