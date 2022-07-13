@@ -29,10 +29,14 @@ public class PlayerController : MonoSingleton<PlayerController>
     private float _height = 0f;
     private bool isDead = false;
     private bool isColorSeted = false;
+    private float resetTime;
+    private float perfactTime;
+    private float combo = 0;
+    private float vaild = 0;
+    private float speed = 0;
 
     private void Awake()
-    {
-        
+    {  
         ServerManager.Instance.OnConnected += () =>
         {
             StartCoroutine(Connected());
@@ -157,7 +161,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     private float JumpDuration()
     {
         animator.speed = Mathf.Clamp(1 + ComboManager.Instance.Combo / 50f, 1, 2);
-        return speedCurve.Evaluate(ComboManager.Instance.Combo / 50f);
+        return speedCurve.Evaluate(ComboManager.Instance.Combo / 50f) - (speed* Mathf.Clamp(ComboManager.Instance.Combo, 0, 50));
     }
 
     public float Height
@@ -188,11 +192,16 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     public void ItemChange()
     {
+        resetTime = 0.2f + combo;
+        perfactTime = resetTime / 2;
         hat.sprite = HatSprite.Accessories[UserData.ItemHat].Sprite;
         leftArm.sprite = GlobeSprite.Accessories[UserData.ItemGlobe].Sprite;
         rightArm.sprite = GlobeSprite.Accessories[UserData.ItemGlobe].Sprite;
         leftLeg.sprite = BootsSprite.Accessories[UserData.ItemShose].Sprite;
         rightLeg.sprite = BootsSprite.Accessories[UserData.ItemShose].Sprite;
+        combo = HatSprite.Accessories[UserData.ItemHat].ComboDuration + GlobeSprite.Accessories[UserData.ItemGlobe].ComboDuration + BootsSprite.Accessories[UserData.ItemShose].ComboDuration;
+        vaild = HatSprite.Accessories[UserData.ItemHat].validValue + GlobeSprite.Accessories[UserData.ItemGlobe].validValue + BootsSprite.Accessories[UserData.ItemShose].validValue;
+        speed = HatSprite.Accessories[UserData.ItemHat].Speed + GlobeSprite.Accessories[UserData.ItemGlobe].Speed + BootsSprite.Accessories[UserData.ItemShose].Speed;
     }
 
     private void ReMove()

@@ -20,16 +20,16 @@ MonoBehaviour:
     Speed: 0
   - Accessory: 1
     Sprite: {fileID: 0}
-    ComboDuration: 0
+    ComboDuration: 0.02
     validValue: 0
     Speed: 0
   - Accessory: 2
     Sprite: {fileID: 0}
     ComboDuration: 0
-    validValue: 0
+    validValue: 4
     Speed: 0
   - Accessory: 3
     Sprite: {fileID: 0}
     ComboDuration: 0
     validValue: 0
-    Speed: 0
+    Speed: 0.1
