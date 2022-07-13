@@ -13,7 +13,7 @@ public class MultiLogManager : MonoSingleton<MultiLogManager>
     {
         ServerManager.Instance.OnLeave += leavePacket =>
         {
-            GameManager.Instance.UpdateDeadLog();
+            GameManager.Instance.UpdateDeadLog(leavePacket.Id);
         };
     }
 
@@ -41,10 +41,10 @@ public class MultiLogManager : MonoSingleton<MultiLogManager>
         yield break;
     }
 
-    public void DeadLog(int tmp)
+    public void DeadLog(int tmp, string name)
     {
         Debug.Log(RealtimeLeaderboardManager.Instance.GetFirstEntry().Name + "이(가) 떨어졌습니다.");
-        //logTMP[tmp].text = $"{RealtimeLeaderboardManager.Instance.GetNameById()} 이(가) 떨어졌습니다.";
+        logTMP[tmp].text = $"{name} 이(가) 떨어졌습니다.";
         StartCoroutine(MoveAndFadeTMP(tmp));
     }
 }

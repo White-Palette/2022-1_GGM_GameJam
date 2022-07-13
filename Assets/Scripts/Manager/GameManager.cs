@@ -39,9 +39,9 @@ public class GameManager : MonoSingleton<GameManager>
         UIManager.Instance.SetPauseImage(_isGamePaused);
     }
 
-    public void UpdateDeadLog()
+    public void UpdateDeadLog(int id)
     {
-        MultiLogManager.Instance.DeadLog(Random.Range(2, 5));
+        MultiLogManager.Instance.DeadLog(Random.Range(2, 5), RealtimeLeaderboardManager.Instance.GetNameById(id));
     }
 
 }
