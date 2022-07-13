@@ -12,14 +12,15 @@ public class SeasonManager : MonoSingleton<SeasonManager>
     private void Awake()
     {
         seasonContainer = Resources.Load<SeasonContainer>("SeasonContainer");
+        _currentSeason = Season.Winter;
     }
 
     private IEnumerator Start()
     {
         while (true)
         {
-            yield return new WaitForSeconds(5f);
-            if (PlayerController.Instance.Height / 50f > _currentSeasonIndex)
+            yield return null;
+            if ((int)(PlayerController.Instance.Height / 50f) > _currentSeasonIndex)
             {
                 ++_currentSeasonIndex;
                 ChangeSeason();
@@ -82,5 +83,7 @@ public class SeasonManager : MonoSingleton<SeasonManager>
         {
             _towers.Add(tower);
         }
+
+        ChangeSeason(_currentSeason);
     }
 }
