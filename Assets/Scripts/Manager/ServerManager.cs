@@ -28,11 +28,14 @@ public class ServerManager : MonoSingleton<ServerManager>
         public int Id;
         [JsonProperty("h")]
         public float Height;
+        [JsonProperty("c")]
+        public int Combo;
 
-        public RealtimeLeaderboardEntry(int id, float height)
+        public RealtimeLeaderboardEntry(int id, float height, int combo)
         {
             Id = id;
             Height = height;
+            Combo = combo;
         }
     }
 
@@ -141,9 +144,9 @@ public class ServerManager : MonoSingleton<ServerManager>
         ws.Connect();
     }
 
-    public void SendHeight(float height)
+    public void SendHeight(float height, int combo)
     {
-        ws.Send(JsonConvert.SerializeObject(new Packet("h", height.ToString())));
+        ws.Send(JsonConvert.SerializeObject(new Packet("h", JsonConvert.SerializeObject(new { h = height, c = combo }))));
     }
 
     public void SendName(string name)

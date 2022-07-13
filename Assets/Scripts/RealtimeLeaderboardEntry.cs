@@ -34,6 +34,7 @@ public class RealtimeLeaderboardEntry : MonoBehaviour, IPoolable
         get => _height;
         set
         {
+            DOTween.Kill(this);
             DOTween.To(() => _height, x => _height = x, value, 0.1f);
             HeightText.text = _height.ToString("0.0") + "m";
         }

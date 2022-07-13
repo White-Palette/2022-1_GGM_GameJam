@@ -30,7 +30,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     {
         while (true)
         {
-            ServerManager.Instance.SendHeight(_height);
+            ServerManager.Instance.SendHeight(_height, ComboManager.Instance.Combo);
             yield return new WaitForSeconds(0.1f);
         }
     }
