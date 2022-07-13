@@ -53,7 +53,7 @@ public class Chaser : MonoBehaviour
             return;
         }
 
-        _speed += _distance / 100f;
+        _speed += _distance / 80f;
         StartCoroutine(AddSpeedCoroutine());
     }
 
