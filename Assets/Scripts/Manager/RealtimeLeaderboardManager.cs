@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -33,8 +34,7 @@ public class RealtimeLeaderboardManager : MonoSingleton<RealtimeLeaderboardManag
     {
         if (realtimeLeaderboard.ContainsKey(packet.Id))
         {
-            PoolManager<RealtimeLeaderboardEntry>.Release(realtimeLeaderboard[packet.Id]);
-            realtimeLeaderboard.Remove(packet.Id);
+            StartCoroutine(Leave(packet.Id));
         }
     }
 
@@ -69,5 +69,13 @@ public class RealtimeLeaderboardManager : MonoSingleton<RealtimeLeaderboardManag
                 (realtimeLeaderboard[entry.Id].transform as RectTransform).DOAnchorPosY(entry.Height * scale, 0.5f);
             }
         }
+    }
+
+    private IEnumerator Leave(int id)
+    {
+        (realtimeLeaderboard[id].transform as RectTransform).DOAnchorPosY(0, 0.5f);
+        yield return new WaitForSeconds(0.5f);
+        PoolManager<RealtimeLeaderboardEntry>.Release(realtimeLeaderboard[id]);
+        realtimeLeaderboard.Remove(id);
     }
 }

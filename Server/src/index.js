@@ -1,7 +1,22 @@
 import * as ws from 'ws';
 import { v4 } from 'uuid';
+import * as fs from 'fs';
 
 const server = new ws.WebSocketServer({ port: 3002 });
+
+const leaderboard = [];
+
+if (!fs.existsSync('leaderboard.json')) {
+    fs.writeFileSync('./leaderboard.json', '[]');
+}
+
+fs.readFileSync('./leaderboard.json', 'utf8', (err, data) => {
+    if (err) {
+        console.log(err);
+    } else {
+        leaderboard.push(...JSON.parse(data));
+    }
+});
 
 const clients = [];
 let count = 0;
@@ -52,6 +67,22 @@ function buildLeavePacket(client) {
     });
 }
 
+function buildLeaderboardPacket() {
+    return JSON.stringify({
+        t: 'lb',
+        p: JSON.stringify({
+            l: leaderboard
+        })
+    });
+}
+
+function buildLeaderboardEntry(name, height) {
+    return {
+        n: name,
+        h: height
+    };
+}
+
 server.on('listening', () => {
     console.log('Server is listening on port 3002');
 });
@@ -93,6 +124,26 @@ server.on('connection', socket => {
             case 'h': {
                 socket.height = data.p;
                 broadcast(buildRealtimeLeaderboardPacket());
+                break;
+            }
+            case 'pl': {
+                const tempValue = leaderboard.find(entry => entry.n === data.p.n);
+                if (tempValue) {
+                    if (data.p.h > tempValue.h) {
+                        leaderboard.find(entry => entry.n === data.p.n).h = data.p.h;
+                        fs.writeFileSync('./leaderboard.json', JSON.stringify(leaderboard));
+                    }
+                }
+                else
+                {
+                    leaderboard.push(buildLeaderboardEntry(data.p.n, data.p.h));
+                    fs.writeFileSync('./leaderboard.json', JSON.stringify(leaderboard));
+                }
+                socket.send(buildLeaderboardPacket());
+                break;
+            }
+            case 'gl': {
+                socket.send(buildLeaderboardPacket());
                 break;
             }
         }

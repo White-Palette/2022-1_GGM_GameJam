@@ -7,16 +7,21 @@ using UnityEngine.UI;
 
 public class RealtimeLeaderboardEntry : MonoBehaviour, IPoolable
 {
+    [SerializeField] TMP_Text NameText = null;
+    [SerializeField] TMP_Text HeightText = null;
+
+    private float _height = 0;
+
+    private CanvasGroup _canvasGroup = null;
+    private Image _image;
+
     public void Initialize()
     {
         Color = Color.white;
         NameText.text = "";
         HeightText.text = "";
+        _canvasGroup.DOFade(1f, 0.5f).From(0f);
     }
-
-    [SerializeField] TMP_Text NameText = null;
-    [SerializeField] TMP_Text HeightText = null;
-    private float _height = 0;
 
     public string Name
     {
@@ -36,14 +41,13 @@ public class RealtimeLeaderboardEntry : MonoBehaviour, IPoolable
 
     public Color Color 
     {
-        get => image.color;
-        set => image.color = value;
+        get => _image.color;
+        set => _image.color = value;
     }
-
-    private Image image;
 
     private void Awake()
     {
-        image = GetComponent<Image>();
+        _image = GetComponent<Image>();
+        _canvasGroup = GetComponent<CanvasGroup>();
     }
 }

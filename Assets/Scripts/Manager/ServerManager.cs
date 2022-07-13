@@ -74,7 +74,7 @@ public class ServerManager : MonoSingleton<ServerManager>
 
     private void Awake()
     {
-        ws = new WebSocket("ws://localhost:3002/");
+        ws = new WebSocket("ws://141.164.53.243:3002/");
         ws.EmitOnPing = true;
 
         ws.OnOpen += (sender, e) =>
