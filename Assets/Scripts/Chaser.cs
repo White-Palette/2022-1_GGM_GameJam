@@ -20,7 +20,7 @@ public class Chaser : MonoBehaviour
     public void Eat()
     {
         _animator.SetTrigger("Bite");
-        PlayerController.Instance.Dead();
+        PlayerController.Instance.Dead("Eat");
     }
 
     void Update()

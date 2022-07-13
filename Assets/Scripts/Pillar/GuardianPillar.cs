@@ -65,12 +65,12 @@ public class GuardianPillar : Pillar
         if (_inputValue == -1f)
         {
             _guardian.Attack2();
-            PlayerController.Instance.Dead();
+            PlayerController.Instance.Dead("Hit");
         }
         else if (_inputValue < 35f || _inputValue > 65f)
         {
             _guardian.Attack1();
-            PlayerController.Instance.Dead();
+            PlayerController.Instance.Dead("Hit");
         }
         else
         {
