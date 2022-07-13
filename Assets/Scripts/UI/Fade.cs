@@ -74,4 +74,9 @@ public class Fade : MonoSingleton<Fade>
         SceneManager.LoadScene(sceneLoad);
         yield break;
     }
+
+    private void OnDestroy()
+    {
+        DOTween.KillAll();
+    }
 }

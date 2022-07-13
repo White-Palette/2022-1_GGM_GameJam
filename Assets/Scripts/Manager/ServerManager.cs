@@ -157,7 +157,6 @@ public class ServerManager : MonoSingleton<ServerManager>
     private void OnDestroy()
     {
         ws.Close();
-        DOTween.KillAll();
     }
 
     private void Update()

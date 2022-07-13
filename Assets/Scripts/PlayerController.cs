@@ -87,6 +87,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     public void PlayerWin()
     {
         animator.SetTrigger("Attack");
+        DOTween.Complete(transform, true);
     }
 
 
