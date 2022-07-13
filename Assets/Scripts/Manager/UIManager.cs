@@ -24,6 +24,9 @@ public class UIManager : MonoSingleton<UIManager>
     private Light2D light2d;
 
     [SerializeField]
+    private Image _chaserIcon = null;
+
+    [SerializeField]
     private TMP_Text _distanceText = null;
 
     public TimingSlider TimingSlider
@@ -58,10 +61,14 @@ public class UIManager : MonoSingleton<UIManager>
         _comboText.text = $"{ComboManager.Instance.Combo} Combo";
         if (ChaserGenerator.Instance.Chaser != null)
         {
+            _chaserIcon.enabled = true;
+            _chaserIcon.DOFade(1, 0.5f);
             _distanceText.text = $"{ChaserGenerator.Instance.Chaser.Distance:0.0}m";
         }
         else
         {
+            _chaserIcon.DOFade(0, 0f);
+            _chaserIcon.enabled = false;
             _distanceText.text = "";
         }
     }
