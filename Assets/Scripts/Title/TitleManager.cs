@@ -128,6 +128,7 @@ public class TitleManager : MonoBehaviour
     {
         isHelp = !isHelp;
         SoundManager.Instance.PlaySound(Effect.Click);
+        Fade.isTutoMap = true;
         Fade.Instance.FadeOutToTutorial();
     }
 
@@ -148,6 +149,7 @@ public class TitleManager : MonoBehaviour
     public void GameStart()
     {
         Debug.Log("Game Start");
+        Fade.isTutoMap = false;
         SceneManager.LoadScene(1);
     }
 

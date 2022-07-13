@@ -12,6 +12,7 @@ public class Fade : MonoSingleton<Fade>
 
     int sceneLoad = 0;
     float fadeTime = 0.75f;
+    public static bool isTutoMap { get; set; }
 
     private void Start()
     {
