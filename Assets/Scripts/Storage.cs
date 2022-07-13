@@ -19,6 +19,10 @@ public static class UserData
     public static string UserToken { get; set; } = "";
     public static float Brightness { get; set; } = 1;
 
+    public static int ItemHat { get; set; }
+    public static int ItemGlobe { get; set; }
+    public static int ItemShose { get; set; }
+
     public static void Save()
     {
         PlayerPrefs.SetFloat("Brightness", Brightness);
@@ -27,6 +31,9 @@ public static class UserData
         PlayerPrefs.SetString("UserToken", UserToken);
         PlayerPrefs.SetFloat("Height", Record.Height);
         PlayerPrefs.SetInt("MaxCombo", Record.MaxCombo);
+        PlayerPrefs.SetInt("Hat", ItemHat);
+        PlayerPrefs.SetInt("Globe", ItemGlobe);
+        PlayerPrefs.SetInt("Shose", ItemShose);
     }
 
     public static void Load()
@@ -37,6 +44,9 @@ public static class UserData
         UserToken = PlayerPrefs.GetString("UserToken", "");
         Record.Height = PlayerPrefs.GetFloat("Height", 0);
         Record.MaxCombo = PlayerPrefs.GetInt("MaxCombo", 0);
+        ItemHat = PlayerPrefs.GetInt("Hat", 0);
+        ItemGlobe = PlayerPrefs.GetInt("Globe", 0);
+        ItemShose = PlayerPrefs.GetInt("Shose", 0);
     }
 
     public static void Clear()
@@ -47,6 +57,9 @@ public static class UserData
         PlayerPrefs.DeleteKey("UserToken");
         PlayerPrefs.DeleteKey("Height");
         PlayerPrefs.DeleteKey("MaxCombo");
+        PlayerPrefs.DeleteKey("Hat");
+        PlayerPrefs.DeleteKey("Globe");
+        PlayerPrefs.DeleteKey("Shose");
     }
 
     static UserData()
