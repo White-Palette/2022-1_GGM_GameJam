@@ -43,7 +43,7 @@ public class MultiLogManager : MonoSingleton<MultiLogManager>
 
     public void DeadLog(int tmp, string name)
     {
-        Debug.Log(RealtimeLeaderboardManager.Instance.GetFirstEntry().Name + "이(가) 떨어졌습니다.");
+        Debug.Log(name + "이(가) 떨어졌습니다.");
         logTMP[tmp].text = $"{name} 이(가) 떨어졌습니다.";
         StartCoroutine(MoveAndFadeTMP(tmp));
     }
