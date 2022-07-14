@@ -1,16 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class BackObjects : MonoBehaviour
 {
     [SerializeField] float multiplier = 1f;
+
+    private SeasonContainer seasonContainer = null;
 
     private List<SpriteRenderer> _topSpriteRenderer = null;
     private List<SpriteRenderer> _bodySpriteRenderer = null;
 
     private void Awake()
     {
+        seasonContainer = Resources.Load<SeasonContainer>("SeasonContainer");
         _topSpriteRenderer = new List<SpriteRenderer>();
         _bodySpriteRenderer = new List<SpriteRenderer>();
 
@@ -19,6 +23,8 @@ public class BackObjects : MonoBehaviour
             _bodySpriteRenderer.Add(child.GetChild(0).GetComponent<SpriteRenderer>());
             _topSpriteRenderer.Add(child.GetChild(1).GetComponent<SpriteRenderer>());
         }
+
+        SeasonManager.Instance.OnSeasonChanged += ChangeColor;
     }
 
     private void Update()
@@ -56,8 +62,12 @@ public class BackObjects : MonoBehaviour
         }
     }
 
-    private void ChangeColor()
+    private void ChangeColor(Season type, float duration = 1.5f)
     {
-
+        for (int i = 0; i < _topSpriteRenderer.Count; ++i)
+        {
+            _topSpriteRenderer[i].DOColor(new Color(seasonContainer.GetSeasonEffect(type)._topColor.r, seasonContainer.GetSeasonEffect(type)._topColor.g, seasonContainer.GetSeasonEffect(type)._topColor.b, 0.2f), duration);
+            _bodySpriteRenderer[i].DOColor(new Color(seasonContainer.GetSeasonEffect(type)._bodyColor.r, seasonContainer.GetSeasonEffect(type)._bodyColor.g, seasonContainer.GetSeasonEffect(type)._bodyColor.b, 0.35f), duration);
+        }
     }
 }
