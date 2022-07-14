@@ -9,6 +9,7 @@ using System;
 public class MultiLogManager : MonoSingleton<MultiLogManager>
 {
     private string _nameCache = "";
+    private bool _isSetted = false;
 
     private void Awake()
     {
@@ -19,6 +20,9 @@ public class MultiLogManager : MonoSingleton<MultiLogManager>
 
     private void OnJoin(ServerManager.JoinPacket joinPacket)
     {
+        if (!_isSetted)
+            return;
+
         Log($"{joinPacket.Name}¥‘¿Ã ¿‘¿Â«œºÃΩ¿¥œ¥Ÿ.");
     }
 
@@ -29,6 +33,12 @@ public class MultiLogManager : MonoSingleton<MultiLogManager>
 
     private void OnLeaderboard(ServerManager.RealtimeLeaderboardPacket leaderboardPacket)
     {
+        if (!_isSetted)
+        {
+            Debug.Log($"Ignore leaderboard packet");
+            _isSetted = true;
+            return;
+        }
         if (RealtimeLeaderboardManager.Instance.GetFirstEntry() == null) return;
         if (_nameCache != RealtimeLeaderboardManager.Instance.GetFirstEntry().Name)
         {
