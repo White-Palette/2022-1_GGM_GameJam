@@ -31,6 +31,12 @@ public class TitleManager : MonoBehaviour
         Fade.Instance.FadeIn();
         isLoading = false;
         isHelp = false;
+
+        if (PlayerPrefs.GetInt("isFirst", 0) == 0)
+        {
+            PlayerPrefs.SetInt("isFirst", 1);
+            HelpPanel();
+        }
     }
 
     private void Update()

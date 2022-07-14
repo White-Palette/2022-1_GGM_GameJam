@@ -27,8 +27,9 @@ public class ItemPillar : Pillar
 
         public override void Use()
         {
-            ComboManager.Instance.AddCombo(Random.Range(5, 10));
-            MultiLogManager.Instance.Log($"<color=#00ffff>아이템 사용: 콤보 추가 - x{Count}</color>");
+            int random = Random.Range(5, 10);
+            ComboManager.Instance.AddCombo(random);
+            MultiLogManager.Instance.Log($"<color=#00ffff>아이템 사용: 콤보 추가 - x{random}</color>");
             Debug.Log($"콤보 추가");
         }
 
@@ -45,7 +46,7 @@ public class ItemPillar : Pillar
         public override void Use()
         {
             ComboManager.Instance.FreezeCombo(5f);
-            MultiLogManager.Instance.Log($"<color=#00ffff>아이템 사용: 콤보 유지 - {Count}초</color>");
+            MultiLogManager.Instance.Log($"<color=#00ffff>아이템 사용: 콤보 유지 - 5초</color>");
             Debug.Log($"콤보 유지");
         }
 
@@ -62,7 +63,7 @@ public class ItemPillar : Pillar
         public override void Use()
         {
             PlayerController.Instance.AddGuard();
-            MultiLogManager.Instance.Log($"<color=#00ffff>아이템 사용: 가드 - 적의 공격 1회 방어</color>");
+            MultiLogManager.Instance.Log($"<color=#00ffff>아이템 사용: 가드 - 다음 적의 공격 방어</color>");
             Debug.Log($"적 방어");
         }
 
@@ -79,8 +80,8 @@ public class ItemPillar : Pillar
         public override void Use()
         {
             if (ChaserGenerator.Instance.Chaser != null)
-                ChaserGenerator.Instance.Chaser.Freeze(Count);
-            MultiLogManager.Instance.Log($"<color=#00ffff>아이템 사용: 드래곤 멈춤 - {Count}초</color>");
+                ChaserGenerator.Instance.Chaser.Freeze(5);
+            MultiLogManager.Instance.Log($"<color=#00ffff>아이템 사용: 드래곤 멈춤 - 5초</color>");
             Debug.Log($"드래곤 멈춤");
         }
 
