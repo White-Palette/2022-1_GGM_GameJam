@@ -144,9 +144,16 @@ public class ServerManager : MonoSingleton<ServerManager>
         ws.Connect();
     }
 
+    float heightCache = 0;
+    float comboCache = 0;
+
     public void SendHeight(float height, int combo)
     {
+        if (height == heightCache && combo == comboCache)
+            return;
         ws.Send(JsonConvert.SerializeObject(new Packet("h", JsonConvert.SerializeObject(new { h = height, c = combo }))));
+        heightCache = height;
+        comboCache = combo;
     }
 
     public void SendName(string name, Color color)
