@@ -9,6 +9,8 @@ public class MultiLogManager : MonoSingleton<MultiLogManager>
 {
     [SerializeField] TextMeshProUGUI[] logTMP;
 
+    private string firstEntryName;
+
     private void Awake()
     {
         ServerManager.Instance.OnLeave += leavePacket =>
@@ -28,6 +30,8 @@ public class MultiLogManager : MonoSingleton<MultiLogManager>
         {
             logTMP[2].rectTransform.DOAnchorPosX(450f, 1f);
         }
+
+        ChangeFirstEntry();
     }
 
     public IEnumerator MoveAndFadeTMP(int tmp)
@@ -46,5 +50,22 @@ public class MultiLogManager : MonoSingleton<MultiLogManager>
         Debug.Log(name + "이(가) 떨어졌습니다.");
         logTMP[tmp].text = $"{name} 이(가) 떨어졌습니다.";
         StartCoroutine(MoveAndFadeTMP(tmp));
+    }
+
+    public void ChangeFirstEntry()
+    {
+        if (RealtimeLeaderboardManager.Instance.GetFirstEntry() == null) return;
+        if (firstEntryName == null && RealtimeLeaderboardManager.Instance.GetFirstEntry() != null)
+        {
+            firstEntryName = RealtimeLeaderboardManager.Instance.GetFirstEntry().Name;
+        }
+
+        if(firstEntryName != RealtimeLeaderboardManager.Instance.GetFirstEntry().Name)
+        {
+            Debug.Log(RealtimeLeaderboardManager.Instance.GetFirstEntry().Name + " 이(가) 선두를 빼앗았습니다!");
+            firstEntryName = RealtimeLeaderboardManager.Instance.GetFirstEntry().Name;
+            logTMP[1].text = $"{RealtimeLeaderboardManager.Instance.GetFirstEntry().Name} 이(가) 선두를 빼앗았습니다!";
+            StartCoroutine(MoveAndFadeTMP(1));
+        }
     }
 }
