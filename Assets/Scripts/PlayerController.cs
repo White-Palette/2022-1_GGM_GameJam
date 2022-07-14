@@ -258,6 +258,12 @@ public class PlayerController : MonoSingleton<PlayerController>
         MaxVaild = 65 + (vaild / 2);
         resetTime = 0.2f + combo;
         perfactTime = resetTime / 2;
+        if(!isColorSeted)
+        {
+            ColorUtility.TryParseHtmlString(UserData.ColorStr, out Color color);
+            UserData.Color = color;
+            TrailColor(color);
+        }
     }
 
     private void ReMove()

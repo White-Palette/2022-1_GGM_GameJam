@@ -69,5 +69,7 @@ public class AcceChange : MonoBehaviour
     {
         ColorUtility.TryParseHtmlString(color, out Color _color);
         UserData.Color = _color;
+        UserData.ColorStr = color;
+        UserData.Save();
     }
 }

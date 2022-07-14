@@ -23,6 +23,7 @@ public static class UserData
     public static int ItemGlobe { get; set; }
     public static int ItemShose { get; set; }
     public static Color Color { get; set; }
+    public static string ColorStr { get; set; }
 
     public static void Save()
     {
@@ -35,6 +36,7 @@ public static class UserData
         PlayerPrefs.SetInt("Hat", ItemHat);
         PlayerPrefs.SetInt("Globe", ItemGlobe);
         PlayerPrefs.SetInt("Shose", ItemShose);
+        PlayerPrefs.SetString("Color", ColorStr);
     }
 
     public static void Load()
@@ -48,6 +50,7 @@ public static class UserData
         ItemHat = PlayerPrefs.GetInt("Hat", 0);
         ItemGlobe = PlayerPrefs.GetInt("Globe", 0);
         ItemShose = PlayerPrefs.GetInt("Shose", 0);
+        ColorStr = PlayerPrefs.GetString("Color", "#ff0000");
     }
 
     public static void Clear()
@@ -61,6 +64,7 @@ public static class UserData
         PlayerPrefs.DeleteKey("Hat");
         PlayerPrefs.DeleteKey("Globe");
         PlayerPrefs.DeleteKey("Shose");
+        PlayerPrefs.DeleteKey("Color");
     }
 
     static UserData()
