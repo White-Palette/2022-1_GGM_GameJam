@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "files.encoding": "euckr"
+    "files.encoding": "euckr",
+    "git.ignoreLimitWarning": true
 }
