@@ -7079,6 +7079,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _valueSpeed: 1
+  timingZone: {fileID: 1637066901}
 --- !u!1001 &1535551687
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8389,6 +8390,14 @@ PrefabInstance:
       value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 3510075558553763199, guid: a9ceea67401eaad43a45758206b9ee8b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3510075558553763199, guid: a9ceea67401eaad43a45758206b9ee8b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3510075558553763199, guid: a9ceea67401eaad43a45758206b9ee8b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -8586,6 +8595,8 @@ MonoBehaviour:
   _comboText: {fileID: 381751798}
   _PauseImage: {fileID: 1103467008}
   light2d: {fileID: 1124280325}
+  _chaserIcon: {fileID: 0}
+  _distanceText: {fileID: 0}
 --- !u!4 &2097466488
 Transform:
   m_ObjectHideFlags: 0
@@ -8705,7 +8716,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7769516, y: 1}
+    m_SensorSize: {x: 1.7782736, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
