@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,8 @@ public class SeasonManager : MonoSingleton<SeasonManager>
     private Season _currentSeason = Season.None;
     private int _currentSeasonIndex = 0;
     private GameObject _currentSeasonEffect = null;
+
+    public Action<Season, float> OnSeasonChanged = null;
 
     private void Awake()
     {
@@ -51,7 +54,7 @@ public class SeasonManager : MonoSingleton<SeasonManager>
         }
         else if (_currentSeason == Season.None)
         {
-            _currentSeason = (Season)Random.Range(1, 5);
+            _currentSeason = (Season)UnityEngine.Random.Range(1, 5);
         }
         else
         {
@@ -63,6 +66,8 @@ public class SeasonManager : MonoSingleton<SeasonManager>
         ChangeEffect();
 
         ChangeTowerColor();
+
+        OnSeasonChanged(_currentSeason, 1.5f);
     }
 
     public void ChangeSeason(Season season)
@@ -74,6 +79,8 @@ public class SeasonManager : MonoSingleton<SeasonManager>
         ChangeEffect();
 
         ChangeTowerColor();
+
+        OnSeasonChanged(_currentSeason, 1.5f);
     }
 
     public void AddTower(Pillar tower)
