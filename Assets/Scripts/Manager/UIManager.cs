@@ -79,8 +79,6 @@ public class UIManager : MonoSingleton<UIManager>
         }
     }
 
-
-
     public void SetPauseImage(bool isActive)
     {
         _PauseImage.gameObject.SetActive(isActive);
@@ -93,5 +91,10 @@ public class UIManager : MonoSingleton<UIManager>
         _comboText.transform.DOScale(new Vector2(1f, 1f), 0.2f).SetEase(Ease.OutSine);
 
         yield break;
+    }
+
+    public void FireEffect(GameObject fireEffect)
+    {
+        fireEffect.SetActive(true);
     }
 }

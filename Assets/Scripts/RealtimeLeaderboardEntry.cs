@@ -9,11 +9,13 @@ public class RealtimeLeaderboardEntry : MonoBehaviour, IPoolable
 {
     [SerializeField] TMP_Text NameText = null;
     [SerializeField] TMP_Text HeightText = null;
+    [SerializeField] SpriteRenderer[] spriteRenderers = null;
 
     private float _height = 0;
 
     private CanvasGroup _canvasGroup = null;
     private Image _image;
+    private bool _isFired;
 
     public void Initialize()
     {
@@ -21,6 +23,33 @@ public class RealtimeLeaderboardEntry : MonoBehaviour, IPoolable
         NameText.text = "";
         HeightText.text = "";
         _canvasGroup.DOFade(1f, 0.5f).From(0f);
+    }
+
+    public bool IsFired
+    {
+        get => _isFired;
+        set
+        {
+            if (_isFired == value) return;
+
+            if (value)
+            {
+                foreach(var spriteRenderer in spriteRenderers)
+                {
+                    spriteRenderer.gameObject.SetActive(true);
+                    spriteRenderer.DOFade(1f, 0.5f).From(0f);
+                }
+            }
+            else
+            {
+                foreach (var spriteRenderer in spriteRenderers)
+                {
+                    spriteRenderer.gameObject.SetActive(false);
+                    spriteRenderer.DOFade(0f, 0.5f).From(1f);
+                }
+            }
+            _isFired = value;
+        }
     }
 
     public string Name

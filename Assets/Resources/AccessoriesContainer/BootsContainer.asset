@@ -24,9 +24,9 @@ MonoBehaviour:
     validValue: 0
     Speed: 0
   - Accessory: 2
-    Sprite: {fileID: 21300000, guid: 3500f9aadd86c0647be7b792e5e6f6c8, type: 3}
+    Sprite: {fileID: 21300000, guid: 8bb3a05679b89b5458936f9c7196c175, type: 3}
     ComboDuration: 0
-    validValue: 4
+    validValue: 5
     Speed: 0
   - Accessory: 3
     Sprite: {fileID: 21300000, guid: c77ea5d645a9c4e4aab16063b09f602c, type: 3}
