@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class ComboManager : MonoSingleton<ComboManager>
@@ -6,15 +8,20 @@ public class ComboManager : MonoSingleton<ComboManager>
     public int MaxCombo { get; private set; }
 
     private bool _isChaser = false;
+    private float freezeTime = 0;
 
     public void AddCombo()
     {
+        if (freezeTime > 0)
+            return;
         Combo++;
         StartCoroutine(UIManager.Instance.ComboEffect());
     }
 
     public void ResetCombo()
     {
+        if (freezeTime > 0)
+            return;
         UpdateMaxCombo();
 
         if (!_isChaser)
@@ -39,6 +46,20 @@ public class ComboManager : MonoSingleton<ComboManager>
 
     public void AddCombo(int combo)
     {
+        if (freezeTime > 0)
+            return;
         Combo += combo;
+    }
+
+    public void FreezeCombo(float time)
+    {
+        StartCoroutine(FreezeComboCoroutine(time));
+    }
+
+    private IEnumerator FreezeComboCoroutine(float time)
+    {
+        freezeTime = time;
+        yield return new WaitForSeconds(time);
+        freezeTime = 0;
     }
 }
