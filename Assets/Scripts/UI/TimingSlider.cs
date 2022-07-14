@@ -10,6 +10,8 @@ public class TimingSlider : MonoBehaviour
     [SerializeField]
     private float _valueSpeed = 2f;
 
+    [SerializeField] RectTransform timingZone;
+
     private Slider _slider = null;
 
     private bool _isFail = false;
@@ -26,6 +28,7 @@ public class TimingSlider : MonoBehaviour
         _isFail = false;
         _slider.value = 0f;
         _slider.gameObject.SetActive(true);
+        timingZone.sizeDelta = new Vector2((PlayerController.Instance.MaxVaild - PlayerController.Instance.MinVaild) * 3.5f, 0);
         StartCoroutine(nameof(MoveValueCoroutine));
     }
 

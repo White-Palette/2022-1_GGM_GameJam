@@ -67,7 +67,7 @@ public class GuardianPillar : Pillar
             _guardian.Attack2();
             PlayerController.Instance.Dead("Hit");
         }
-        else if (_inputValue < 35f || _inputValue > 65f)
+        else if (_inputValue < PlayerController.Instance.MinVaild || _inputValue > PlayerController.Instance.MaxVaild)
         {
             _guardian.Attack1();
             PlayerController.Instance.Dead("Hit");
