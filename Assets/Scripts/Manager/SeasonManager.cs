@@ -23,7 +23,7 @@ public class SeasonManager : MonoSingleton<SeasonManager>
 
     private IEnumerator Start()
     {
-        ChangeSeason(Season.Winter);
+        ChangeSeason(Season.Spring);
         while (true)
         {
             yield return null;

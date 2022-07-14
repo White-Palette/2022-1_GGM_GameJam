@@ -23,7 +23,7 @@ MonoBehaviour:
     _topColor: {r: 1, g: 0.8627451, b: 0.68235296, a: 1}
     _bodyColor: {r: 0.80784315, g: 0.84705883, b: 0.61960787, a: 1}
     _backgroundColor: {r: 0.27930436, g: 0.44, b: 0.3596522, a: 1}
-    Effect: {fileID: 0}
+    Effect: {fileID: 5732357980253701014, guid: dd20e7a72b39b3f4d8f3a4452a5a03fb, type: 3}
     Music: 1
   - Season: 2
     _topColor: {r: 0.5019608, g: 0.6039216, b: 0.43529412, a: 1}
