@@ -1057,7 +1057,7 @@ RectTransform:
   m_GameObject: {fileID: 104162492}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1987688753}
@@ -4416,8 +4416,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC11C\uB9B0\uC324\uC758 \uBAA8\uC790, \uADC0\uC5FD\uB2E4.\n\uBAA8\uB4E0
-    \uB2A5\uB825\uCE58\uAC00 \uC0C1\uC2B9\uD55C\uB2E4."
+  m_text: "\uC11C\uB9B0\uC324\uC758 \uBAA8\uC790, \uADC0\uC5FD\uB2E4.\n\uC2EC\uC9C0\uC5B4,
+    \uAE5C\uCC0D\uD558\uB2E4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 40175cd8215ca2a43abf613687e82b1e, type: 2}
   m_sharedMaterial: {fileID: 1315975141151041060, guid: 40175cd8215ca2a43abf613687e82b1e, type: 2}
