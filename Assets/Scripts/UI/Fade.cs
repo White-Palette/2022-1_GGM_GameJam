@@ -14,6 +14,8 @@ public class Fade : MonoSingleton<Fade>
     float fadeTime = 0.75f;
     public static bool isTutoMap { get; set; }
 
+    private bool isFadeIn = false;
+
     private void Start()
     {
         fadeImg.gameObject.SetActive(true);
@@ -22,7 +24,11 @@ public class Fade : MonoSingleton<Fade>
 
     public void FadeIn()
     {
-        StartCoroutine(FadeInCoroutine());
+        if (!isFadeIn)
+        {
+            StartCoroutine(FadeInCoroutine());
+            isFadeIn = true;
+        }
     }
 
     public IEnumerator FadeInCoroutine()
@@ -31,7 +37,7 @@ public class Fade : MonoSingleton<Fade>
         fadeImg.DOFillAmount(0f, fadeTime).SetEase(Ease.InQuad).From(1f);
         yield return new WaitForSeconds(1f);
         fadeImg.raycastTarget = false;
-
+        isFadeIn = false;
     }
 
     public void FadeOutToMainMenu()

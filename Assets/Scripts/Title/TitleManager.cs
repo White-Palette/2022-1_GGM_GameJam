@@ -77,7 +77,7 @@ public class TitleManager : MonoBehaviour
         {
             GameQuitPanel();
         }
-        else if (Input.GetKeyDown(KeyCode.B))
+        else if (Input.GetKeyDown(KeyCode.B) || Input.GetKeyDown(KeyCode.Escape))
         {
             DisableAllPanel();
         }
