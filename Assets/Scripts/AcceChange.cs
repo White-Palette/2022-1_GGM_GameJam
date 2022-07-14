@@ -25,6 +25,8 @@ public class AcceChange : MonoBehaviour
         RA.sprite = globecon.Accessories[UserData.ItemGlobe].Sprite;
         LL.sprite = bootcon.Accessories[UserData.ItemShose].Sprite;
         RL.sprite = bootcon.Accessories[UserData.ItemShose].Sprite;
+        ActivePanel("Head");
+        gameObject.SetActive(false);
     }
 
     public void BuyHat(int number)

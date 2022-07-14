@@ -7,7 +7,8 @@ public enum HatType
     None,
     SantaHat,
     GuardianHat,
-    MohicanHat
+    MohicanHat,
+    SeorinMetaHat
 }
 
 [System.Serializable]
