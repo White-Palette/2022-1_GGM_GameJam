@@ -10,7 +10,9 @@ public enum PillarType
     Enemy,
     //Spring,
     Trap,
-    Item
+    Item,
+    Reverse,
+    EliteEnemy,
 }
 
 [Serializable]

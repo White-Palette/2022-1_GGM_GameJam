@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerController : MonoSingleton<PlayerController>
 {
-    [SerializeField] Pillar currentPillar = null;
+    public Pillar currentPillar = null;
     [SerializeField] AnimationCurve jumpCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
     [SerializeField] AnimationCurve speedCurve = AnimationCurve.EaseInOut(1, 1, 0, 0);
     [SerializeField] ParticleSystem landing;
@@ -24,6 +24,8 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     public float MinVaild { get; set; }
     public float MaxVaild { get; set; }
+
+    public bool Reverse = false;
 
     private ParticleSystem particle;
 
@@ -70,32 +72,68 @@ public class PlayerController : MonoSingleton<PlayerController>
     {
         if (!isMoving && !isDead)
         {
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            if (Reverse)
             {
-                if (currentPillar.LeftPillar != null)
+                if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
-                    MoveToPillar(currentPillar.LeftPillar);
-                    transform.localScale = new Vector3(-0.8f, 0.8f, 1);
-                    animator.SetBool("IsJump", true);
+                    if (currentPillar.RightPillar != null)
+                    {
+                        MoveToPillar(currentPillar.RightPillar);
+                        transform.localScale = new Vector3(0.8f, 0.8f, 1);
+                        animator.SetBool("IsJump", true);
+                    }
+                    else if (currentPillar.RightPillar == null)
+                    {
+                        transform.localScale = new Vector3(0.8f, 0.8f, 1);
+                        Dead("Miss");
+                    }
+                    Reverse = false;
                 }
-                else if (currentPillar.LeftPillar == null)
+                else if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
-                    transform.localScale = new Vector3(-0.8f, 0.8f, 1);
-                    Dead("Miss");
+                    if (currentPillar.LeftPillar != null)
+                    {
+                        MoveToPillar(currentPillar.LeftPillar);
+                        transform.localScale = new Vector3(-0.8f, 0.8f, 1);
+                        animator.SetBool("IsJump", true);
+                    }
+                    else if (currentPillar.LeftPillar == null)
+                    {
+                        transform.localScale = new Vector3(-0.8f, 0.8f, 1);
+                        Dead("Miss");
+                    }
+                    Reverse = false;
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            else
             {
-                if (currentPillar.RightPillar != null)
+                if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
-                    MoveToPillar(currentPillar.RightPillar);
-                    transform.localScale = new Vector3(0.8f, 0.8f, 1);
-                    animator.SetBool("IsJump", true);
+                    if (currentPillar.LeftPillar != null)
+                    {
+                        MoveToPillar(currentPillar.LeftPillar);
+                        transform.localScale = new Vector3(-0.8f, 0.8f, 1);
+                        animator.SetBool("IsJump", true);
+                    }
+                    else if (currentPillar.LeftPillar == null)
+                    {
+                        transform.localScale = new Vector3(-0.8f, 0.8f, 1);
+                        Dead("Miss");
+                    }
                 }
-                else if (currentPillar.RightPillar == null)
+                else if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
-                    transform.localScale = new Vector3(0.8f, 0.8f, 1);
-                    Dead("Miss");
+                    if (currentPillar.RightPillar != null)
+                    {
+                        MoveToPillar(currentPillar.RightPillar);
+                        transform.localScale = new Vector3(0.8f, 0.8f, 1);
+                        animator.SetBool("IsJump", true);
+                    }
+                    else if (currentPillar.RightPillar == null)
+                    {
+                        transform.localScale = new Vector3(0.8f, 0.8f, 1);
+                        Dead("Miss");
+                    }
                 }
             }
 
@@ -163,7 +201,7 @@ public class PlayerController : MonoSingleton<PlayerController>
         });
     }
 
-    private float JumpDuration()
+    public float JumpDuration()
     {
         animator.speed = Mathf.Clamp(1 + ComboManager.Instance.Combo / 50f, 1, 2);
         return speedCurve.Evaluate(ComboManager.Instance.Combo / 50f) - ((speed * Mathf.Clamp(ComboManager.Instance.Combo, 0, 50)) / 50f);

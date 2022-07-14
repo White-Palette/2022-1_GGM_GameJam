@@ -14,11 +14,8 @@ public class Fade : MonoSingleton<Fade>
     float fadeTime = 0.75f;
     public static bool isTutoMap { get; set; }
 
-    private bool isFadeIn = false;
-
     private void Start()
     {
-        isFadeIn = false;
         fadeImg.gameObject.SetActive(true);
         FadeIn();
     }
@@ -26,7 +23,6 @@ public class Fade : MonoSingleton<Fade>
     public void FadeIn()
     {
         StartCoroutine(FadeInCoroutine());
-        isFadeIn = true;
     }
 
     public IEnumerator FadeInCoroutine()
@@ -35,12 +31,10 @@ public class Fade : MonoSingleton<Fade>
         fadeImg.DOFillAmount(0f, fadeTime).SetEase(Ease.InQuad).From(1f);
         yield return new WaitForSeconds(1f);
         fadeImg.raycastTarget = false;
-        isFadeIn = false;
     }
 
     public void FadeOutToMainMenu()
     {
-        if (isFadeIn) return;
         MouseManager.Show(true);
         MouseManager.Lock(false);
         sceneLoad = 1;
@@ -49,7 +43,6 @@ public class Fade : MonoSingleton<Fade>
 
     public void FadeOutToGameScene()
     {
-        if (isFadeIn) return;
         MouseManager.Show(false);
         MouseManager.Lock(true);
         sceneLoad = 2;
@@ -58,7 +51,6 @@ public class Fade : MonoSingleton<Fade>
 
     public void FadeOutToGameOverScene()
     {
-        if (isFadeIn) return;
         MouseManager.Show(true);
         MouseManager.Lock(false);
         sceneLoad = 3;
@@ -67,7 +59,6 @@ public class Fade : MonoSingleton<Fade>
 
     public void FadeOutToTutorial()
     {
-        if (isFadeIn) return;
         MouseManager.Show(false);
         MouseManager.Lock(true);
         sceneLoad = 4;
@@ -77,6 +68,8 @@ public class Fade : MonoSingleton<Fade>
 
     public IEnumerator FadeOutCoroutine(int sceneLoad)
     {
+        if (sceneLoad == 4) isTutoMap = true;
+        else isTutoMap = false;
         fadeImg.raycastTarget = true;
         fadeImg.fillOrigin = 1;
         fadeImg.DOFillAmount(1f, fadeTime).SetEase(Ease.InQuad).From(0f);

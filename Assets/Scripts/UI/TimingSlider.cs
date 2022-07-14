@@ -63,10 +63,13 @@ public class TimingSlider : MonoBehaviour
     {
         for (float i = _slider.minValue; i < _slider.maxValue; i += _valueSpeed)
         {
+            if (Time.timeScale == 0)
+            {
+                i -= _valueSpeed;
+            }
             _slider.value = i;
             yield return null;
         }
-
         _isFail = true;
     }
 

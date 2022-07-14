@@ -75,11 +75,11 @@ public class RealtimeLeaderboardManager : MonoSingleton<RealtimeLeaderboardManag
 
                 if (entry.Combo >= 50)
                 {
-
+                    realtimeLeaderboard[entry.Id].IsFired = true;
                 }
                 else
                 {
-
+                    realtimeLeaderboard[entry.Id].IsFired = false;
                 }
             }
         }
