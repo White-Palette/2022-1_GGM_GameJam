@@ -78,7 +78,7 @@ public class RealtimeLeaderboardManager : MonoSingleton<RealtimeLeaderboardManag
                 if (entry.Combo >= 50)
                 {
                     if (realtimeLeaderboard[entry.Id].IsFired) return;
-                    MultiLogManager.Instance.Log($"{realtimeLeaderboard[entry.Id].name}님이 불타고 있습니다.");
+                    MultiLogManager.Instance.Log($"{realtimeLeaderboard[entry.Id].Name}님이 불타고 있습니다.");
                     realtimeLeaderboard[entry.Id].IsFired = true;
                 }
                 else
