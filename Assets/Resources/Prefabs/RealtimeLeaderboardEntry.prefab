@@ -69,8 +69,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Dummy
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7d45233b02f5e2a40918b42892f498df, type: 2}
-  m_sharedMaterial: {fileID: 1315975141151041060, guid: 7d45233b02f5e2a40918b42892f498df, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 40175cd8215ca2a43abf613687e82b1e, type: 2}
+  m_sharedMaterial: {fileID: -7859531511721222345, guid: 40175cd8215ca2a43abf613687e82b1e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -219,8 +219,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0m
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7d45233b02f5e2a40918b42892f498df, type: 2}
-  m_sharedMaterial: {fileID: 1315975141151041060, guid: 7d45233b02f5e2a40918b42892f498df, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 40175cd8215ca2a43abf613687e82b1e, type: 2}
+  m_sharedMaterial: {fileID: -7859531511721222345, guid: 40175cd8215ca2a43abf613687e82b1e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -395,6 +395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameText: {fileID: 1825792936306942301}
   HeightText: {fileID: 1825792936868661992}
+  spriteRenderers: []
 --- !u!225 &8395027275898639908
 CanvasGroup:
   m_ObjectHideFlags: 0
