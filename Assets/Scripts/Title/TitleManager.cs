@@ -77,13 +77,17 @@ public class TitleManager : MonoBehaviour
         {
             GameQuitPanel();
         }
-        else if (Input.GetKeyDown(KeyCode.Escape))
+        else if (Input.GetKeyDown(KeyCode.B))
         {
             DisableAllPanel();
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
             ShopPanel();
+        }
+        else if(Input.GetKeyDown(KeyCode.H))
+        {
+            HelpPanel();
         }
         else if (Input.GetMouseButtonDown(0))
         {

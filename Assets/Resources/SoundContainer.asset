@@ -12,7 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f3463d91fef498488ec48a039a0e97f, type: 3}
   m_Name: SoundContainer
   m_EditorClassIdentifier: 
-  MusicSources: []
+  MusicSources:
+  - Music: 1
+    AudioClip: {fileID: 8300000, guid: 9970c22f51a7c5c4793bfb7c0ee0bbee, type: 3}
+  - Music: 2
+    AudioClip: {fileID: 8300000, guid: 082250d438608c549bd29ecc133067c9, type: 3}
+  - Music: 3
+    AudioClip: {fileID: 8300000, guid: ecbd2a14c06e6f548806bea4214975ef, type: 3}
+  - Music: 4
+    AudioClip: {fileID: 8300000, guid: 3b26b68f2da199e4684ab7c867a0ba57, type: 3}
+  - Music: 5
+    AudioClip: {fileID: 8300000, guid: 59fb8871d7216d545be6eaa45f51ea5e, type: 3}
+  - Music: 6
+    AudioClip: {fileID: 8300000, guid: 761f15c598009f2499bdf474dbea1e21, type: 3}
+  - Music: 7
+    AudioClip: {fileID: 8300000, guid: 137285273a7f3ea409d1a28962ba5f3b, type: 3}
+  - Music: 8
+    AudioClip: {fileID: 8300000, guid: 6de7e218375a1c144852704137f0eeb8, type: 3}
   EffectSources:
   - Effect: 4
     AudioClip: {fileID: 8300000, guid: 2f31ed1ef326e3740b79f1de49437694, type: 3}

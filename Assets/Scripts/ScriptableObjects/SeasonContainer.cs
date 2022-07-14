@@ -20,6 +20,7 @@ public class SeasonEffect
     public Color _bodyColor;
     public Color _backgroundColor;
     public GameObject Effect;
+    public Music Music;
 }
 
 [CreateAssetMenu(fileName = "SeasonContainer", menuName = "")]

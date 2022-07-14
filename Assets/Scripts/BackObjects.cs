@@ -66,8 +66,8 @@ public class BackObjects : MonoBehaviour
     {
         for (int i = 0; i < _topSpriteRenderer.Count; ++i)
         {
-            _topSpriteRenderer[i].DOColor(new Color(seasonContainer.GetSeasonEffect(type)._topColor.r, seasonContainer.GetSeasonEffect(type)._topColor.g, seasonContainer.GetSeasonEffect(type)._topColor.b, 0.2f), duration);
-            _bodySpriteRenderer[i].DOColor(new Color(seasonContainer.GetSeasonEffect(type)._bodyColor.r, seasonContainer.GetSeasonEffect(type)._bodyColor.g, seasonContainer.GetSeasonEffect(type)._bodyColor.b, 0.35f), duration);
+            _topSpriteRenderer[i].DOColor(new Color(seasonContainer.GetSeasonEffect(type)._topColor.r - 0.5f, seasonContainer.GetSeasonEffect(type)._topColor.g - 0.5f, seasonContainer.GetSeasonEffect(type)._topColor.b - 0.5f, 0.2f), duration);
+            _bodySpriteRenderer[i].DOColor(new Color(seasonContainer.GetSeasonEffect(type)._bodyColor.r - 0.5f, seasonContainer.GetSeasonEffect(type)._bodyColor.g - 0.5f, seasonContainer.GetSeasonEffect(type)._bodyColor.b - 0.5f, 0.35f), duration);
         }
     }
 }

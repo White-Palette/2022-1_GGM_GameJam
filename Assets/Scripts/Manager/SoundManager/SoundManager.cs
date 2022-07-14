@@ -34,6 +34,9 @@ public class SoundManager : MonoSingleton<SoundManager>
             return;
 
         currentMusic = music;
+
         MusicSource soundSource = soundContainer.MusicSources.FirstOrDefault(x => x.Music == music);
+
+        PoolManager<AudioObject>.Get(transform).PlayMusic(soundSource.AudioClip);
     }
 }

@@ -37,7 +37,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     private float perfactTime;
     private float combo = 0;
     private float vaild = 0;
-    private float speed = 0;
+    public float speed = 0;
     private int guard = 0;
 
     private void Awake()
@@ -101,7 +101,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 
             waitTime += Time.deltaTime;
 
-            if (waitTime > 0.2f)
+            if (waitTime > resetTime)
             {
                 ComboManager.Instance.ResetCombo();
             }
@@ -148,7 +148,7 @@ public class PlayerController : MonoSingleton<PlayerController>
         currentPillar.TowerEvent();
         currentPillar.Generate();
 
-        if (waitTime < 0.1f)
+        if (waitTime < perfactTime)
         {
             ComboManager.Instance.AddCombo();
         }
@@ -166,7 +166,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     private float JumpDuration()
     {
         animator.speed = Mathf.Clamp(1 + ComboManager.Instance.Combo / 50f, 1, 2);
-        return speedCurve.Evaluate(ComboManager.Instance.Combo / 50f) - (speed* Mathf.Clamp(ComboManager.Instance.Combo, 0, 50)/50f);
+        return speedCurve.Evaluate(ComboManager.Instance.Combo / 50f) - ((speed* Mathf.Clamp(ComboManager.Instance.Combo, 0, 50))/50f);
     }
 
     public float Height
@@ -205,8 +205,6 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     public void ItemChange()
     {
-        resetTime = 0.2f + combo;
-        perfactTime = resetTime / 2;
         hat.sprite = HatSprite.Accessories[UserData.ItemHat].Sprite;
         leftArm.sprite = GlobeSprite.Accessories[UserData.ItemGlobe].Sprite;
         rightArm.sprite = GlobeSprite.Accessories[UserData.ItemGlobe].Sprite;
@@ -217,6 +215,8 @@ public class PlayerController : MonoSingleton<PlayerController>
         speed = HatSprite.Accessories[UserData.ItemHat].Speed + GlobeSprite.Accessories[UserData.ItemGlobe].Speed + BootsSprite.Accessories[UserData.ItemShose].Speed;
         MinVaild = 35 - (vaild/2);
         MaxVaild = 65 + (vaild/2);
+        resetTime = 0.2f + combo;
+        perfactTime = resetTime / 2;
     }
 
     private void ReMove()

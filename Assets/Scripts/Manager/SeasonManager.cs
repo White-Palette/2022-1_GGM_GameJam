@@ -68,6 +68,8 @@ public class SeasonManager : MonoSingleton<SeasonManager>
         ChangeTowerColor();
 
         OnSeasonChanged(_currentSeason, 1.5f);
+
+        ChangeMusic();
     }
 
     public void ChangeSeason(Season season)
@@ -81,6 +83,8 @@ public class SeasonManager : MonoSingleton<SeasonManager>
         ChangeTowerColor();
 
         OnSeasonChanged(_currentSeason, 1.5f);
+
+        ChangeMusic();
     }
 
     public void AddTower(Pillar tower)
@@ -139,6 +143,16 @@ public class SeasonManager : MonoSingleton<SeasonManager>
             {
                 tower.SetBodyColor(seasonContainer.GetSeasonEffect(_currentSeason)._bodyColor, 1.5f);
             }
+        }
+    }
+
+    private void ChangeMusic()
+    {
+        Music music = seasonContainer.GetSeasonEffect(_currentSeason).Music;
+
+        if (music != Music.None)
+        {
+            SoundManager.Instance.PlaySound(music);
         }
     }
 }
