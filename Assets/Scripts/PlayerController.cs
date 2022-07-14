@@ -150,7 +150,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     {
         if (isColorSeted) return;
         trail.startColor = value;
-        trail.endColor = value;
+        trail.endColor = value - new Color(0, 0, 0, 255);
         isColorSeted = true;
     }
 

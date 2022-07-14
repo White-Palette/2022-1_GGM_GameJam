@@ -64,4 +64,10 @@ public class AcceChange : MonoBehaviour
         }
         
     }
+
+    public void TrailColorChange(string color)
+    {
+        ColorUtility.TryParseHtmlString(color, out Color _color);
+        UserData.Color = _color;
+    }
 }
