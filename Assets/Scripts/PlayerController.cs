@@ -267,6 +267,6 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     public void AddGuard()
     {
-        guard++;
+        guard = 1;
     }
 }
