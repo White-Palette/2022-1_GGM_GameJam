@@ -72,6 +72,15 @@ public class RealtimeLeaderboardManager : MonoSingleton<RealtimeLeaderboardManag
                 if ((realtimeLeaderboard[entry.Id].transform as RectTransform).anchoredPosition.y == entry.Height * scale)
                     continue;
                 (realtimeLeaderboard[entry.Id].transform as RectTransform).DOAnchorPosY(entry.Height * scale, 0.5f);
+
+                if (entry.Combo >= 50)
+                {
+
+                }
+                else
+                {
+
+                }
             }
         }
     }

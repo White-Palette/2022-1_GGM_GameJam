@@ -751,6 +751,7 @@ MonoBehaviour:
   light2d: {fileID: 1616639324}
   _chaserIcon: {fileID: 510982592}
   _distanceText: {fileID: 1855432718}
+  _fireEffect: {fileID: 1825792938247742434}
 --- !u!114 &134198534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2244,7 +2245,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7782736, y: 1}
+    m_SensorSize: {x: 1.7772021, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -5700,6 +5701,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1d55ff01dcdee54997def44723a8bbd, type: 3}
+--- !u!1 &1825792938247742434 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8397660124238790333, guid: a1d55ff01dcdee54997def44723a8bbd, type: 3}
+  m_PrefabInstance: {fileID: 1825792938247742433}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &1857218934324120727
 SpriteRenderer:
   m_ObjectHideFlags: 0

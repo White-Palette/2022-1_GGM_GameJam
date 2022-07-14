@@ -19,6 +19,8 @@ public class GameManager : MonoSingleton<GameManager>
                 PauseGame();
             }
         }
+
+        //if(RealtimeLeaderboardManager.Instance.GetNameById()
     }
 
     public void PauseGame()
