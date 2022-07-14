@@ -41,7 +41,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     private int guard = 0;
 
     private void Awake()
-    {  
+    {
         ServerManager.Instance.OnConnected += () =>
         {
             StartCoroutine(Connected());
@@ -115,7 +115,7 @@ public class PlayerController : MonoSingleton<PlayerController>
         trail.endColor = value;
         isColorSeted = true;
     }
-    
+
     public void PlayerWin()
     {
         effectController.Play(currentPillar.transform.position + Vector3.up * 5f);
@@ -166,7 +166,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     private float JumpDuration()
     {
         animator.speed = Mathf.Clamp(1 + ComboManager.Instance.Combo / 50f, 1, 2);
-        return speedCurve.Evaluate(ComboManager.Instance.Combo / 50f) - ((speed* Mathf.Clamp(ComboManager.Instance.Combo, 0, 50))/50f);
+        return speedCurve.Evaluate(ComboManager.Instance.Combo / 50f) - ((speed * Mathf.Clamp(ComboManager.Instance.Combo, 0, 50)) / 50f);
     }
 
     public float Height
@@ -191,7 +191,7 @@ public class PlayerController : MonoSingleton<PlayerController>
         }
 
         if (isDead) return;
-        
+
         isDead = true;
         animator.SetTrigger(str);
         particle.Play();
@@ -213,15 +213,15 @@ public class PlayerController : MonoSingleton<PlayerController>
         combo = HatSprite.Accessories[UserData.ItemHat].ComboDuration + GlobeSprite.Accessories[UserData.ItemGlobe].ComboDuration + BootsSprite.Accessories[UserData.ItemShose].ComboDuration;
         vaild = HatSprite.Accessories[UserData.ItemHat].validValue + GlobeSprite.Accessories[UserData.ItemGlobe].validValue + BootsSprite.Accessories[UserData.ItemShose].validValue;
         speed = HatSprite.Accessories[UserData.ItemHat].Speed + GlobeSprite.Accessories[UserData.ItemGlobe].Speed + BootsSprite.Accessories[UserData.ItemShose].Speed;
-        MinVaild = 35 - (vaild/2);
-        MaxVaild = 65 + (vaild/2);
+        MinVaild = 35 - (vaild / 2);
+        MaxVaild = 65 + (vaild / 2);
         resetTime = 0.2f + combo;
         perfactTime = resetTime / 2;
     }
 
     private void ReMove()
     {
-        
+
     }
 
     public void AddGuard()
