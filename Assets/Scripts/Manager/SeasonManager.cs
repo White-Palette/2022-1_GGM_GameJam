@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class SeasonManager : MonoSingleton<SeasonManager>
@@ -106,7 +107,7 @@ public class SeasonManager : MonoSingleton<SeasonManager>
 
     private void ChangeBackgroundColor()
     {
-        Camera.main.backgroundColor = seasonContainer.GetSeasonEffect(_currentSeason)._backgroundColor;
+        Camera.main.DOColor(seasonContainer.GetSeasonEffect(_currentSeason)._backgroundColor, 1.5f);
     }
 
     private void ChangeEffect()
