@@ -84,9 +84,14 @@ public class RealtimeLeaderboardManager : MonoSingleton<RealtimeLeaderboardManag
         realtimeLeaderboard.Remove(id);
     }
 
+    public RealtimeLeaderboardEntry GetCurrentEntry()
+    {
+        return realtimeLeaderboard.Values.FirstOrDefault();
+    }
+
     public RealtimeLeaderboardEntry GetFirstEntry()
     {
-        return realtimeLeaderboard.Select(x => x.Value).OrderBy(x => x.Height).FirstOrDefault();
+        return realtimeLeaderboard.Select(x => x.Value).OrderBy(x => x.Height).LastOrDefault();
     }
 
     public string GetNameById(int id)
