@@ -25,6 +25,12 @@ public class TowerGenerator : MonoSingleton<TowerGenerator>
             case PillarType.Item:
                 pillar = PoolManager<ItemPillar>.Get(parent, position);
                 break;
+            case PillarType.Reverse:
+                pillar = PoolManager<ReversePillar>.Get(parent, position);
+                break;
+            case PillarType.EliteEnemy:
+                pillar = PoolManager<EliteGuardianPillar>.Get(parent, position);
+                break;
             default:
                 pillar = null;
                 break;
