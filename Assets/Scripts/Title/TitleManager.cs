@@ -36,7 +36,7 @@ public class TitleManager : MonoBehaviour
         if (PlayerPrefs.GetInt("isFirst", 0) == 0)
         {
             PlayerPrefs.SetInt("isFirst", 1);
-            HelpPanel();
+            OpenHelpPanel();
         }
     }
 
