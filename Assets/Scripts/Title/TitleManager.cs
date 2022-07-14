@@ -20,6 +20,7 @@ public class TitleManager : MonoBehaviour
     private bool isSettingEnable = false;
     private bool isGameQuitEnable = false;
     private bool isShopEnable = false;
+    private bool isHelpEnable = false;
 
     private bool isHelp = false;
     private bool isLoading = false;
@@ -87,7 +88,7 @@ public class TitleManager : MonoBehaviour
         }
         else if(Input.GetKeyDown(KeyCode.H))
         {
-            HelpPanel();
+            OpenHelpPanel();
         }
         else if (Input.GetMouseButtonDown(0))
         {
@@ -136,6 +137,12 @@ public class TitleManager : MonoBehaviour
         }
 
         yield break;
+    }
+
+    public void OpenHelpPanel()
+    {
+        isHelpEnable = !isHelpEnable;
+        StartCoroutine(TogglePanel(helpPanel, isHelpEnable));
     }
 
     public void HelpPanel()

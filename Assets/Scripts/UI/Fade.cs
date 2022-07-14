@@ -68,6 +68,8 @@ public class Fade : MonoSingleton<Fade>
 
     public IEnumerator FadeOutCoroutine(int sceneLoad)
     {
+        if (sceneLoad == 4) isTutoMap = true;
+        else isTutoMap = false;
         fadeImg.raycastTarget = true;
         fadeImg.fillOrigin = 1;
         fadeImg.DOFillAmount(1f, fadeTime).SetEase(Ease.InQuad).From(0f);
