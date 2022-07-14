@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 
 [RequireComponent(typeof(AudioSource))]
 public class AudioObject : MonoBehaviour, IPoolable
@@ -31,12 +32,14 @@ public class AudioObject : MonoBehaviour, IPoolable
 
     public void PlayOneShot(AudioClip clip, float volume = 1f)
     {
+        audioSource.outputAudioMixerGroup = Resources.Load<AudioMixer>("Mixer/AudioMixer").FindMatchingGroups("Effect")[0];
         audioSource.PlayOneShot(clip, volume);
         StartCoroutine(DestroyAfter(clip.length));
     }
 
     public void PlayMusic(AudioClip clip, float volume = 1f)
     {
+        audioSource.outputAudioMixerGroup = Resources.Load<AudioMixer>("Mixer/AudioMixer").FindMatchingGroups("Music")[0];
         audioSource.clip = clip;
         audioSource.volume = volume;
         audioSource.loop = true;
