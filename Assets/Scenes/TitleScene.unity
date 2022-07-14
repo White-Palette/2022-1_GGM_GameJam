@@ -1401,13 +1401,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 1244318385}
   m_HandleRect: {fileID: 1318195604}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -40
+  m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 946786140}
+        m_TargetAssemblyTypeName: SoundVolumeController, Assembly-CSharp
+        m_MethodName: EffectAudioControl
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &200915537
 GameObject:
   m_ObjectHideFlags: 0
@@ -1545,7 +1557,7 @@ MonoBehaviour:
   m_text: Music
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 40175cd8215ca2a43abf613687e82b1e, type: 2}
-  m_sharedMaterial: {fileID: -7859531511721222345, guid: 40175cd8215ca2a43abf613687e82b1e, type: 2}
+  m_sharedMaterial: {fileID: 8670743855877118959, guid: 40175cd8215ca2a43abf613687e82b1e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3231,7 +3243,7 @@ MonoBehaviour:
   m_text: Effect
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 40175cd8215ca2a43abf613687e82b1e, type: 2}
-  m_sharedMaterial: {fileID: -7859531511721222345, guid: 40175cd8215ca2a43abf613687e82b1e, type: 2}
+  m_sharedMaterial: {fileID: 8670743855877118959, guid: 40175cd8215ca2a43abf613687e82b1e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6176,6 +6188,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 945187703}
   m_CullTransparentMesh: 1
+--- !u!1 &946786138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 946786139}
+  - component: {fileID: 946786140}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &946786139
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946786138}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1226687054}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &946786140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946786138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c4d4fc46c4ef524ebf9228648461add, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _masterSoundSlider: {fileID: 1172597562}
+  _musicSoundSlider: {fileID: 1343237909}
+  _effectSoundSlider: {fileID: 177156399}
 --- !u!1 &960331330
 GameObject:
   m_ObjectHideFlags: 0
@@ -8482,13 +8541,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 1955288966}
   m_HandleRect: {fileID: 1786036934}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -40
+  m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 946786140}
+        m_TargetAssemblyTypeName: SoundVolumeController, Assembly-CSharp
+        m_MethodName: MasterAudioControl
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1176273735
 GameObject:
   m_ObjectHideFlags: 0
@@ -8587,7 +8658,7 @@ MonoBehaviour:
   m_text: Brightness
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 40175cd8215ca2a43abf613687e82b1e, type: 2}
-  m_sharedMaterial: {fileID: -7859531511721222345, guid: 40175cd8215ca2a43abf613687e82b1e, type: 2}
+  m_sharedMaterial: {fileID: 8670743855877118959, guid: 40175cd8215ca2a43abf613687e82b1e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8829,7 +8900,7 @@ MonoBehaviour:
   m_text: Press AnyKey To Start
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 40175cd8215ca2a43abf613687e82b1e, type: 2}
-  m_sharedMaterial: {fileID: -7859531511721222345, guid: 40175cd8215ca2a43abf613687e82b1e, type: 2}
+  m_sharedMaterial: {fileID: 8670743855877118959, guid: 40175cd8215ca2a43abf613687e82b1e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9261,6 +9332,7 @@ Transform:
   m_Children:
   - {fileID: 1304459711}
   - {fileID: 720866067}
+  - {fileID: 946786139}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10709,13 +10781,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 1224910686}
   m_HandleRect: {fileID: 1279329269}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -40
+  m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 946786140}
+        m_TargetAssemblyTypeName: SoundVolumeController, Assembly-CSharp
+        m_MethodName: MusicAudioControl
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1351974925
 GameObject:
   m_ObjectHideFlags: 0
@@ -11832,7 +11916,7 @@ MonoBehaviour:
   m_text: Setting
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b10596de897070040898d23bbb7035c0, type: 2}
-  m_sharedMaterial: {fileID: 8670743855877118959, guid: b10596de897070040898d23bbb7035c0, type: 2}
+  m_sharedMaterial: {fileID: 1315975141151041060, guid: b10596de897070040898d23bbb7035c0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -11895,7 +11979,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1547998500
@@ -12263,7 +12347,7 @@ MonoBehaviour:
   m_text: Master
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 40175cd8215ca2a43abf613687e82b1e, type: 2}
-  m_sharedMaterial: {fileID: -7859531511721222345, guid: 40175cd8215ca2a43abf613687e82b1e, type: 2}
+  m_sharedMaterial: {fileID: 8670743855877118959, guid: 40175cd8215ca2a43abf613687e82b1e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
