@@ -18,17 +18,15 @@ public class Fade : MonoSingleton<Fade>
 
     private void Start()
     {
+        isFadeIn = false;
         fadeImg.gameObject.SetActive(true);
         FadeIn();
     }
 
     public void FadeIn()
     {
-        if (!isFadeIn)
-        {
-            StartCoroutine(FadeInCoroutine());
-            isFadeIn = true;
-        }
+        StartCoroutine(FadeInCoroutine());
+        isFadeIn = true;
     }
 
     public IEnumerator FadeInCoroutine()
@@ -42,6 +40,7 @@ public class Fade : MonoSingleton<Fade>
 
     public void FadeOutToMainMenu()
     {
+        if (isFadeIn) return;
         MouseManager.Show(true);
         MouseManager.Lock(false);
         sceneLoad = 1;
@@ -50,6 +49,7 @@ public class Fade : MonoSingleton<Fade>
 
     public void FadeOutToGameScene()
     {
+        if (isFadeIn) return;
         MouseManager.Show(false);
         MouseManager.Lock(true);
         sceneLoad = 2;
@@ -58,6 +58,7 @@ public class Fade : MonoSingleton<Fade>
 
     public void FadeOutToGameOverScene()
     {
+        if (isFadeIn) return;
         MouseManager.Show(true);
         MouseManager.Lock(false);
         sceneLoad = 3;
@@ -66,6 +67,7 @@ public class Fade : MonoSingleton<Fade>
 
     public void FadeOutToTutorial()
     {
+        if (isFadeIn) return;
         MouseManager.Show(false);
         MouseManager.Lock(true);
         sceneLoad = 4;
