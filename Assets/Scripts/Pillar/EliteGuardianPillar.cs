@@ -77,10 +77,10 @@ public class EliteGuardianPillar : Pillar
                     break;
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow)
-                    || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
+            else if (Input.anyKeyDown)
             {
-                break;
+                yield return null;
+                continue;
             }
             yield return null;
         }
@@ -96,7 +96,7 @@ public class EliteGuardianPillar : Pillar
             _guardian.Attack2();
             PlayerController.Instance.Dead("Hit");
         }
-        else if (inputTime < PlayerController.Instance.MinVaild || inputTime > PlayerController.Instance.MaxVaild)
+        else if ((inputTime < PlayerController.Instance.MinVaild || inputTime > PlayerController.Instance.MaxVaild))
         {
             _guardian.Attack1();
             PlayerController.Instance.Dead("Hit");
