@@ -20,13 +20,13 @@ public class AudioObject : MonoBehaviour, IPoolable
         audioSource.bypassListenerEffects = false;
         audioSource.bypassReverbZones = false;
         audioSource.playOnAwake = false;
-        audioSource.loop = false;
-        audioSource.priority = 128;
-        audioSource.volume = 1f;
-        audioSource.pitch = 1f;
-        audioSource.panStereo = 0f;
-        audioSource.spatialBlend = 1f;
-        audioSource.reverbZoneMix = 1f;
+        // audioSource.loop = false;
+        // audioSource.priority = 128;
+        // audioSource.volume = 1f;
+        // audioSource.pitch = 1f;
+        // audioSource.panStereo = 0f;
+        // audioSource.spatialBlend = 1f;
+        // audioSource.reverbZoneMix = 1f;
     }
 
     public void PlayOneShot(AudioClip clip, float volume = 1f)

@@ -25,27 +25,26 @@ public class SoundManager : MonoSingleton<SoundManager>
         PoolManager<AudioObject>.Get(transform).PlayOneShot(soundSource.AudioClip, volume);
     }
 
-    public AudioObject PlaySound(Music music)
+    public void PlaySound(Music music)
     {
-        AudioObject audioObject = PoolManager<AudioObject>.Get(transform);
+        if (currentMusicSource == null)
+        {
+            currentMusicSource = PoolManager<AudioObject>.Get(transform);
+        }
 
         if (music == Music.None)
-            return audioObject;
+            return;
 
         if (currentMusic == music)
-            return currentMusicSource;
-
-        currentMusic = music;
+            return;
 
         MusicSource soundSource = soundContainer.MusicSources.FirstOrDefault(x => x.Music == music);
 
         if (soundSource == null)
-            return audioObject;
+            return;
 
-        audioObject.PlayMusic(soundSource.AudioClip);
+        currentMusic = music;
 
-        currentMusicSource = audioObject;
-
-        return currentMusicSource;
+        currentMusicSource.PlayMusic(soundSource.AudioClip);
     }
 }

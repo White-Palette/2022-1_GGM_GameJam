@@ -150,26 +150,6 @@ public class SeasonManager : MonoSingleton<SeasonManager>
     private void ChangeMusic()
     {
         Music music = seasonContainer.GetSeasonEffect(_currentSeason).Music;
-
-        if (music == Music.None)
-        {
-            if (_currentSeasonMusic != null)
-            {
-                //PoolManager<AudioObject>.Release(_currentSeasonMusic);
-                _currentSeasonMusic.StopMusic();
-                _currentSeasonMusic = null;
-            }
-            return;
-        }
-        else
-        {
-            if (_currentSeasonMusic != null)
-            {
-                _currentSeasonMusic.StopMusic();
-                //PoolManager<AudioObject>.Release(_currentSeasonMusic);
-                _currentSeasonMusic = null;
-            }
-            _currentSeasonMusic = SoundManager.Instance.PlaySound(music);
-        }
+        SoundManager.Instance.PlaySound(music);
     }
 }
