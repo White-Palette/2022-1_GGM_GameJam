@@ -200,7 +200,7 @@ public class PlayerController : MonoSingleton<PlayerController>
         UserData.Cache.MaxCombo = ComboManager.Instance.MaxCombo;
         SoundManager.Instance.PlaySound(Effect.Die);
         if (!Fade.isTutoMap) Fade.Instance.FadeOutToGameOverScene();
-        else Fade.Instance.FadeOutToTutorial();
+        else Fade.Instance.FadeOutToMainMenu();
     }
 
     public void ItemChange()
