@@ -22,6 +22,7 @@ public static class UserData
     public static int ItemHat { get; set; }
     public static int ItemGlobe { get; set; }
     public static int ItemShose { get; set; }
+    public static Color Color { get; set; }
 
     public static void Save()
     {
