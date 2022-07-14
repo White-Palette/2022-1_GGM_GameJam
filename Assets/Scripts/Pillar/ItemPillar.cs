@@ -78,7 +78,7 @@ public class ItemPillar : Pillar
 
         public override void Use()
         {
-            Chaser.Instance.Freeze(5f);
+            ChaserGenerator.Instance.Chaser.Freeze(Count);
             MultiLogManager.Instance.Log($"<color=#00ffff>æ∆¿Ã≈€ ªÁøÎ: µÂ∑°∞Ô ∏ÿ√„ - {Count}√ </color>");
             Debug.Log($"µÂ∑°∞Ô ∏ÿ√„");
         }

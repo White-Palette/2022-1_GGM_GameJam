@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chaser : MonoSingleton<Chaser>
+public class Chaser : MonoBehaviour
 {
     public float Distance => _distance;
 
