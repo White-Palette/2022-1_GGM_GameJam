@@ -184,10 +184,13 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     public void Dead(string str)
     {
-        if (guard > 0)
+        if (str == "Hit")
         {
-            guard--;
-            return;
+            if (guard > 0)
+            {
+                guard--;
+                return;
+            }
         }
 
         if (isDead) return;
