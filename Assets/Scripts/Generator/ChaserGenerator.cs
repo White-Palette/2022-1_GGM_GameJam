@@ -10,9 +10,7 @@ public class ChaserGenerator : MonoSingleton<ChaserGenerator>
     [SerializeField]
     private Vector3 _chaserSpawnPosition = Vector3.zero;
 
-
-    [SerializeField]
-    private float _generatingChaserHeight = 100f;
+    private float _generatingChaserHeight = 50;
 
     private Chaser _chaser = null;
 

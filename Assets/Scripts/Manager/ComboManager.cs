@@ -7,7 +7,6 @@ public class ComboManager : MonoSingleton<ComboManager>
     public int Combo { get; private set; }
     public int MaxCombo { get; private set; }
 
-    private bool _isChaser = false;
     private float freezeTime = 0;
 
     public void AddCombo()
@@ -23,15 +22,6 @@ public class ComboManager : MonoSingleton<ComboManager>
         if (freezeTime > 0)
             return;
         UpdateMaxCombo();
-
-        if (!_isChaser)
-        {
-            _isChaser = ChaserGenerator.Instance.GenerateChaser();
-        }
-        else
-        {
-            ChaserGenerator.Instance.Chaser.AddSpeed();
-        }
 
         Combo = 0;
     }

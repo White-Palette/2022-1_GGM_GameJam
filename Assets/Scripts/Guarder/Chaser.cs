@@ -44,6 +44,8 @@ public class Chaser : MonoSingleton<Chaser>
             Eat();
             VolumeController.Instance.MotionBlur = 1f;
         }
+        SetSpeed(1 / PlayerController.Instance.JumpDuration());
+        Debug.Log("Speed: " + _speed);
         Move();
     }
 
@@ -63,6 +65,15 @@ public class Chaser : MonoSingleton<Chaser>
 
         _speed += _distance / 80f;
         StartCoroutine(AddSpeedCoroutine());
+    }
+
+    public void SetSpeed(float speed)
+    {
+        if (_speed > speed)
+        {
+            return;
+        }
+        _speed = speed;
     }
 
     public void AddSpeed(float speed)
