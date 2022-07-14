@@ -29,6 +29,9 @@ public class UIManager : MonoSingleton<UIManager>
     [SerializeField]
     private TMP_Text _distanceText = null;
 
+    [SerializeField]
+    private TMP_Text _timingResultText = null;
+
     public TimingSlider TimingSlider
     {
         get
@@ -53,6 +56,7 @@ public class UIManager : MonoSingleton<UIManager>
         _timingSlider.gameObject.SetActive(false);
         _PauseImage.gameObject.SetActive(false);
         _heightText.gameObject.SetActive(true);
+        _timingResultText.enabled = false;
     }
 
     private void Update()
@@ -96,5 +100,16 @@ public class UIManager : MonoSingleton<UIManager>
     public void FireEffect(GameObject fireEffect)
     {
         fireEffect.SetActive(true);
+    }
+
+    public IEnumerator ShowResult(string text, float duration)
+    {
+        Debug.Log("ShowResult");
+        _timingResultText.transform.position = ChaserGenerator.Instance.Chaser.transform.position + new Vector3(0, -0.5f, 0);
+        _timingResultText.enabled = true;
+        _timingResultText.text = text;
+        yield return new WaitForSeconds(duration);
+        _timingResultText.text = "";
+        _timingResultText.enabled = false;
     }
 }

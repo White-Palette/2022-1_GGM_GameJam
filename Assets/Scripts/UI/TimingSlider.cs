@@ -49,13 +49,6 @@ public class TimingSlider : MonoBehaviour
 
     public void MoveTo(Vector2 target)
     {
-        // RectTransformUtility.ScreenPointToWorldPointInRectangle(
-        //     (transform as RectTransform),
-        //     target.position,
-        //     Camera.main,
-        //     out Vector3 localPoint);
-
-        // (transform as RectTransform).anchoredPosition = localPoint + new Vector3(-2f, 0, 0);
         transform.position = target;
     }
 

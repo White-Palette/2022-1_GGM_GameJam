@@ -74,6 +74,22 @@ public class GuardianPillar : Pillar
         }
         else
         {
+            Debug.Log("inputValue : " + _inputValue);
+            if (Mathf.Abs(_inputValue - 50f) < 5f)
+            {
+                UIManager.Instance.ShowResult("Nice", 1f);
+            }
+            else
+            {
+                if (_inputValue > 50f)
+                {
+                    UIManager.Instance.ShowResult("Slow", 1f);
+                }
+                else
+                {
+                    UIManager.Instance.ShowResult("Fast", 1f);
+                }
+            }
             SoundManager.Instance.PlaySound(Effect.Attack);
             ComboManager.Instance.AddCombo(1);
             _guardian.Hit();
