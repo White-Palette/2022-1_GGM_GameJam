@@ -49,3 +49,30 @@ MonoBehaviour:
   - Count: 2
     LeftPillarType: 3
     RightPillarType: 1
+  - Count: 1
+    LeftPillarType: 4
+    RightPillarType: 0
+  - Count: 1
+    LeftPillarType: 0
+    RightPillarType: 4
+  - Count: 1
+    LeftPillarType: 1
+    RightPillarType: 4
+  - Count: 1
+    LeftPillarType: 4
+    RightPillarType: 1
+  - Count: 1
+    LeftPillarType: 4
+    RightPillarType: 4
+  - Count: 1
+    LeftPillarType: 4
+    RightPillarType: 2
+  - Count: 1
+    LeftPillarType: 2
+    RightPillarType: 4
+  - Count: 1
+    LeftPillarType: 3
+    RightPillarType: 4
+  - Count: 1
+    LeftPillarType: 4
+    RightPillarType: 3

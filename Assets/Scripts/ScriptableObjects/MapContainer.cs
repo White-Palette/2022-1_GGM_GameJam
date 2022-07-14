@@ -9,7 +9,8 @@ public enum PillarType
     Normal,
     Enemy,
     //Spring,
-    Trap
+    Trap,
+    Item
 }
 
 [Serializable]
