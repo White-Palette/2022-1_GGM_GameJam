@@ -75,6 +75,8 @@ public class SeasonManager : MonoSingleton<SeasonManager>
 
     public void ChangeSeason(Season season)
     {
+        if (_currentSeason == season) return;
+
         _currentSeason = season;
 
         ChangeBackgroundColor();
@@ -151,5 +153,10 @@ public class SeasonManager : MonoSingleton<SeasonManager>
     {
         Music music = seasonContainer.GetSeasonEffect(_currentSeason).Music;
         SoundManager.Instance.PlaySound(music);
+    }
+
+    public SeasonEffect GetSeasonEffect()
+    {
+        return seasonContainer.GetSeasonEffect(_currentSeason);
     }
 }
