@@ -11,6 +11,8 @@ public class RealtimeLeaderboardManager : MonoSingleton<RealtimeLeaderboardManag
 
     private Dictionary<int, RealtimeLeaderboardEntry> realtimeLeaderboard = new Dictionary<int, RealtimeLeaderboardEntry>();
 
+    private bool isFireLog = false;
+
     private void Awake()
     {
         ServerManager.Instance.OnJoin += OnJoin;
@@ -75,12 +77,16 @@ public class RealtimeLeaderboardManager : MonoSingleton<RealtimeLeaderboardManag
 
                 if (entry.Combo >= 50)
                 {
+                    if (realtimeLeaderboard[entry.Id].IsFired) return;
+                    MultiLogManager.Instance.Log($"{realtimeLeaderboard[entry.Id].name}님이 불타고 있습니다.");
                     realtimeLeaderboard[entry.Id].IsFired = true;
                 }
                 else
                 {
                     realtimeLeaderboard[entry.Id].IsFired = false;
                 }
+
+                
             }
         }
     }

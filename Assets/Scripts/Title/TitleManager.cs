@@ -27,6 +27,7 @@ public class TitleManager : MonoBehaviour
 
     private void Start()
     {
+        helpPanel.SetActive(false);
         StartCoroutine(FadeInOut());
         Fade.Instance.FadeIn();
         isLoading = false;
