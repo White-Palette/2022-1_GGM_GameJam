@@ -6,7 +6,7 @@ public class SoundManager : MonoSingleton<SoundManager>
 {
     private SoundContainer soundContainer;
     private Music currentMusic;
-    private AudioSource currentMusicSource;
+    private AudioObject currentMusicSource;
 
     private void Awake()
     {
@@ -25,18 +25,27 @@ public class SoundManager : MonoSingleton<SoundManager>
         PoolManager<AudioObject>.Get(transform).PlayOneShot(soundSource.AudioClip, volume);
     }
 
-    public void PlaySound(Music music)
+    public AudioObject PlaySound(Music music)
     {
+        AudioObject audioObject = PoolManager<AudioObject>.Get(transform);
+
         if (music == Music.None)
-            return;
+            return audioObject;
 
         if (currentMusic == music)
-            return;
+            return currentMusicSource;
 
         currentMusic = music;
 
         MusicSource soundSource = soundContainer.MusicSources.FirstOrDefault(x => x.Music == music);
 
-        PoolManager<AudioObject>.Get(transform).PlayMusic(soundSource.AudioClip);
+        if (soundSource == null)
+            return audioObject;
+
+        audioObject.PlayMusic(soundSource.AudioClip);
+
+        currentMusicSource = audioObject;
+
+        return currentMusicSource;
     }
 }

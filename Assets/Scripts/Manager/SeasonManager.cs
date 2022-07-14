@@ -10,6 +10,7 @@ public class SeasonManager : MonoSingleton<SeasonManager>
     private Season _currentSeason = Season.None;
     private int _currentSeasonIndex = 0;
     private GameObject _currentSeasonEffect = null;
+    private AudioObject _currentSeasonMusic = null;
 
     public Action<Season, float> OnSeasonChanged = null;
 
@@ -150,9 +151,25 @@ public class SeasonManager : MonoSingleton<SeasonManager>
     {
         Music music = seasonContainer.GetSeasonEffect(_currentSeason).Music;
 
-        if (music != Music.None)
+        if (music == Music.None)
         {
-            SoundManager.Instance.PlaySound(music);
+            if (_currentSeasonMusic != null)
+            {
+                //PoolManager<AudioObject>.Release(_currentSeasonMusic);
+                _currentSeasonMusic.StopMusic();
+                _currentSeasonMusic = null;
+            }
+            return;
+        }
+        else
+        {
+            if (_currentSeasonMusic != null)
+            {
+                _currentSeasonMusic.StopMusic();
+                //PoolManager<AudioObject>.Release(_currentSeasonMusic);
+                _currentSeasonMusic = null;
+            }
+            _currentSeasonMusic = SoundManager.Instance.PlaySound(music);
         }
     }
 }

@@ -13,7 +13,20 @@ public class AudioObject : MonoBehaviour, IPoolable
 
     public void Initialize()
     {
-        
+        audioSource.clip = null;
+        audioSource.outputAudioMixerGroup = null;
+        audioSource.mute = false;
+        audioSource.bypassEffects = false;
+        audioSource.bypassListenerEffects = false;
+        audioSource.bypassReverbZones = false;
+        audioSource.playOnAwake = false;
+        audioSource.loop = false;
+        audioSource.priority = 128;
+        audioSource.volume = 1f;
+        audioSource.pitch = 1f;
+        audioSource.panStereo = 0f;
+        audioSource.spatialBlend = 1f;
+        audioSource.reverbZoneMix = 1f;
     }
 
     public void PlayOneShot(AudioClip clip, float volume = 1f)
@@ -26,12 +39,13 @@ public class AudioObject : MonoBehaviour, IPoolable
     {
         audioSource.clip = clip;
         audioSource.volume = volume;
+        audioSource.loop = true;
         audioSource.Play();
     }
 
     public void StopMusic()
     {
-        
+        audioSource.Stop();
     }
 
     private IEnumerator DestroyAfter(float time)
