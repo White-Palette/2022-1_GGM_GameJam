@@ -70,18 +70,38 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     private void Update()
     {
-        if (!isDead && waitTime > JumpDuration() - resetTime && Time.timeScale == 1)
+        if (!isMoving && !isDead)
         {
             if (Reverse)
             {
                 if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
-                    MoveToRightPillar();
+                    if (currentPillar.RightPillar != null)
+                    {
+                        MoveToPillar(currentPillar.RightPillar);
+                        transform.localScale = new Vector3(0.8f, 0.8f, 1);
+                        animator.SetBool("IsJump", true);
+                    }
+                    else if (currentPillar.RightPillar == null)
+                    {
+                        transform.localScale = new Vector3(0.8f, 0.8f, 1);
+                        Dead("Miss");
+                    }
                     Reverse = false;
                 }
                 else if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
-                    MoveToLeftPillar();
+                    if (currentPillar.LeftPillar != null)
+                    {
+                        MoveToPillar(currentPillar.LeftPillar);
+                        transform.localScale = new Vector3(-0.8f, 0.8f, 1);
+                        animator.SetBool("IsJump", true);
+                    }
+                    else if (currentPillar.LeftPillar == null)
+                    {
+                        transform.localScale = new Vector3(-0.8f, 0.8f, 1);
+                        Dead("Miss");
+                    }
                     Reverse = false;
                 }
             }
@@ -89,46 +109,40 @@ public class PlayerController : MonoSingleton<PlayerController>
             {
                 if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
-                    MoveToLeftPillar();
+                    if (currentPillar.LeftPillar != null)
+                    {
+                        MoveToPillar(currentPillar.LeftPillar);
+                        transform.localScale = new Vector3(-0.8f, 0.8f, 1);
+                        animator.SetBool("IsJump", true);
+                    }
+                    else if (currentPillar.LeftPillar == null)
+                    {
+                        transform.localScale = new Vector3(-0.8f, 0.8f, 1);
+                        Dead("Miss");
+                    }
                 }
                 else if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
-                    MoveToRightPillar();
+                    if (currentPillar.RightPillar != null)
+                    {
+                        MoveToPillar(currentPillar.RightPillar);
+                        transform.localScale = new Vector3(0.8f, 0.8f, 1);
+                        animator.SetBool("IsJump", true);
+                    }
+                    else if (currentPillar.RightPillar == null)
+                    {
+                        transform.localScale = new Vector3(0.8f, 0.8f, 1);
+                        Dead("Miss");
+                    }
                 }
             }
-        }
 
-        waitTime += Time.deltaTime;
-    }
+            waitTime += Time.deltaTime;
 
-    private void MoveToLeftPillar()
-    {
-        DOTween.Kill(transform, true);
-        if (currentPillar.LeftPillar != null)
-        {
-            MoveToPillar(currentPillar.LeftPillar);
-            transform.localScale = new Vector3(-0.8f, 0.8f, 1);
-            animator.SetBool("IsJump", true);
-        }
-        else if (currentPillar.LeftPillar == null)
-        {
-            transform.localScale = new Vector3(-0.8f, 0.8f, 1);
-            Dead("Miss");
-        }
-    }
-
-    private void MoveToRightPillar()
-    {
-        if (currentPillar.RightPillar != null)
-        {
-            MoveToPillar(currentPillar.RightPillar);
-            transform.localScale = new Vector3(0.8f, 0.8f, 1);
-            animator.SetBool("IsJump", true);
-        }
-        else if (currentPillar.RightPillar == null)
-        {
-            transform.localScale = new Vector3(0.8f, 0.8f, 1);
-            Dead("Miss");
+            if (waitTime > resetTime)
+            {
+                ComboManager.Instance.ResetCombo();
+            }
         }
     }
 
@@ -169,9 +183,9 @@ public class PlayerController : MonoSingleton<PlayerController>
         currentPillar.Disable();
         currentPillar = pillar;
         SoundManager.Instance.PlaySound(Effect.Jump);
-        currentPillar.Generate();
+
         currentPillar.TowerEvent();
-        waitTime = 0;
+        currentPillar.Generate();
 
         if (waitTime < perfactTime)
         {
@@ -184,11 +198,15 @@ public class PlayerController : MonoSingleton<PlayerController>
             animator.SetBool("IsJump", false);
             landing.transform.position = gameObject.transform.position;
             landing.Play();
+<<<<<<< HEAD
 
             if (Mathf.Abs(waitTime - JumpDuration()) > resetTime)
             {
                 ComboManager.Instance.ResetCombo();
             }
+=======
+            waitTime = 0;
+>>>>>>> 88ef089ec92901b06185ab450d4a59d830e51398
         });
     }
 

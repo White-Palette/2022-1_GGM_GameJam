@@ -18,7 +18,7 @@ public class TitleText : MonoBehaviour
     private void Start()
     {
         textMesh = GetComponent<TMP_Text>();
-
+        SoundManager.Instance.PlaySound(Music.Wonderful_Story_Alt_Version);
         //wordIndexes = new List<int> { 0 };
         //wordLengths = new List<int> {};
 

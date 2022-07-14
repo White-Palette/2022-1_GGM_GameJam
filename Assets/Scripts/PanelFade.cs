@@ -8,6 +8,11 @@ public class PanelFade : MonoBehaviour
     [SerializeField] GameObject panel;
     private bool isSettingEnable = false;
 
+    private void Start()
+    {
+        SoundManager.Instance.PlaySound(Music.Wonderful_Story_Alt_Version);   
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.L))
