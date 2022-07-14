@@ -22,6 +22,9 @@ public class TowerGenerator : MonoSingleton<TowerGenerator>
             case PillarType.Trap:
                 pillar = PoolManager<TrapPillar>.Get(parent, position);
                 break;
+            case PillarType.Item:
+                pillar = PoolManager<ItemPillar>.Get(parent, position);
+                break;
             default:
                 pillar = null;
                 break;
