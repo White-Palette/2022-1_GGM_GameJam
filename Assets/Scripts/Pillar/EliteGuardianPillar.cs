@@ -8,7 +8,6 @@ public class EliteGuardianPillar : Pillar
     private EliteGuardian _guardian;
     private KeyCode[] _keyCodes = new KeyCode[3];
     [SerializeField] SpriteRenderer[] _spriteRenderers = new SpriteRenderer[3];
-    [SerializeField] Sprite _sprite = null;
 
     public override void Initialize()
     {
@@ -16,26 +15,16 @@ public class EliteGuardianPillar : Pillar
         _guardian.gameObject.SetActive(true);
         for (int i = 0; i < 3; i++)
         {
-            int random = Random.Range(0, 4);
+            int random = Random.Range(0, 2);
             if (random == 0)
             {
-                _keyCodes[i] = KeyCode.LeftArrow;
+                _keyCodes[i] = KeyCode.RightArrow;
                 _spriteRenderers[i].transform.rotation = Quaternion.Euler(0, 0, 0);
             }
             else if (random == 1)
             {
-                _keyCodes[i] = KeyCode.RightArrow;
+                _keyCodes[i] = KeyCode.LeftArrow;
                 _spriteRenderers[i].transform.rotation = Quaternion.Euler(0, 0, 180);
-            }
-            else if (random == 2)
-            {
-                _keyCodes[i] = KeyCode.UpArrow;
-                _spriteRenderers[i].transform.rotation = Quaternion.Euler(0, 0, 90);
-            }
-            else
-            {
-                _keyCodes[i] = KeyCode.DownArrow;
-                _spriteRenderers[i].transform.rotation = Quaternion.Euler(0, 0, -90);
             }
         }
     }
@@ -76,16 +65,14 @@ public class EliteGuardianPillar : Pillar
         UIManager.Instance.TimingSlider.StartMove();
         UIManager.Instance.TimingSlider.MoveTo(_guardian.transform.position + new Vector3(0, -0.5f, 0));
 
-        KeyCode[] keyCodes = new KeyCode[3];
         int inputIndex = 0;
 
         while (!UIManager.Instance.TimingSlider.IsFail)
         {
             if (Input.GetKeyDown(_keyCodes[inputIndex]))
             {
-                keyCodes[inputIndex] = _keyCodes[inputIndex];
-                inputIndex++;
-                if (inputIndex == 2)
+                ++inputIndex;
+                if (inputIndex == 3)
                 {
                     break;
                 }
@@ -116,20 +103,10 @@ public class EliteGuardianPillar : Pillar
         }
         else
         {
-            if (_keyCodes[0] == keyCodes[0]
-            && _keyCodes[1] == keyCodes[1]
-            && _keyCodes[2] == keyCodes[2])
-            {
-                SoundManager.Instance.PlaySound(Effect.Attack);
-                ComboManager.Instance.AddCombo(1);
-                _guardian.Hit();
-                PlayerController.Instance.PlayerWin();
-            }
-            else
-            {
-                _guardian.Attack1();
-                PlayerController.Instance.Dead("Hit");
-            }
+            SoundManager.Instance.PlaySound(Effect.Attack);
+            ComboManager.Instance.AddCombo(1);
+            _guardian.Hit();
+            PlayerController.Instance.PlayerWin();
         }
 
         Time.timeScale = 1f;
