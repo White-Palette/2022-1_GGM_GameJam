@@ -44,8 +44,8 @@ public class RealtimeLeaderboardEntry : MonoBehaviour, IPoolable
             {
                 foreach (var spriteRenderer in spriteRenderers)
                 {
-                    spriteRenderer.gameObject.SetActive(false);
                     spriteRenderer.DOFade(0f, 0.5f).From(1f);
+                    spriteRenderer.gameObject.SetActive(false);
                 }
             }
             _isFired = value;
