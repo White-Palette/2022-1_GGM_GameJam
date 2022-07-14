@@ -165,6 +165,7 @@ public class PlayerController : MonoSingleton<PlayerController>
             }
         }
 
+        ShowJudgmentTime(waitTime - JumpDuration());
         currentPillar.Disable();
         currentPillar = pillar;
         SoundManager.Instance.PlaySound(Effect.Jump);
@@ -183,11 +184,19 @@ public class PlayerController : MonoSingleton<PlayerController>
             animator.SetBool("IsJump", false);
             landing.transform.position = gameObject.transform.position;
             landing.Play();
+
             if (Mathf.Abs(waitTime - JumpDuration()) > resetTime)
             {
                 ComboManager.Instance.ResetCombo();
             }
         });
+    }
+
+    private void ShowJudgmentTime(float time)
+    {
+        var text = PoolManager<OverlayText>.Get(transform.parent);
+        text.Text.text = (int)(time * 1000) + "ms";
+        text.MoveTo(currentPillar.transform.position + Vector3.up * 2f);
     }
 
     public float JumpDuration()

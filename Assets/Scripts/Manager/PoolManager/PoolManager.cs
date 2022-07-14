@@ -19,6 +19,7 @@ public static class PoolManager<T> where T : MonoBehaviour, IPoolable
     {
         SceneManager.sceneLoaded += SceneLoaded;
         _prefab = Resources.Load<GameObject>("Prefabs/" + typeof(T).Name);
+        Debug.Log($"PoolManager<{typeof(T).Name}> loaded");
     }
 
     private static void SceneLoaded(Scene scene, LoadSceneMode mode)
