@@ -28,7 +28,7 @@ MonoBehaviour:
   - Season: 2
     _topColor: {r: 0.5019608, g: 0.6039216, b: 0.43529412, a: 1}
     _bodyColor: {r: 0.8, g: 0.6117647, b: 0.45882353, a: 1}
-    _backgroundColor: {r: 0.44, g: 0.24486957, b: 0.24486957, a: 1}
+    _backgroundColor: {r: 0, g: 0.44359985, b: 0.7169812, a: 1}
     Effect: {fileID: 6666883520628724413, guid: a94d5d68a5a1cca43a6a1e3a8efb5d00, type: 3}
     Music: 8
   - Season: 3
