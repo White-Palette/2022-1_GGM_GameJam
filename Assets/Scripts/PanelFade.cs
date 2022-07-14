@@ -16,6 +16,7 @@ public class PanelFade : MonoBehaviour
 
     public void Panel()
     {
+        SoundManager.Instance.PlaySound(Effect.Click);
         StartCoroutine(TogglePanel(panel));
     }
 

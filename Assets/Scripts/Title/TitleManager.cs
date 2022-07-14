@@ -142,6 +142,7 @@ public class TitleManager : MonoBehaviour
     public void OpenHelpPanel()
     {
         isHelpEnable = !isHelpEnable;
+        SoundManager.Instance.PlaySound(Effect.Click);
         StartCoroutine(TogglePanel(helpPanel, isHelpEnable));
     }
 

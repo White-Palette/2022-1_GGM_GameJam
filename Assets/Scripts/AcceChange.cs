@@ -33,6 +33,7 @@ public class AcceChange : MonoBehaviour
     {
         UserData.ItemHat = number;
         head.sprite = hatcon.Accessories[UserData.ItemHat].Sprite;
+        SoundManager.Instance.PlaySound(Effect.Click);
         UserData.Save();
     }
     public void BuyGlobe(int number)
@@ -40,6 +41,7 @@ public class AcceChange : MonoBehaviour
         UserData.ItemGlobe = number;
         LA.sprite = globecon.Accessories[UserData.ItemGlobe].Sprite;
         RA.sprite = globecon.Accessories[UserData.ItemGlobe].Sprite;
+        SoundManager.Instance.PlaySound(Effect.Click);
         UserData.Save();
     }
     public void BuyBoots(int number)
@@ -47,12 +49,14 @@ public class AcceChange : MonoBehaviour
         UserData.ItemShose = number;
         LL.sprite = bootcon.Accessories[UserData.ItemShose].Sprite;
         RL.sprite = bootcon.Accessories[UserData.ItemShose].Sprite;
+        SoundManager.Instance.PlaySound(Effect.Click);
         UserData.Save();
     }
 
     public void ActivePanel(string name)
     {
-        foreach(RectTransform a in contents)
+        SoundManager.Instance.PlaySound(Effect.Click);
+        foreach (RectTransform a in contents)
         {
             if(a.name == name)
             {
@@ -70,6 +74,7 @@ public class AcceChange : MonoBehaviour
         ColorUtility.TryParseHtmlString(color, out Color _color);
         UserData.Color = _color;
         UserData.ColorStr = color;
+        SoundManager.Instance.PlaySound(Effect.Click);
         UserData.Save();
     }
 }

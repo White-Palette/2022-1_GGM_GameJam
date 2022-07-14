@@ -35,6 +35,7 @@ public class Fade : MonoSingleton<Fade>
 
     public void FadeOutToMainMenu()
     {
+        SoundManager.Instance.PlaySound(Effect.Click);
         MouseManager.Show(true);
         MouseManager.Lock(false);
         sceneLoad = 1;
@@ -43,6 +44,7 @@ public class Fade : MonoSingleton<Fade>
 
     public void FadeOutToGameScene()
     {
+        SoundManager.Instance.PlaySound(Effect.Click);
         MouseManager.Show(false);
         MouseManager.Lock(true);
         sceneLoad = 2;
@@ -51,6 +53,7 @@ public class Fade : MonoSingleton<Fade>
 
     public void FadeOutToGameOverScene()
     {
+        SoundManager.Instance.PlaySound(Effect.Click);
         MouseManager.Show(true);
         MouseManager.Lock(false);
         sceneLoad = 3;
@@ -59,6 +62,7 @@ public class Fade : MonoSingleton<Fade>
 
     public void FadeOutToTutorial()
     {
+        SoundManager.Instance.PlaySound(Effect.Click);
         MouseManager.Show(false);
         MouseManager.Lock(true);
         sceneLoad = 4;
