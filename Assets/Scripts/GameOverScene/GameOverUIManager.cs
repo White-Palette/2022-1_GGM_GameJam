@@ -12,6 +12,8 @@ public class GameOverUIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI _maxCombo;
     [SerializeField] TextMeshProUGUI _heightTMP;
 
+    [SerializeField] TextMeshProUGUI _textBest;
+
     [SerializeField] Light2D light2d;
 
     private bool isLoading = false;
@@ -50,7 +52,9 @@ public class GameOverUIManager : MonoBehaviour
         float randomHeight = 0;
         int randomCombo = 0;
 
-        while(i < 35)
+        _textBest.gameObject.SetActive(false);
+
+        while (i < 35)
         {
             if (Input.anyKeyDown || Input.GetMouseButtonDown(0))
                 break;
@@ -70,5 +74,15 @@ public class GameOverUIManager : MonoBehaviour
         _maxCombo.text = $"{UserData.Cache.MaxCombo}";
         _maxCombo.transform.DOScale(1f, 1.5f).SetEase(Ease.OutCirc).From(3.0f);
 
+        yield return new WaitForSeconds(0.5f);
+
+        if (UserData.Cache.Height > UserData.Record.Height&& UserData.Cache.MaxCombo > UserData.Record.MaxCombo)
+        {
+            _textBest.gameObject.SetActive(true);
+            UserData.Record.Height = UserData.Cache.Height;
+            UserData.Record.MaxCombo = UserData.Cache.MaxCombo;
+            UserData.Save();
+            _textBest.transform.DOScale(1f, 1.5f).SetEase(Ease.OutCirc).From(2.0f);
+        }
     }
 }
