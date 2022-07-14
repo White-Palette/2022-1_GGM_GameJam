@@ -83,7 +83,7 @@ public class ServerManager : MonoSingleton<ServerManager>
         ws.OnOpen += (sender, e) =>
         {
             Debug.Log("Connected");
-            SendName(UserData.UserName, Color.white);
+            SendName(UserData.UserName, UserData.Color);
             taskQueue.Enqueue(() =>
             {
                 OnConnected?.Invoke();
