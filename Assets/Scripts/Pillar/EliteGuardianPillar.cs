@@ -79,6 +79,7 @@ public class EliteGuardianPillar : Pillar
             }
             else if (Input.anyKeyDown)
             {
+                inputIndex = 0;
                 yield return null;
                 continue;
             }
