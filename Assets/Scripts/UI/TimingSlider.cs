@@ -27,7 +27,7 @@ public class TimingSlider : MonoBehaviour
 
     public void StartMove()
     {
-        _valueSpeed = (0.5f + (Mathf.Clamp(ComboManager.Instance.Combo, 0, 50)) / 50f);
+        _valueSpeed = (0.5f + (Mathf.Clamp(ComboManager.Instance.Combo, 0, 50)) / 100f);
         _isFail = false;
         _slider.value = 0f;
         _slider.gameObject.SetActive(true);
