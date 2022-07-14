@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chaser : MonoBehaviour
+public class Chaser : MonoSingleton<Chaser>
 {
     public float Distance => _distance;
 
@@ -13,6 +13,7 @@ public class Chaser : MonoBehaviour
     private bool _isAddingSpeed = false;
 
     private float _distance = 0f;
+    private bool _freezed = false;
 
     private void Start()
     {
@@ -27,6 +28,9 @@ public class Chaser : MonoBehaviour
 
     void Update()
     {
+        if (_freezed)
+            return;
+
         _distance = Vector2.Distance(transform.position, PlayerController.Instance.transform.position);
 
         if (_distance < 30f)
@@ -77,5 +81,17 @@ public class Chaser : MonoBehaviour
         _isAddingSpeed = true;
         yield return new WaitForSeconds(5f);
         _isAddingSpeed = false;
+    }
+
+    public void Freeze(float time)
+    {
+        _freezed = true;
+        StartCoroutine(FreezeCoroutine(time));
+    }
+
+    private IEnumerator FreezeCoroutine(float time)
+    {
+        yield return new WaitForSeconds(time);
+        _freezed = false;
     }
 }

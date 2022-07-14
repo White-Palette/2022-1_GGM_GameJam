@@ -26,6 +26,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     public float MaxVaild { get; set; }
 
     private ParticleSystem particle;
+
     private Animator animator;
     private bool isMoving = false;
     private float waitTime = 0;
@@ -37,6 +38,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     private float combo = 0;
     private float vaild = 0;
     private float speed = 0;
+    private int guard = 0;
 
     private void Awake()
     {  
@@ -182,6 +184,14 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     public void Dead(string str)
     {
+        if (guard > 0)
+        {
+            guard--;
+            return;
+        }
+
+        if (isDead) return;
+        
         isDead = true;
         animator.SetTrigger(str);
         particle.Play();
@@ -212,5 +222,10 @@ public class PlayerController : MonoSingleton<PlayerController>
     private void ReMove()
     {
         
+    }
+
+    public void AddGuard()
+    {
+        guard++;
     }
 }
