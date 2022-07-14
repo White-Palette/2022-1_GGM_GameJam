@@ -6,6 +6,8 @@ public class GameManager : MonoSingleton<GameManager>
 {
     private bool _isGamePaused = false;
 
+    private bool _isChaser = false;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -18,6 +20,11 @@ public class GameManager : MonoSingleton<GameManager>
             {
                 PauseGame();
             }
+        }
+
+        if (!_isChaser)
+        {
+            _isChaser = ChaserGenerator.Instance.GenerateChaser();
         }
 
         //if(RealtimeLeaderboardManager.Instance.GetNameById()
