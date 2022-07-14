@@ -83,7 +83,7 @@ public class ServerManager : MonoSingleton<ServerManager>
         ws.OnOpen += (sender, e) =>
         {
             Debug.Log("Connected");
-            SendName(UserData.UserName);
+            SendName(UserData.UserName, Color.white);
             taskQueue.Enqueue(() =>
             {
                 OnConnected?.Invoke();
@@ -149,9 +149,10 @@ public class ServerManager : MonoSingleton<ServerManager>
         ws.Send(JsonConvert.SerializeObject(new Packet("h", JsonConvert.SerializeObject(new { h = height, c = combo }))));
     }
 
-    public void SendName(string name)
+    public void SendName(string name, Color color)
     {
-        ws.Send(JsonConvert.SerializeObject(new Packet("n", name)));
+        string hex = ColorUtility.ToHtmlStringRGB(color);
+        ws.Send(JsonConvert.SerializeObject(new Packet("n", JsonConvert.SerializeObject(new { n = name, c = hex }))));
     }
 
     private void OnDestroy()

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -73,6 +74,61 @@ public static class PoolManager<T> where T : MonoBehaviour, IPoolable
             _pooledDict[pool.gameObject] = true;
             pool.gameObject.SetActive(false);
             _objectQueue.Enqueue(pool.gameObject);
+        }
+        else
+        {
+            Debug.LogError($"{pool.gameObject.name} is not object in pool");
+        }
+    }
+}
+
+public static class PoolManager
+{
+    private static Dictionary<string, GameObject> _poolableObjects = new Dictionary<string, GameObject>();
+    private static Dictionary<string, GameObject> _pooledObjects = new Dictionary<string, GameObject>();
+
+    public static void CreatePool(string name, GameObject prefab)
+    {
+        _poolableObjects[name] = prefab;
+    }
+
+    public static T Get<T>(string name, Transform parent, Vector3 position = new Vector3()) where T : MonoBehaviour
+    {
+        GameObject prefab = _poolableObjects[name] as GameObject;
+        if (prefab == null)
+        {
+            Debug.LogError($"{name} is not poolable object");
+            return null;
+        }
+
+        T pool = null;
+        if (_pooledObjects[name] != null)
+        {
+            pool = _pooledObjects[name].GetComponent<T>();
+            pool.transform.SetParent(parent);
+            pool.transform.localPosition = Vector3.zero;
+        }
+        else
+        {
+            GameObject gameObject = GameObject.Instantiate(prefab, parent);
+            gameObject.name = $"{typeof(T).Name} {name} {_pooledObjects.Count + 1}";
+            pool = gameObject.GetComponent<T>();
+        }
+        return pool;
+    }
+
+    public static void Release<T>(T pool, bool force = false) where T : MonoBehaviour
+    {
+        string name = pool.gameObject.name;
+        if (_pooledObjects.ContainsKey(name) || force)
+        {
+            if (_pooledObjects.ContainsKey(name))
+            {
+                Debug.LogError($"{pool.gameObject.name} is not valid object");
+                return;
+            }
+            _pooledObjects[name] = pool.gameObject;
+            pool.gameObject.SetActive(false);
         }
         else
         {
