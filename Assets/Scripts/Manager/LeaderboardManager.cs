@@ -21,7 +21,6 @@ public class LeaderboardManager : MonoBehaviour
     private void Awake()
     {
         StartCoroutine(SubmitRecordCoroutine(UserData.UserName, UserData.Cache.Height, UserData.Cache.MaxCombo));
-        StartCoroutine(LoadLeaderboard());
     }
 
     private IEnumerator LoadLeaderboard()
@@ -83,10 +82,11 @@ public class LeaderboardManager : MonoBehaviour
                 PoolManager<LeaderboardEntry>.Release(entryObject);
             }
 
-            foreach (var entry in leaderboard)
+            for (int i = 0; i < leaderboard.Count; i++)
             {
+                var entry = leaderboard[i];
                 var entryObject = PoolManager<LeaderboardEntry>.Get(_entryContainer);
-                entryObject.Name = entry.Name;
+                entryObject.Name = $"#{i + 1} - {entry.Name}";
                 entryObject.Height = entry.Height;
                 entryObject.Combo = entry.Combo;
             }
