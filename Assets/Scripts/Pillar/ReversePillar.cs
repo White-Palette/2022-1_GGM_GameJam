@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class ReversePillar : Pillar
 {
-    private IEnumerator ChangeReverse()
+    public override void Initialize()
+    {
+        base.Initialize();
+        StartCoroutine(ReversePillarCoroutine());
+    }
+
+    private IEnumerator ReversePillarCoroutine()
     {
         while (true)
         {
             yield return null;
             if (PlayerController.Instance.currentPillar == this)
             {
-
+                PlayerController.Instance.Reverse = true;
+                break;
             }
         }
     }

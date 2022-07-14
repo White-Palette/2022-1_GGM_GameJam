@@ -87,6 +87,7 @@ public class PlayerController : MonoSingleton<PlayerController>
                         transform.localScale = new Vector3(0.8f, 0.8f, 1);
                         Dead("Miss");
                     }
+                    Reverse = false;
                 }
                 else if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
@@ -101,8 +102,8 @@ public class PlayerController : MonoSingleton<PlayerController>
                         transform.localScale = new Vector3(-0.8f, 0.8f, 1);
                         Dead("Miss");
                     }
+                    Reverse = false;
                 }
-                Reverse = false;
             }
             else
             {

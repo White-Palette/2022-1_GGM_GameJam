@@ -70,7 +70,6 @@ public abstract class Pillar : MonoBehaviour, IPoolable
     {
         LeftPillar = null;
         RightPillar = null;
-        PlayerController.Instance.Reverse = false;
         overlaySprite.color = new Color(0, 0, 0, 0);
         transform.DOMoveY(transform.position.y, 0.2f).From(transform.position.y - 1f);
         topSprite.DOFade(1f, 0.2f).From(0f);
