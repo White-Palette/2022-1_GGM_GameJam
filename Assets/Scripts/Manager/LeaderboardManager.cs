@@ -86,9 +86,19 @@ public class LeaderboardManager : MonoBehaviour
             {
                 var entry = leaderboard[i];
                 var entryObject = PoolManager<LeaderboardEntry>.Get(_entryContainer);
-                entryObject.Name = $"#{i + 1} - {entry.Name}";
-                entryObject.Height = entry.Height;
-                entryObject.Combo = entry.Combo;
+
+                if (entry.Name == UserData.UserName)
+                {
+                    entryObject.Name = $"<color=#6b7001>#{i + 1} - {entry.Name}</color>";
+                    entryObject.Height = entry.Height;
+                    entryObject.Combo = entry.Combo;
+                }
+                else
+                {
+                    entryObject.Name = $"#{i + 1} - {entry.Name}";
+                    entryObject.Height = entry.Height;
+                    entryObject.Combo = entry.Combo;
+                }
             }
         }
         else

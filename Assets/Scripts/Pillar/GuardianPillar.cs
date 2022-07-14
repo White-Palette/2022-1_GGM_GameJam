@@ -19,12 +19,12 @@ public class GuardianPillar : Pillar
     {
         base.Initialize();
         _guardian.gameObject.SetActive(true);
-        StartCoroutine(Spin());
     }
 
-    private IEnumerator Spin()
+    protected override void Update()
     {
-        yield return new WaitForSeconds(0.8f);
+        base.Update();
+        
         if (transform.position.x < PlayerController.Instance.transform.position.x)
             _guardian.transform.localScale = new Vector3(1.2f, 1.2f, 1);
         else
