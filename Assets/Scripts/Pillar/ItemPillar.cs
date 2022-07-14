@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 
 public class ItemPillar : Pillar
@@ -65,7 +66,7 @@ public class ItemPillar : Pillar
         }
     }
 
-    public class PushDragonItem : Item
+    public class FreezeDragonItem : Item
     {
         public override ItemType Type => ItemType.PushDragon;
 
@@ -74,7 +75,7 @@ public class ItemPillar : Pillar
             Chaser.Instance.Freeze(5f);
         }
 
-        public PushDragonItem()
+        public FreezeDragonItem()
         {
             Count = 1;
         }
@@ -85,8 +86,10 @@ public class ItemPillar : Pillar
         new AddComboItem(),
         new MaintainComboItem(),
         new GuardItem(),
-        new PushDragonItem()
+        new FreezeDragonItem()
     };
+
+    [SerializeField] SpriteRenderer _icon = null;
 
     public override void TowerEvent()
     {
@@ -103,5 +106,11 @@ public class ItemPillar : Pillar
                 random -= Items[i].Count;
             }
         }
+    }
+
+    public override void Initialize()
+    {
+        base.Initialize();
+        _icon.DOFade(1, 0.2f).From();
     }
 }

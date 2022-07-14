@@ -109,7 +109,7 @@ public abstract class Pillar : MonoBehaviour, IPoolable
         return bodySprite.color;
     }
 
-    public void Disable()
+    public virtual void Disable()
     {
         overlaySprite.DOColor(new Color(0f, 0f, 0f, 0.5f), 0.2f);
     }
