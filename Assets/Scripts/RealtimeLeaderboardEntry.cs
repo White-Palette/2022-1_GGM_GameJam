@@ -15,7 +15,7 @@ public class RealtimeLeaderboardEntry : MonoBehaviour, IPoolable
 
     private CanvasGroup _canvasGroup = null;
     private Image _image;
-    private bool _isFired;
+    private bool _isFired = false;
 
     public void Initialize()
     {
@@ -31,6 +31,7 @@ public class RealtimeLeaderboardEntry : MonoBehaviour, IPoolable
         set
         {
             if (_isFired == value) return;
+            
 
             if (value)
             {
@@ -48,7 +49,9 @@ public class RealtimeLeaderboardEntry : MonoBehaviour, IPoolable
                     spriteRenderer.gameObject.SetActive(false);
                 }
             }
+
             _isFired = value;
+
         }
     }
 

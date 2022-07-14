@@ -5684,7 +5684,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: RealtimeLeaderboardEntry
       objectReference: {fileID: 0}
+    - target: {fileID: 5710152568330279263, guid: a1d55ff01dcdee54997def44723a8bbd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8397660124238790333, guid: a1d55ff01dcdee54997def44723a8bbd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121022613366963552, guid: a1d55ff01dcdee54997def44723a8bbd, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
