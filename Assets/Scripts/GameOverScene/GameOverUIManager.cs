@@ -39,7 +39,7 @@ public class GameOverUIManager : MonoBehaviour
             isLoading = true;
             Fade.Instance.FadeOutToGameScene();
         }
-        else if (Input.GetKeyDown(KeyCode.H) && !isLoading)
+        else if (Input.GetKeyDown(KeyCode.M) && !isLoading)
         {
             isLoading = true;
             Fade.Instance.FadeOutToMainMenu();
