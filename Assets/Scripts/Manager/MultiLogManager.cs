@@ -39,16 +39,13 @@ public class MultiLogManager : MonoSingleton<MultiLogManager>
 
     public void Log(string message)
     {
-        var activedEntrys = PoolManager<MultiLogEntry>.GetAllActive();
-
-        int count = 0;
-        foreach (var entry in activedEntrys)
+        foreach (var entry in PoolManager<MultiLogEntry>.GetAllActive())
         {
             entry.EntryCreated();
-            count++;
         }
 
         var enrtyObject = PoolManager<MultiLogEntry>.Get(transform);
+        Debug.Log($"{enrtyObject.name}");
         enrtyObject.MessageText.text = message;
         (enrtyObject.transform as RectTransform).anchoredPosition = new Vector2(-500, 0);
     }

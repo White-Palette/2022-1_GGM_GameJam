@@ -8,7 +8,7 @@ public class MultiLogEntry : MonoBehaviour, IPoolable
     public TMP_Text MessageText;
     public bool Exiting = true;
 
-    private int _index = -1;
+    private int _index = 0;
 
     public void Initialize()
     {
@@ -19,7 +19,7 @@ public class MultiLogEntry : MonoBehaviour, IPoolable
             Invoke("Hide", 3f);
         });
 
-        _index = -1;
+        _index = 0;
     }
 
     public void Hide()
@@ -35,5 +35,6 @@ public class MultiLogEntry : MonoBehaviour, IPoolable
     {
         _index++;
         (transform as RectTransform).DOAnchorPosY(-40 * _index, 0.5f, true);
+        Debug.Log($"Move to {_index} ({_index * -40})");
     }
 }
