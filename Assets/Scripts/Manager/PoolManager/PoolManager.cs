@@ -1,13 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public static class PoolManager<T> where T : MonoBehaviour, IPoolable
 {
     private static GameObject _prefab = null;
-    private static Dictionary<GameObject, bool> _pooledDict = new Dictionary<GameObject, bool>();
+    private static Dictionary<T, bool> _pooledDict = new Dictionary<T, bool>();
     private static Queue<GameObject> _objectQueue = new Queue<GameObject>();
     private static Transform _poolStore = null;
 
@@ -51,7 +52,7 @@ public static class PoolManager<T> where T : MonoBehaviour, IPoolable
             gameObject.name = $"{typeof(T).Name} {TotalCount + 1}";
             pool = gameObject.GetComponent<T>();
         }
-        _pooledDict[pool.gameObject] = false;
+        _pooledDict[pool] = false;
         pool.gameObject.SetActive(true);
         if (position != Vector3.zero)
         {
@@ -64,14 +65,14 @@ public static class PoolManager<T> where T : MonoBehaviour, IPoolable
     public static void Release(T pool, bool force = false)
     {
         bool isPooled = false;
-        if (_pooledDict.TryGetValue(pool.gameObject, out isPooled) || force)
+        if (_pooledDict.TryGetValue(pool, out isPooled) || force)
         {
             if (isPooled)
             {
                 Debug.LogError($"{pool.gameObject.name} is not valid object");
                 return;
             }
-            _pooledDict[pool.gameObject] = true;
+            _pooledDict[pool] = true;
             pool.gameObject.SetActive(false);
             _objectQueue.Enqueue(pool.gameObject);
         }
@@ -79,6 +80,19 @@ public static class PoolManager<T> where T : MonoBehaviour, IPoolable
         {
             Debug.LogError($"{pool.gameObject.name} is not object in pool");
         }
+    }
+
+    public static T[] GetAllActive()
+    {
+        List<T> list = new List<T>();
+        foreach (var pair in _pooledDict)
+        {
+            if (!pair.Value)
+            {
+                list.Add(pair.Key.GetComponent<T>());
+            }
+        }
+        return list.ToArray();
     }
 }
 

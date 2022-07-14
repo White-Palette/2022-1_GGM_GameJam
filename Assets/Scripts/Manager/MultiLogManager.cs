@@ -4,68 +4,52 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
+using System;
 
 public class MultiLogManager : MonoSingleton<MultiLogManager>
 {
-    [SerializeField] TextMeshProUGUI[] logTMP;
-
-    private string firstEntryName;
+    private string _nameCache = "";
 
     private void Awake()
     {
-        ServerManager.Instance.OnLeave += leavePacket =>
-        {
-            GameManager.Instance.UpdateDeadLog(leavePacket.Id);
-        };
+        ServerManager.Instance.OnJoin += OnJoin;
+        ServerManager.Instance.OnLeave += OnLeave;
+        ServerManager.Instance.OnLeaderboard += OnLeaderboard;
     }
 
-    private void Update()
+    private void OnJoin(ServerManager.JoinPacket joinPacket)
     {
-        if(RealtimeLeaderboardManager.Instance.GetFirstEntry() != null)
-        {
-            logTMP[0].text = $"{RealtimeLeaderboardManager.Instance.GetFirstEntry().Name} 이(가) 선두를 달리고 있습니다!";
-        }
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            logTMP[2].rectTransform.DOAnchorPosX(450f, 1f);
-        }
-
-        ChangeFirstEntry();
+        Log($"{joinPacket.Name}님이 입장하셨습니다.");
     }
 
-    public IEnumerator MoveAndFadeTMP(int tmp)
+    private void OnLeave(ServerManager.LeavePacket leavePacket)
     {
-        logTMP[tmp].DOFade(1f, 1f).SetEase(Ease.OutQuad).From(0f);
-        logTMP[tmp].rectTransform.DOAnchorPosX(450f, 1f);
-        yield return new WaitForSeconds(2f);
-        logTMP[tmp].DOFade(0f, 1f).SetEase(Ease.OutQuad).From(1f);
-        logTMP[tmp].rectTransform.DOAnchorPosX(-400f, 1f);
-        yield return new WaitForSeconds(1f);
-        yield break;
+        Log($"{RealtimeLeaderboardManager.Instance.GetNameById(leavePacket.Id)}님이 떨어져 나가셨습니다.");
     }
 
-    public void DeadLog(int tmp, string name)
-    {
-        Debug.Log(name + "이(가) 떨어졌습니다.");
-        logTMP[tmp].text = $"{name} 이(가) 떨어졌습니다.";
-        StartCoroutine(MoveAndFadeTMP(tmp));
-    }
-
-    public void ChangeFirstEntry()
+    private void OnLeaderboard(ServerManager.RealtimeLeaderboardPacket leaderboardPacket)
     {
         if (RealtimeLeaderboardManager.Instance.GetFirstEntry() == null) return;
-        if (firstEntryName == null && RealtimeLeaderboardManager.Instance.GetFirstEntry() != null)
+        if (_nameCache != RealtimeLeaderboardManager.Instance.GetFirstEntry().Name)
         {
-            firstEntryName = RealtimeLeaderboardManager.Instance.GetFirstEntry().Name;
+            Log($"{RealtimeLeaderboardManager.Instance.GetFirstEntry().Name}님이 선두를 달리고 있습니다.");
+            _nameCache = RealtimeLeaderboardManager.Instance.GetFirstEntry().Name;
+        }
+    }
+
+    public void Log(string message)
+    {
+        var activedEntrys = PoolManager<MultiLogEntry>.GetAllActive();
+
+        int count = 0;
+        foreach (var entry in activedEntrys)
+        {
+            entry.EntryCreated();
+            count++;
         }
 
-        if(firstEntryName != RealtimeLeaderboardManager.Instance.GetFirstEntry().Name)
-        {
-            Debug.Log(RealtimeLeaderboardManager.Instance.GetFirstEntry().Name + " 이(가) 선두를 빼앗았습니다!");
-            firstEntryName = RealtimeLeaderboardManager.Instance.GetFirstEntry().Name;
-            logTMP[1].text = $"{RealtimeLeaderboardManager.Instance.GetFirstEntry().Name} 이(가) 선두를 빼앗았습니다!";
-            StartCoroutine(MoveAndFadeTMP(1));
-        }
+        var enrtyObject = PoolManager<MultiLogEntry>.Get(transform);
+        enrtyObject.MessageText.text = message;
+        (enrtyObject.transform as RectTransform).anchoredPosition = new Vector2(-500, 0);
     }
 }
