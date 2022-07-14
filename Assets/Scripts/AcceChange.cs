@@ -17,6 +17,16 @@ public class AcceChange : MonoBehaviour
     [SerializeField] Image RA;
     [SerializeField] Image LL;
     [SerializeField] Image RL;
+
+    private void Start()
+    {
+        head.sprite = hatcon.Accessories[UserData.ItemHat].Sprite;
+        LA.sprite = globecon.Accessories[UserData.ItemGlobe].Sprite;
+        RA.sprite = globecon.Accessories[UserData.ItemGlobe].Sprite;
+        LL.sprite = bootcon.Accessories[UserData.ItemShose].Sprite;
+        RL.sprite = bootcon.Accessories[UserData.ItemShose].Sprite;
+    }
+
     public void BuyHat(int number)
     {
         UserData.ItemHat = number;
