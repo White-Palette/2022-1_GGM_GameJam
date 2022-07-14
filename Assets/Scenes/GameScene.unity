@@ -302,6 +302,10 @@ PrefabInstance:
       propertyPath: _flashImage
       value: 
       objectReference: {fileID: 1982102999}
+    - target: {fileID: 1052632073, guid: a9ceea67401eaad43a45758206b9ee8b, type: 3}
+      propertyPath: _soundEffect.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 733051987896546671, guid: a9ceea67401eaad43a45758206b9ee8b, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -886,7 +890,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -399.9999, y: -330}
+  m_AnchoredPosition: {x: -399.99994, y: -330}
   m_SizeDelta: {x: 800, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &206259287
@@ -2232,7 +2236,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7775229, y: 1}
+    m_SensorSize: {x: 1.7782736, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2424,7 +2428,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -399.9999, y: -210}
+  m_AnchoredPosition: {x: -399.99994, y: -210}
   m_SizeDelta: {x: 800, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &797294003
@@ -3331,7 +3335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 542364ab74287e948aeb2fcef0b42cec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _valueSpeed: 1
+  _valueSpeed: 0.5
   timingZone: {fileID: 404333792}
 --- !u!114 &1005553125
 MonoBehaviour:
@@ -3821,7 +3825,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -399.9999, y: -390}
+  m_AnchoredPosition: {x: -399.99994, y: -390}
   m_SizeDelta: {x: 800, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1199464957
@@ -5352,7 +5356,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -399.9999, y: -270}
+  m_AnchoredPosition: {x: -399.99994, y: -270}
   m_SizeDelta: {x: 800, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2104607364
