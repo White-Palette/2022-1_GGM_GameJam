@@ -18,6 +18,7 @@ public class Chaser : MonoSingleton<Chaser>
     private void Start()
     {
         _animator = GetComponent<Animator>();
+        Debug.Log(_animator);
     }
 
     public void Eat()
@@ -44,8 +45,7 @@ public class Chaser : MonoSingleton<Chaser>
             Eat();
             VolumeController.Instance.MotionBlur = 1f;
         }
-        SetSpeed(1 / PlayerController.Instance.JumpDuration());
-        Debug.Log("Speed: " + _speed);
+        SetSpeed(2 / PlayerController.Instance.JumpDuration());
         Move();
     }
 
