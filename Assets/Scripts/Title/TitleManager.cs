@@ -10,6 +10,7 @@ public class TitleManager : MonoBehaviour
 {
     [SerializeField] Image startImage;
     [SerializeField] TextMeshProUGUI startTMP;
+    [SerializeField] TextMeshProUGUI usernameTMP;
     [SerializeField] GameObject settingPanel;
     [SerializeField] GameObject helpPanel;
     [SerializeField] GameObject gameQuitPanel;
@@ -27,6 +28,7 @@ public class TitleManager : MonoBehaviour
 
     private void Start()
     {
+        usernameTMP.text = UserData.UserName;
         helpPanel.SetActive(false);
         StartCoroutine(FadeInOut());
         Fade.Instance.FadeIn();
