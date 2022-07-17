@@ -9,6 +9,8 @@ public class EliteGuardianPillar : Pillar
     private KeyCode[] _keyCodes = new KeyCode[3];
     [SerializeField] SpriteRenderer[] _spriteRenderers = new SpriteRenderer[3];
 
+    bool _hit;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -32,11 +34,13 @@ public class EliteGuardianPillar : Pillar
     protected override void Update()
     {
         base.Update();
-
-        if (transform.position.x < PlayerController.Instance.transform.position.x)
-            _guardian.transform.localScale = new Vector3(1.2f, 1.2f, 1);
-        else
-            _guardian.transform.localScale = new Vector3(-1.2f, 1.2f, 1);
+        if(!_hit)
+        {
+            if (transform.position.x < PlayerController.Instance.transform.position.x)
+                _guardian.transform.localScale = new Vector3(1.2f, 1.2f, 1);
+            else
+                _guardian.transform.localScale = new Vector3(-1.2f, 1.2f, 1);
+        }
     }
 
     protected override void Awake()
@@ -107,6 +111,7 @@ public class EliteGuardianPillar : Pillar
             SoundManager.Instance.PlaySound(Effect.Attack);
             ComboManager.Instance.AddCombo(1);
             _guardian.Hit();
+            _hit = true;
             PlayerController.Instance.PlayerWin();
         }
 

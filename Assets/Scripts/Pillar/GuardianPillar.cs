@@ -9,6 +9,8 @@ public class GuardianPillar : Pillar
 
     float _inputValue = 0f;
 
+    bool _hit = false;
+
     protected override void Awake()
     {
         base.Awake();
@@ -25,10 +27,13 @@ public class GuardianPillar : Pillar
     {
         base.Update();
         
-        if (transform.position.x < PlayerController.Instance.transform.position.x)
-            _guardian.transform.localScale = new Vector3(1.2f, 1.2f, 1);
-        else
-            _guardian.transform.localScale = new Vector3(-1.2f, 1.2f, 1);
+        if(!_hit)
+        {
+            if (transform.position.x < PlayerController.Instance.transform.position.x)
+                _guardian.transform.localScale = new Vector3(1.2f, 1.2f, 1);
+            else
+                _guardian.transform.localScale = new Vector3(-1.2f, 1.2f, 1);
+        }
     }
 
     public override void TowerEvent()
@@ -78,6 +83,7 @@ public class GuardianPillar : Pillar
             SoundManager.Instance.PlaySound(Effect.Attack);
             ComboManager.Instance.AddCombo(1);
             _guardian.Hit();
+            _hit = true;
             PlayerController.Instance.PlayerWin();
         }
 
