@@ -114,11 +114,12 @@ public class SeasonManager : MonoSingleton<SeasonManager>
     {
         if (seasonContainer.GetSeasonEffect(_currentSeason).Effect != null)
         {
+            /*
             if (_currentSeasonEffect != null)
             {
                 return;
-            }
-
+            }*/
+            Destroy(_currentSeasonEffect);
             _currentSeasonEffect = Instantiate(seasonContainer.GetSeasonEffect(_currentSeason).Effect, Camera.main.transform);
             _currentSeasonEffect.transform.localPosition = new Vector3(-2.95f, 7.9f, 9f);
             _currentSeasonEffect.transform.rotation = Quaternion.Euler(-90, 0, 0);
