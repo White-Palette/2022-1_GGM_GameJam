@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -15,6 +16,7 @@ public class TitleManager : MonoBehaviour
     [SerializeField] GameObject helpPanel;
     [SerializeField] GameObject gameQuitPanel;
     [SerializeField] GameObject shopPanel;
+    [SerializeField] GameObject shopPanelBackground;
 
     private float fadeTime = 2f;
 
@@ -182,6 +184,13 @@ public class TitleManager : MonoBehaviour
         isShopEnable = !isShopEnable;
         SoundManager.Instance.PlaySound(Effect.Click);
         StartCoroutine(TogglePanel(shopPanel, isShopEnable));
+    }
+
+    public void ClickButton()
+    {
+        Vector3 btnPos = EventSystem.current.currentSelectedGameObject.transform.position;
+
+        shopPanelBackground.transform.DOMove(btnPos, 0.25f).SetEase(Ease.OutQuad);
     }
 
     public void GameStart()

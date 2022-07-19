@@ -97,4 +97,5 @@ public class UIManager : MonoSingleton<UIManager>
     {
         fireEffect.SetActive(true);
     }
+
 }

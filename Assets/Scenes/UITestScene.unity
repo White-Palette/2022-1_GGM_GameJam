@@ -630,7 +630,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 22409887}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1304459712}
+        m_TargetAssemblyTypeName: TitleManager, Assembly-CSharp
+        m_MethodName: DisableAllPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &66756594
 GameObject:
   m_ObjectHideFlags: 0
@@ -1713,7 +1725,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 138690923}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1304459712}
+        m_TargetAssemblyTypeName: TitleManager, Assembly-CSharp
+        m_MethodName: ClickButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &141682231
 GameObject:
   m_ObjectHideFlags: 0
@@ -1835,7 +1859,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 141682233}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1304459712}
+        m_TargetAssemblyTypeName: TitleManager, Assembly-CSharp
+        m_MethodName: ClickButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &145209214
 GameObject:
   m_ObjectHideFlags: 0
@@ -8573,7 +8609,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 705346755}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1304459712}
+        m_TargetAssemblyTypeName: TitleManager, Assembly-CSharp
+        m_MethodName: ClickButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &720866066
 GameObject:
   m_ObjectHideFlags: 0
@@ -8714,7 +8762,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &762736584
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10179,7 +10227,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 906410773}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1304459712}
+        m_TargetAssemblyTypeName: TitleManager, Assembly-CSharp
+        m_MethodName: ClickButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &940340602
 GameObject:
   m_ObjectHideFlags: 0
@@ -15991,7 +16051,8 @@ MonoBehaviour:
   settingPanel: {fileID: 960331330}
   helpPanel: {fileID: 1440504472}
   gameQuitPanel: {fileID: 901002643}
-  shopPanel: {fileID: 1186590297}
+  shopPanel: {fileID: 762736583}
+  shopPanelBackground: {fileID: 1814421040}
 --- !u!1 &1318195603
 GameObject:
   m_ObjectHideFlags: 0
@@ -18598,7 +18659,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1583830302}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1304459712}
+        m_TargetAssemblyTypeName: TitleManager, Assembly-CSharp
+        m_MethodName: ClickButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1585880748
 GameObject:
   m_ObjectHideFlags: 0
@@ -21502,7 +21575,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 340}
+  m_AnchoredPosition: {x: 0, y: 340.0001}
   m_SizeDelta: {x: 0, y: -980.35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1814421042
