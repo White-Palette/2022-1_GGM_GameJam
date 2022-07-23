@@ -27,6 +27,7 @@ public class TitleManager : MonoBehaviour
 
     private bool isHelp = false;
     private bool isLoading = false;
+    private bool isBounce = false;
 
     private void Start()
     {
@@ -144,7 +145,10 @@ public class TitleManager : MonoBehaviour
 
         if (isEnable)
         {
+            isBounce = true;
             Panel.transform.DOScale(new Vector3(1f, 1f, 0f), 0.6f).SetEase(Ease.OutBounce).From(0f);
+            yield return new WaitForSeconds(0.6f);
+            isBounce = false;
         }
 
         yield break;
@@ -188,6 +192,8 @@ public class TitleManager : MonoBehaviour
 
     public void ClickButton()
     {
+        if (isBounce) return;
+
         Vector3 btnPos = EventSystem.current.currentSelectedGameObject.transform.position;
 
         shopPanelBackground.transform.DOMove(btnPos, 0.25f).SetEase(Ease.OutQuad);
